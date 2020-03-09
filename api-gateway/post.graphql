@@ -18,7 +18,7 @@ extend type Post {
   title: String!
   content: String!
   fishType: [Int!]!
-  place: String!
+  meetingPlace: String!
   meetingTime: Time!
   applyPost: [ApplyPost!]
   userId: ID!
