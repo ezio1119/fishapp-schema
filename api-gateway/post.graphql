@@ -17,7 +17,7 @@ extend type Post {
   id: ID!
   title: String!
   content: String!
-  fishType: [Int!]!
+  fishType: [Int!]! 
   meetingPlace: String!
   meetingTime: Time!
   applyPost: [ApplyPost!]
@@ -51,6 +51,9 @@ type PostConnection {
 input CreatePostInput {
   title: String!
   content: String!
+  fishType: [Int!]!
+  meetingPlace: String!
+  meetingTime: Time!
 }
 
 type CreatePostPayload {
@@ -61,6 +64,9 @@ input UpdatePostInput{
   id: ID!
   title: String!
   content: String!
+  fishType: [Int!]!
+  meetingPlace: String!
+  meetingTime: Time!
 }
 
 type UpdatePostPayload {
