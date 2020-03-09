@@ -1,12 +1,16 @@
+extend type Query {
+  roomMessages(roomId: ID!): [RoomMessage!]! @isAuthenticated
+}
+
 extend type Mutation {
   createChatRoom(input: CreateChatRoomInput!): CreateChatRoomPayload! @isAuthenticated
   addMemberChatRoom(input: AddMemberChatRoomInput!): AddMemberChatRoomPayload! @isAuthenticated 
-  sendMessageChatRoom(input: SendMessageChatRoomInput!): SendMessageChatRoomPayload! @isAuthenticated
+  # sendMessageChatRoom(input: SendMessageChatRoomInput!): SendMessageChatRoomPayload! @isAuthenticated
 }
 
-extend type Subscription {
-  messageAdded(input: MessageAddedInput!): MessageAddedPayload! @isAuthenticated
-}
+# extend type Subscription {
+#   messageAdded(input: MessageAddedInput!): MessageAddedPayload! @isAuthenticated
+# }
 
 type ChatRoom {
   id: ID!
@@ -23,14 +27,14 @@ type RoomMember {
   updatedAt: Time!
 }
 
-type RoomMessage {
-  id: ID!
-  body: String!
-  roomId: ID!
-  userId: ID!
-  createdAt: Time!
-  updatedAt: Time!
-}
+# type RoomMessage {
+#   id: ID!
+#   body: String!
+#   roomId: ID!
+#   userId: ID!
+#   createdAt: Time!
+#   updatedAt: Time!
+# }
 
 input CreateChatRoomInput {
   postId: ID!
@@ -48,19 +52,19 @@ type AddMemberChatRoomPayload {
   member: RoomMember!
 }
 
-input SendMessageChatRoomInput {
-  body: String!
-  roomId: ID!
-}
+# input SendMessageChatRoomInput {
+#   body: String!
+#   roomId: ID!
+# }
 
-type SendMessageChatRoomPayload {
-  message: RoomMessage!
-}
+# type SendMessageChatRoomPayload {
+#   message: RoomMessage!
+# }
 
-input MessageAddedInput {
-  roomIds: [ID!]!
-}
+# input MessageAddedInput {
+#   roomIds: [ID!]!
+# }
 
-type MessageAddedPayload {
-  message: RoomMessage!
-}
+# type MessageAddedPayload {
+#   message: RoomMessage!
+# }
