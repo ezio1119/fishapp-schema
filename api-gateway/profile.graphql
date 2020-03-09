@@ -8,9 +8,17 @@ extend type Mutation {
   updateProfile(input: UpdateProfileInput!): UpdateProfilePayload! @isAuthenticated
 }
 
+enum Sex {
+  MALE
+  FEMALE
+}
+
 type Profile {
   id: ID!
   name: String!
+  introduction: String!
+  age: Int!
+  sex: Sex!
   userId: ID!
   created_at: Time!
   updated_at: Time!
@@ -18,6 +26,9 @@ type Profile {
 
 input CreateProfileInput {
   name: String!
+  introduction: String!
+  age: Int!
+  sex: Sex!
 }
 
 type CreateProfilePayload {
@@ -30,6 +41,7 @@ type DeleteProfilePayload {
 
 input UpdateProfileInput {
   name: String!
+  introduction: String!
 }
 
 type UpdateProfilePayload {
