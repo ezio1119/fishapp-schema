@@ -21,11 +21,12 @@ message Post {
   string content = 3;
   int64 fishing_spot_type = 4;
   repeated int64 fish_type = 5;
-  string meeting_place = 6;
-  google.protobuf.Timestamp meeting_time = 7;
-  int64 user_id = 8;
-  google.protobuf.Timestamp created_at = 9;
-  google.protobuf.Timestamp updated_at = 10;
+  string prefecture = 6;
+  string meeting_place = 7;
+  google.protobuf.Timestamp meeting_time = 8;
+  int64 user_id = 9;
+  google.protobuf.Timestamp created_at = 10;
+  google.protobuf.Timestamp updated_at = 11;
 }
 
 message GetPostByIDReq {
@@ -49,9 +50,10 @@ message CreatePostReq {
   string content = 2 [(validate.rules).string = {min_len: 1, max_len: 2000}];
   int64 fishing_spot_type = 3;
   repeated int64 fish_type = 4;
-  string meeting_place = 5;
-  google.protobuf.Timestamp meeting_time = 6;
-  int64 user_id= 7 [(validate.rules).int64.gte = 1]; // トークンに含まれていたidを受け取る
+  string prefecture = 5;
+  string meeting_place = 6;
+  google.protobuf.Timestamp meeting_time = 7;
+  int64 user_id= 8 [(validate.rules).int64.gte = 1]; // トークンに含まれていたidを受け取る
 }
 
 message CreatePostRes {
@@ -64,9 +66,10 @@ message UpdatePostReq  {
   string content = 3 [(validate.rules).string = {min_len: 1, max_len: 2000}];
   int64 fishing_spot_type = 4;
   repeated int64 fish_type = 5;
-  string meeting_place = 6;
-  google.protobuf.Timestamp meeting_time = 7;
-  int64 user_id= 8 [(validate.rules).int64.gte = 1]; // トークンに含まれていたidを受け取る
+  string prefecture = 6;
+  string meeting_place = 7;
+  google.protobuf.Timestamp meeting_time = 8;
+  int64 user_id= 9 [(validate.rules).int64.gte = 1]; // トークンに含まれていたidを受け取る
 }
 
 message UpdatePostRes {
