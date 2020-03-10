@@ -24,7 +24,7 @@ type User {
 
 input CreateUserInput {
   email: String!
-  password: String!
+  password: String! # 6文字以上72文字以下の英数字
 }
 
 type CreateUserPayload {

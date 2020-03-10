@@ -15,14 +15,11 @@ extend type Mutation {
 
 extend type Post {
   id: ID!
-  title: String!
-  content: String!
-<<<<<<< HEAD
-  fishType: [Int!]!
-=======
-  fishType: [Int!]! 
->>>>>>> 2d896570d8fc8483bde5970ce07e17caf56f1d2c
-  meetingPlace: String!
+  title: String! # DBは255文字まで(任せます)
+  content: String! # DBは5000文字まで(任せます)
+  fishType: [Int!]! # 釣果サイトに乗ってる魚種
+  fishingSpotType: Int! # 陸っぱり, 渓流, 釣り船, 釣り堀
+  meetingPlace: String! # Google Place ID
   meetingTime: Time!
   applyPost: [ApplyPost!]
   userId: ID!
@@ -56,6 +53,7 @@ input CreatePostInput {
   title: String!
   content: String!
   fishType: [Int!]!
+  fishingSpotType: Int!
   meetingPlace: String!
   meetingTime: Time!
 }
@@ -69,6 +67,7 @@ input UpdatePostInput{
   title: String!
   content: String!
   fishType: [Int!]!
+  fishingSpotType: Int!
   meetingPlace: String!
   meetingTime: Time!
 }
