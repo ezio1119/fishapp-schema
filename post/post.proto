@@ -19,12 +19,13 @@ message Post {
   int64 id = 1;
   string title = 2;
   string content = 3;
-  repeated int64 fish_type = 4;
-  int64 meeting_place = 5;
-  google.protobuf.Timestamp meetingTime = 6;
-  int64 user_id = 7;
-  google.protobuf.Timestamp created_at = 8;
-  google.protobuf.Timestamp updated_at = 9 ;
+  int64 fishing_spot_type = 4;
+  repeated int64 fish_type = 5;
+  string meeting_place = 6;
+  google.protobuf.Timestamp meeting_time = 7;
+  int64 user_id = 8;
+  google.protobuf.Timestamp created_at = 9;
+  google.protobuf.Timestamp updated_at = 10;
 }
 
 message GetPostByIDReq {
@@ -46,10 +47,11 @@ message GetListPostsRes {
 message CreatePostReq {
   string title = 1 [(validate.rules).string = {min_len: 1, max_len: 20}];
   string content = 2 [(validate.rules).string = {min_len: 1, max_len: 2000}];
-  repeated int64 fish_type = 3;
-  int64 meeting_place = 4;
-  google.protobuf.Timestamp meetingTime = 5;
-  int64 user_id= 6 [(validate.rules).int64.gte = 1]; // トークンに含まれていたidを送る
+  int64 fishing_spot_type = 3;
+  repeated int64 fish_type = 4;
+  string meeting_place = 5;
+  google.protobuf.Timestamp meeting_time = 6;
+  int64 user_id= 7 [(validate.rules).int64.gte = 1]; // トークンに含まれていたidを受け取る
 }
 
 message CreatePostRes {
@@ -60,11 +62,15 @@ message UpdatePostReq  {
   int64 id = 1 [(validate.rules).int64.gte = 1];
   string title = 2 [(validate.rules).string = {min_len: 1, max_len: 20}];
   string content = 3 [(validate.rules).string = {min_len: 1, max_len: 2000}];
-  int64 user_id= 4 [(validate.rules).int64.gte = 1]; // トークンに含まれていたidを送る
+  int64 fishing_spot_type = 4;
+  repeated int64 fish_type = 5;
+  string meeting_place = 6;
+  google.protobuf.Timestamp meeting_time = 7;
+  int64 user_id= 8 [(validate.rules).int64.gte = 1]; // トークンに含まれていたidを受け取る
 }
 
 message UpdatePostRes {
-  Post post = 1;
+  bool success = 1;
 }
 
 message DeletePostReq {
@@ -75,7 +81,6 @@ message DeletePostReq {
 message DeletePostRes {
   bool success = 1;
 }
-
 
 message ApplyPost {
   int64 id = 1;
