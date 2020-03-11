@@ -18,7 +18,7 @@ extend type Post {
   title: String! # DBは255文字まで(任せます)
   content: String! # DBは5000文字まで(任せます)
   fishingSpotType: Int! # 陸っぱり, 渓流, 釣り船, 釣り堀
-  fishType: [Int!]! # 釣果サイトに乗ってる魚種
+  fishTypes: [Int!]! # 釣果サイトに乗ってる魚種
   prefecture: String! # Google Place API のレスポンスのadministrative_area_level_1を入れる(サーバーで叩きたくないから)
   meetingPlace: String! # Google Place ID
   meetingTime: Time!
@@ -27,6 +27,8 @@ extend type Post {
   createdAt: Time!
   updatedAt: Time!
 }
+
+
 
 type ApplyPost {
   id: ID!
