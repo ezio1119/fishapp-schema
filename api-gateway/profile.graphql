@@ -1,10 +1,10 @@
 extend type Query {
-  profile(userId: ID!): Profile! 
+  profile(Id: ID!): Profile! 
 }
 
 extend type Mutation {
   createProfile(input: CreateProfileInput!): CreateProfilePayload! @isAuthenticated
-  deleteProfile: DeleteProfilePayload! @isAuthenticated
+  deleteProfile(input: DeleteProfileInput!): DeleteProfilePayload! @isAuthenticated
   updateProfile(input: UpdateProfileInput!): UpdateProfilePayload! @isAuthenticated
 }
 
@@ -35,11 +35,16 @@ type CreateProfilePayload {
   profile: Profile!
 }
 
+type DeleteProfileInput {
+  id: ID!
+}
+
 type DeleteProfilePayload {
   success: Boolean!
 }
 
 input UpdateProfileInput {
+  id: ID!
   name: String!
   introduction: String!
 }

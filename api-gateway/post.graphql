@@ -22,6 +22,7 @@ extend type Post {
   prefecture: String! # Google Place API のレスポンスのadministrative_area_level_1を入れる(サーバーで叩きたくないから)
   meetingPlace: String! # Google Place ID
   meetingTime: Time!
+  maxApply: Int!
   applyPost: [ApplyPost!]
   userId: ID!
   createdAt: Time!
@@ -60,6 +61,7 @@ input CreatePostInput {
   prefecture: String!
   meetingPlace: String!
   meetingTime: Time!
+  maxApply: Int!
 }
 
 type CreatePostPayload {
@@ -74,6 +76,7 @@ input UpdatePostInput{
   fishingSpotType: Int!
   meetingPlace: String!
   meetingTime: Time!
+  maxApply: Int!
 }
 
 type UpdatePostPayload {
