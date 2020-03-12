@@ -27,6 +27,7 @@ extend type Post {
   meetingTime: Time!
   applyPosts: [ApplyPost!]
   user: User!
+  maxApply: Int!
   createdAt: Time!
   updatedAt: Time!
 }
@@ -76,6 +77,7 @@ input CreatePostInput {
   prefectureId: ID! # 普通に選ばせる or Google Place API のレスポンスのadministrative_area_level_1と取ってきたIDを比較する
   meetingPlace: String!
   meetingTime: Time!
+  maxApply: Int!
 }
 
 type CreatePostPayload {
@@ -91,6 +93,7 @@ input UpdatePostInput{
   prefectureId: ID!
   meetingPlace: String!
   meetingTime: Time!
+  maxApply: Int!
 }
 
 type UpdatePostPayload {
