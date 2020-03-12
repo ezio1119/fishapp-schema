@@ -5,16 +5,17 @@ extend type Query {
 extend type Mutation {
   createChatRoom(input: CreateChatRoomInput!): CreateChatRoomPayload! @isAuthenticated
   addMemberChatRoom(input: AddMemberChatRoomInput!): AddMemberChatRoomPayload! @isAuthenticated 
-  # sendMessageChatRoom(input: SendMessageChatRoomInput!): SendMessageChatRoomPayload! @isAuthenticated
+  sendMessageChatRoom(input: SendMessageChatRoomInput!): SendMessageChatRoomPayload! @isAuthenticated
 }
 
-# extend type Subscription {
-#   messageAdded(input: MessageAddedInput!): MessageAddedPayload! @isAuthenticated
-# }
+extend type Subscription {
+  messageAdded(input: MessageAddedInput!): MessageAddedPayload! @isAuthenticated
+}
 
-type ChatRoom {
+extend type ChatRoom {
   id: ID!
   postId: ID!
+  roomMember: [RoomMember!]!
   createdAt: Time!
   updatedAt: Time!
 }
@@ -27,14 +28,14 @@ type RoomMember {
   updatedAt: Time!
 }
 
-# type RoomMessage {
-#   id: ID!
-#   body: String!
-#   roomId: ID!
-#   userId: ID!
-#   createdAt: Time!
-#   updatedAt: Time!
-# }
+type RoomMessage {
+  id: ID!
+  body: String!
+  roomId: ID!
+  userId: ID!
+  createdAt: Time!
+  updatedAt: Time!
+}
 
 input CreateChatRoomInput {
   postId: ID!

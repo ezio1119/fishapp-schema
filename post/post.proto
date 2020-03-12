@@ -5,28 +5,63 @@ import "google/protobuf/timestamp.proto";
 
 
 service PostService {
-  rpc GetPostByID(GetPostByIDReq) returns (GetPostByIDRes); // post_idで投稿を取得
-  rpc GetListPosts(GetListPostsReq) returns (GetListPostsRes); // 取得件数と日時を指定して投稿を複数取得
+  rpc GetPostByID(GetPostByIDReq) returns (GetPostByIDRes); // 投稿の詳細を取得
+  rpc GetPostByUserID(GetPostByUserIDReq) returns (GetPostByUserIDRes); // ユーザーの投稿を取得
+  rpc GetListPosts(GetListPostsReq) returns (GetListPostsRes); // 投稿の絞り込み検索 & ページネーション
   rpc CreatePost(CreatePostReq) returns (CreatePostRes); // 投稿を作成
   rpc UpdatePost(UpdatePostReq) returns (UpdatePostRes); // 投稿を更新
   rpc DeletePost(DeletePostReq) returns (DeletePostRes); // 投稿を削除
 
-  rpc CreateApplyPost(CreateApplyPostReq) returns (CreateApplyPostRes);
-  rpc DeleteApplyPost(DeleteApplyPostReq) returns (DeleteApplyPostRes);
+  rpc GetApplyPostsByUserID(GetApplyPostsByUserIDReq) returns (GetApplyPostsByUserIDRes); // そのユーザーの応募した投稿を取得
+  rpc GetApplyPostsByPostID(GetApplyPostsByPostIDReq) returns (GetApplyPostsByPostIDRes); // その投稿の応募情報を取得
+  rpc CreateApplyPost(CreateApplyPostReq) returns (CreateApplyPostRes); // ユーザーが投稿に応募する
+  rpc DeleteApplyPost(DeleteApplyPostReq) returns (DeleteApplyPostRes); // ユーザーがその投稿の応募を取り消す
+
+  rpc GetPrefectureByID(GetPrefectureByIDReq) returns (GetPrefectureByIDRes);  // 都道府県を取得
+  rpc GetAllPrefecture(GetAllPrefectureReq) returns (GetAllPrefectureRes); // すべての都道府県を取得
+
+  rpc GetFishingSpotTypeByID(GetFishingSpotTypeByIDReq) returns (GetFishingSpotTypeByIDRes); // 釣り場の種類を取得
+  rpc GetAllFishingSpotType(GetAllFishingSpotTypeReq) returns (GetAllFishingSpotTypeRes);  // すべての釣り場の種類を取得
+
+  rpc GetFishTypeByID(GetFishTypeByIDReq) returns (GetFishTypeByIDRes); // 魚の種類を取得
+  rpc GetAllFishType(GetAllFishTypeReq) returns (GetAllFishTypeRes); // すべての魚の種類を取得
 }
 
 message Post {
   int64 id = 1;
   string title = 2;
   string content = 3;
-  int64 fishing_spot_type = 4;
-  repeated int64 fish_types = 5;
-  string prefecture = 6;
-  string meeting_place = 7;
+  int64 fishing_spot_type_id = 4;
+  int64 fish_type_id = 5;
+  int64 prefecture_id = 6;
+  string meeting_place_id = 7;
   google.protobuf.Timestamp meeting_time = 8;
   int64 user_id = 9;
   google.protobuf.Timestamp created_at = 10;
   google.protobuf.Timestamp updated_at = 11;
+}
+
+message ApplyPost {
+  int64 id = 1;
+  int64 post_id = 2;
+  int64 user_id = 3;
+  google.protobuf.Timestamp created_at = 4;
+  google.protobuf.Timestamp updated_at = 5;
+}
+
+message FishingSpotType {
+  int64 id = 1;
+  string name = 2;
+}
+
+message FishType {
+  int64 id = 1;
+  string name = 2;
+}
+
+message Prefecture {
+  int64 id = 1;
+  string name = 2;
 }
 
 message GetPostByIDReq {
@@ -34,6 +69,14 @@ message GetPostByIDReq {
 }
 
 message GetPostByIDRes {
+  Post post = 1;
+}
+
+message GetPostByUserIDReq {
+  int64 user_id = 1;
+}
+
+message GetPostByUserIDRes {
   Post post = 1;
 }
 
@@ -85,12 +128,62 @@ message DeletePostRes {
   bool success = 1;
 }
 
-message ApplyPost {
+message GetPrefectureByIDReq {
   int64 id = 1;
-  int64 post_id = 2;
-  int64 user_id = 3;
-  google.protobuf.Timestamp created_at = 4;
-  google.protobuf.Timestamp updated_at = 5;
+}
+
+message GetPrefectureByIDRes {
+  Prefecture prefecture = 1;
+}
+
+message GetAllPrefectureReq {}
+
+message GetAllPrefectureRes {
+  repeated Prefecture prefectures = 1;
+}
+
+message GetFishingSpotTypeByIDReq {
+  int64 id = 1;
+}
+
+message GetFishingSpotTypeByIDRes {
+  FishingSpotType fishing_spot_type = 1;
+}
+
+message GetAllFishingSpotTypeReq {}
+
+message GetAllFishingSpotTypeRes {
+  repeated FishingSpotType fishing_spot_types = 1;
+}
+
+message GetFishTypeByIDReq {
+  int64 id = 1;
+}
+
+message GetFishTypeByIDRes {
+  FishType fish_type = 1;
+}
+
+message GetAllFishTypeReq {}
+
+message GetAllFishTypeRes {
+  repeated FishType fish_types = 1;
+}
+
+message GetApplyPostsByUserIDReq {
+  int64 user_id = 1;
+}
+
+message GetApplyPostsByUserIDRes {
+  repeated ApplyPost apply_posts = 1;
+}
+
+message GetApplyPostsByPostIDReq {
+  int64 post_id = 1;
+}
+
+message GetApplyPostsByPostIDRes {
+  repeated ApplyPost apply_posts = 1;
 }
 
 message CreateApplyPostReq {

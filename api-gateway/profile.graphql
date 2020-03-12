@@ -13,7 +13,7 @@ enum Sex {
   FEMALE
 }
 
-type Profile {
+extend type Profile {
   id: ID!
   name: String!
   introduction: String!

@@ -15,9 +15,12 @@ extend type Mutation {
   logout: LogoutPayload! @isAuthenticated(authAPI: true)
 }
 
-type User {
+extend type User {
   id: ID!
   email: String!
+  posts: [Post!]
+  applyPosts: [ApplyPost!]
+  profile: Profile!
   createdAt: Time!
   updatedAt: Time!
 }
