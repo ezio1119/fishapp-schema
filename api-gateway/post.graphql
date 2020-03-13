@@ -18,12 +18,12 @@ extend type Mutation {
 
 extend type Post {
   id: ID!
-  title: String! # DBは255文字まで(任せます)
-  content: String! # DBは5000文字まで(任せます)
-  fishingSpotType: FishingSpotType! # 陸っぱり, 渓流, 釣り船, 釣り堀
-  fishTypes: [FishType!]! # 釣果サイトに乗ってる魚種
+  title: String!
+  content: String!
+  fishingSpotType: FishingSpotType!
+  fishTypes: [FishType!]!
   prefecture: Prefecture!
-  meetingPlace: String! # Google Place ID
+  meetingPlaceId: String! 
   meetingTime: Time!
   applyPosts: [ApplyPost!]
   user: User!
@@ -75,7 +75,7 @@ input CreatePostInput {
   fishingSpotTypeId: ID!
   fishTypeIds: [ID!]!
   prefectureId: ID! # 普通に選ばせる or Google Place API のレスポンスのadministrative_area_level_1と取ってきたIDを比較する
-  meetingPlace: String!
+  meetingPlaceId: String! # Google Place ID
   meetingTime: Time!
   maxApply: Int!
 }
@@ -91,7 +91,7 @@ input UpdatePostInput{
   fishingSpotTypeId: ID!
   fishTypeIds: [ID!]!
   prefectureId: ID!
-  meetingPlace: String!
+  meetingPlaceId: String!
   meetingTime: Time!
   maxApply: Int!
 }

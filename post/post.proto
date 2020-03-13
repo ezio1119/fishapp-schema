@@ -17,13 +17,13 @@ service PostService {
   rpc CreateApplyPost(CreateApplyPostReq) returns (CreateApplyPostRes); // ユーザーが投稿に応募する
   rpc DeleteApplyPost(DeleteApplyPostReq) returns (DeleteApplyPostRes); // ユーザーがその投稿の応募を取り消す
 
-  rpc GetPrefectureByID(GetPrefectureByIDReq) returns (GetPrefectureByIDRes);  // 都道府県を取得
+  rpc GetPrefecturesByIDs(GetPrefecturesByIDsReq) returns (GetPrefecturesByIDsRes);  // 都道府県を取得
   rpc GetAllPrefecture(GetAllPrefectureReq) returns (GetAllPrefectureRes); // すべての都道府県を取得
 
-  rpc GetFishingSpotTypeByID(GetFishingSpotTypeByIDReq) returns (GetFishingSpotTypeByIDRes); // 釣り場の種類を取得
+  rpc GetFishingSpotTypesByIDs(GetFishingSpotTypesByIDsReq) returns (GetFishingSpotTypesByIDsRes); // 釣り場の種類を取得
   rpc GetAllFishingSpotType(GetAllFishingSpotTypeReq) returns (GetAllFishingSpotTypeRes);  // すべての釣り場の種類を取得
 
-  rpc GetFishTypeByID(GetFishTypeByIDReq) returns (GetFishTypeByIDRes); // 魚の種類を取得
+  rpc GetFishTypesByIDs(GetFishTypesByIDsReq) returns (GetFishTypesByIDsRes); // 魚の種類を取得
   rpc GetAllFishType(GetAllFishTypeReq) returns (GetAllFishTypeRes); // すべての魚の種類を取得
 }
 
@@ -32,7 +32,7 @@ message Post {
   string title = 2;
   string content = 3;
   int64 fishing_spot_type_id = 4;
-  int64 fish_type_id = 5;
+  int64 fish_type_ids = 5;
   int64 prefecture_id = 6;
   string meeting_place_id = 7;
   google.protobuf.Timestamp meeting_time = 8;
@@ -128,12 +128,12 @@ message DeletePostRes {
   bool success = 1;
 }
 
-message GetPrefectureByIDReq {
-  int64 id = 1;
+message GetPrefecturesByIDsReq {
+  repeated int64 ids = 1;
 }
 
-message GetPrefectureByIDRes {
-  Prefecture prefecture = 1;
+message GetPrefecturesByIDsRes {
+  repeated Prefecture prefectures = 1;
 }
 
 message GetAllPrefectureReq {}
@@ -142,12 +142,12 @@ message GetAllPrefectureRes {
   repeated Prefecture prefectures = 1;
 }
 
-message GetFishingSpotTypeByIDReq {
-  int64 id = 1;
+message GetFishingSpotTypesByIDsReq {
+  repeated int64 ids = 1;
 }
 
-message GetFishingSpotTypeByIDRes {
-  FishingSpotType fishing_spot_type = 1;
+message GetFishingSpotTypesByIDsRes {
+  repeated FishingSpotType fishing_spot_types = 1;
 }
 
 message GetAllFishingSpotTypeReq {}
@@ -156,12 +156,12 @@ message GetAllFishingSpotTypeRes {
   repeated FishingSpotType fishing_spot_types = 1;
 }
 
-message GetFishTypeByIDReq {
-  int64 id = 1;
+message GetFishTypesByIDsReq {
+  repeated int64 ids = 1;
 }
 
-message GetFishTypeByIDRes {
-  FishType fish_type = 1;
+message GetFishTypesByIDsRes {
+  repeated FishType fish_types = 1;
 }
 
 message GetAllFishTypeReq {}
