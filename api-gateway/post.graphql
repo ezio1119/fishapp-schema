@@ -3,9 +3,6 @@ scalar Time
 extend type Query {
   posts(first: Int, after: String, input: PostsInput!): PostConnection! # Relay connection
   post(id: ID!): Post!
-  fishingSpotTypes: [FishingSpotType!]!
-  fishTypes: [FishType!]!
-  prefectures: [Prefecture!]!
 }
 
 extend type Mutation {
@@ -20,31 +17,16 @@ extend type Post {
   id: ID!
   title: String!
   content: String!
-  fishingSpotType: FishingSpotType!
-  fishTypes: [FishType!]!
-  prefecture: Prefecture!
+  fishingSpotTypeId: ID!
+  fishTypeIds: [ID!]!
+  prefectureId: ID!
   meetingPlaceId: String! 
-  meetingTime: Time!
+  meetingAt: Time!
   applyPosts: [ApplyPost!]
   user: User!
   maxApply: Int!
   createdAt: Time!
   updatedAt: Time!
-}
-
-type FishType {
-  id: ID!
-  name: String!
-}
-
-type Prefecture {
-  id: ID!
-  name: String!
-}
-
-type FishingSpotType {
-  id: ID!
-  name: String!
 }
 
 type ApplyPost {
@@ -56,7 +38,24 @@ type ApplyPost {
 }
 
 input PostsInput {
-  notImplement: String
+  prefectureId: ID
+  fishingSpotTypeId: ID
+  fishTypeIds: [ID!]
+  meetingAtFrom: Time
+  meetingAtTo: Time
+  orderBy: PostOrderBy!
+  sortBy: PostSortBy!
+  userId: ID #ここに値が入っているとユーザーの投稿を絞り込める
+}
+
+enum PostOrderBy {
+  ASC
+  DESC
+}
+
+enum PostSortBy {
+  CREATED_AT
+  MEETING_AT
 }
 
 extend type PageInfo {
@@ -76,7 +75,7 @@ input CreatePostInput {
   fishTypeIds: [ID!]!
   prefectureId: ID! # 普通に選ばせる or Google Place API のレスポンスのadministrative_area_level_1と取ってきたIDを比較する
   meetingPlaceId: String! # Google Place ID
-  meetingTime: Time!
+  meetingAt: Time!
   maxApply: Int!
 }
 
@@ -92,12 +91,12 @@ input UpdatePostInput{
   fishTypeIds: [ID!]!
   prefectureId: ID!
   meetingPlaceId: String!
-  meetingTime: Time!
+  meetingAt: Time!
   maxApply: Int!
 }
 
 type UpdatePostPayload {
-  success: Boolean!
+  post: Post!
 }
 
 input DeletePostInput{

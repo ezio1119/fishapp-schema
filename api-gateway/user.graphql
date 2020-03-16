@@ -45,7 +45,7 @@ input UpdateUserInput {
 }
 
 type UpdateUserPayload {
-  success: Boolean!
+  user: User!
 }
 
 type RefreshIDTokenPayload{
