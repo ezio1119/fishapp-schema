@@ -232,7 +232,7 @@
 | prefecture_id | [int64](#int64) |  | フロントでenum管理 都道府県コード |
 | fishing_spot_type_id | [int64](#int64) |  | フロントでenum管理 1: 陸っぱり, 2: 渓流釣り, 3: 釣り船, 4: 釣り堀 |
 | fish_type_ids | [int64](#int64) | repeated | フロントでenum管理 |
-| meeting_at_from | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  | fromとtoはセットで必要 |
+| meeting_at_from | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  | fromとtoはセットで必要 エラーは出ないけどクエリは無効になる |
 | meeting_at_to | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
 | can_apply | [bool](#bool) |  | trueにすると、応募可能な投稿のみを絞り込める。 |
 | order_by | [ListPostsReq.Filter.OrderBy](#post_grpc.ListPostsReq.Filter.OrderBy) |  |  |
