@@ -6,21 +6,22 @@
 - [post.proto](#post.proto)
     - [ApplyPost](#post_grpc.ApplyPost)
     - [CreateApplyPostReq](#post_grpc.CreateApplyPostReq)
-    - [CreateApplyPostRes](#post_grpc.CreateApplyPostRes)
     - [CreatePostReq](#post_grpc.CreatePostReq)
-    - [CreatePostRes](#post_grpc.CreatePostRes)
     - [DeleteApplyPostReq](#post_grpc.DeleteApplyPostReq)
-    - [DeleteApplyPostRes](#post_grpc.DeleteApplyPostRes)
     - [DeletePostReq](#post_grpc.DeletePostReq)
     - [DeletePostRes](#post_grpc.DeletePostRes)
-    - [GetListPostsReq](#post_grpc.GetListPostsReq)
-    - [GetListPostsRes](#post_grpc.GetListPostsRes)
-    - [GetPostByIDReq](#post_grpc.GetPostByIDReq)
-    - [GetPostByIDRes](#post_grpc.GetPostByIDRes)
+    - [GetPostReq](#post_grpc.GetPostReq)
+    - [ListApplyPostsReq](#post_grpc.ListApplyPostsReq)
+    - [ListApplyPostsReq.Filter](#post_grpc.ListApplyPostsReq.Filter)
+    - [ListApplyPostsRes](#post_grpc.ListApplyPostsRes)
+    - [ListPostsReq](#post_grpc.ListPostsReq)
+    - [ListPostsReq.Filter](#post_grpc.ListPostsReq.Filter)
+    - [ListPostsRes](#post_grpc.ListPostsRes)
     - [Post](#post_grpc.Post)
     - [UpdatePostReq](#post_grpc.UpdatePostReq)
-    - [UpdatePostRes](#post_grpc.UpdatePostRes)
   
+    - [ListPostsReq.Filter.OrderBy](#post_grpc.ListPostsReq.Filter.OrderBy)
+    - [ListPostsReq.Filter.SortBy](#post_grpc.ListPostsReq.Filter.SortBy)
   
   
     - [PostService](#post_grpc.PostService)
@@ -72,21 +73,6 @@
 
 
 
-<a name="post_grpc.CreateApplyPostRes"></a>
-
-### CreateApplyPostRes
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| apply_post | [ApplyPost](#post_grpc.ApplyPost) |  |  |
-
-
-
-
-
-
 <a name="post_grpc.CreatePostReq"></a>
 
 ### CreatePostReq
@@ -95,24 +81,15 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| title | [string](#string) |  |  |
-| content | [string](#string) |  |  |
-| user_id | [int64](#int64) |  | トークンに含まれていたidを送る |
-
-
-
-
-
-
-<a name="post_grpc.CreatePostRes"></a>
-
-### CreatePostRes
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| post | [Post](#post_grpc.Post) |  |  |
+| title | [string](#string) |  | 20文字以下 |
+| content | [string](#string) |  | 2000文字以下 |
+| fishing_spot_type_id | [int64](#int64) |  | 1~4 |
+| fish_type_ids | [int64](#int64) | repeated | 1~95 一個以上 ユニーク |
+| prefecture_id | [int64](#int64) |  | 1~47 |
+| meeting_place_id | [string](#string) |  | google place ID, いまはサーバー側では叩かず保存して返すだけ。後々API叩く。 |
+| meeting_at | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
+| max_apply | [int64](#int64) |  |  |
+| user_id | [int64](#int64) |  |  |
 
 
 
@@ -129,21 +106,6 @@
 | ----- | ---- | ----- | ----------- |
 | id | [int64](#int64) |  |  |
 | user_id | [int64](#int64) |  |  |
-
-
-
-
-
-
-<a name="post_grpc.DeleteApplyPostRes"></a>
-
-### DeleteApplyPostRes
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| success | [bool](#bool) |  |  |
 
 
 
@@ -181,39 +143,9 @@
 
 
 
-<a name="post_grpc.GetListPostsReq"></a>
+<a name="post_grpc.GetPostReq"></a>
 
-### GetListPostsReq
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| num | [int64](#int64) |  | created_at DESC |
-
-
-
-
-
-
-<a name="post_grpc.GetListPostsRes"></a>
-
-### GetListPostsRes
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| posts | [Post](#post_grpc.Post) | repeated |  |
-
-
-
-
-
-
-<a name="post_grpc.GetPostByIDReq"></a>
-
-### GetPostByIDReq
+### GetPostReq
 
 
 
@@ -226,15 +158,102 @@
 
 
 
-<a name="post_grpc.GetPostByIDRes"></a>
+<a name="post_grpc.ListApplyPostsReq"></a>
 
-### GetPostByIDRes
+### ListApplyPostsReq
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| post | [Post](#post_grpc.Post) |  |  |
+| filter | [ListApplyPostsReq.Filter](#post_grpc.ListApplyPostsReq.Filter) |  |  |
+
+
+
+
+
+
+<a name="post_grpc.ListApplyPostsReq.Filter"></a>
+
+### ListApplyPostsReq.Filter
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| user_id | [int64](#int64) |  |  |
+| post_id | [int64](#int64) |  |  |
+
+
+
+
+
+
+<a name="post_grpc.ListApplyPostsRes"></a>
+
+### ListApplyPostsRes
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| apply_posts | [ApplyPost](#post_grpc.ApplyPost) | repeated |  |
+
+
+
+
+
+
+<a name="post_grpc.ListPostsReq"></a>
+
+### ListPostsReq
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| filter | [ListPostsReq.Filter](#post_grpc.ListPostsReq.Filter) |  |  |
+| page_size | [int64](#int64) |  | 30件以下。ゼロ値の場合、デフォルト設定で10件 |
+| page_token | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="post_grpc.ListPostsReq.Filter"></a>
+
+### ListPostsReq.Filter
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| prefecture_id | [int64](#int64) |  | フロントでenum管理 都道府県コード |
+| fishing_spot_type_id | [int64](#int64) |  | フロントでenum管理 1: 陸っぱり, 2: 渓流釣り, 3: 釣り船, 4: 釣り堀 |
+| fish_type_ids | [int64](#int64) | repeated | フロントでenum管理 |
+| meeting_at_from | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  | fromとtoはセットで必要 |
+| meeting_at_to | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
+| can_apply | [bool](#bool) |  | trueにすると、応募可能な投稿のみを絞り込める。 |
+| order_by | [ListPostsReq.Filter.OrderBy](#post_grpc.ListPostsReq.Filter.OrderBy) |  |  |
+| sort_by | [ListPostsReq.Filter.SortBy](#post_grpc.ListPostsReq.Filter.SortBy) |  |  |
+| user_id | [int64](#int64) |  | ここに値が入っているとユーザーの投稿を絞り込める |
+
+
+
+
+
+
+<a name="post_grpc.ListPostsRes"></a>
+
+### ListPostsRes
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| posts | [Post](#post_grpc.Post) | repeated |  |
+| next_page_token | [string](#string) |  |  |
 
 
 
@@ -252,7 +271,13 @@
 | id | [int64](#int64) |  |  |
 | title | [string](#string) |  |  |
 | content | [string](#string) |  |  |
+| fishing_spot_type_id | [int64](#int64) |  |  |
+| fish_type_ids | [int64](#int64) | repeated |  |
+| prefecture_id | [int64](#int64) |  |  |
+| meeting_place_id | [string](#string) |  |  |
+| meeting_at | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
 | user_id | [int64](#int64) |  |  |
+| max_apply | [int64](#int64) |  |  |
 | created_at | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
 
@@ -272,28 +297,43 @@
 | id | [int64](#int64) |  |  |
 | title | [string](#string) |  |  |
 | content | [string](#string) |  |  |
-| user_id | [int64](#int64) |  | トークンに含まれていたidを送る |
-
-
-
-
-
-
-<a name="post_grpc.UpdatePostRes"></a>
-
-### UpdatePostRes
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| post | [Post](#post_grpc.Post) |  |  |
+| fishing_spot_type_id | [int64](#int64) |  |  |
+| fish_type_ids | [int64](#int64) | repeated |  |
+| prefecture_id | [int64](#int64) |  |  |
+| meeting_place_id | [string](#string) |  |  |
+| meeting_at | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
+| max_apply | [int64](#int64) |  |  |
+| user_id | [int64](#int64) |  | 投稿したユーザーか判断する用 |
 
 
 
 
 
  
+
+
+<a name="post_grpc.ListPostsReq.Filter.OrderBy"></a>
+
+### ListPostsReq.Filter.OrderBy
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| DESC | 0 | デフォルト |
+| ASC | 1 |  |
+
+
+
+<a name="post_grpc.ListPostsReq.Filter.SortBy"></a>
+
+### ListPostsReq.Filter.SortBy
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| CREATED_AT | 0 | デフォルト |
+| MEETING_AT | 1 |  |
+
 
  
 
@@ -307,13 +347,14 @@
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| GetPostByID | [GetPostByIDReq](#post_grpc.GetPostByIDReq) | [GetPostByIDRes](#post_grpc.GetPostByIDRes) | post_idで投稿を取得 |
-| GetListPosts | [GetListPostsReq](#post_grpc.GetListPostsReq) | [GetListPostsRes](#post_grpc.GetListPostsRes) | 取得件数と日時を指定して投稿を複数取得 |
-| CreatePost | [CreatePostReq](#post_grpc.CreatePostReq) | [CreatePostRes](#post_grpc.CreatePostRes) | 投稿を作成 |
-| UpdatePost | [UpdatePostReq](#post_grpc.UpdatePostReq) | [UpdatePostRes](#post_grpc.UpdatePostRes) | 投稿を更新 |
-| DeletePost | [DeletePostReq](#post_grpc.DeletePostReq) | [DeletePostRes](#post_grpc.DeletePostRes) | 投稿を削除 |
-| CreateApplyPost | [CreateApplyPostReq](#post_grpc.CreateApplyPostReq) | [CreateApplyPostRes](#post_grpc.CreateApplyPostRes) |  |
-| DeleteApplyPost | [DeleteApplyPostReq](#post_grpc.DeleteApplyPostReq) | [DeleteApplyPostRes](#post_grpc.DeleteApplyPostRes) |  |
+| GetPost | [GetPostReq](#post_grpc.GetPostReq) | [Post](#post_grpc.Post) | 投稿の詳細を取得 |
+| ListPosts | [ListPostsReq](#post_grpc.ListPostsReq) | [ListPostsRes](#post_grpc.ListPostsRes) | 投稿の絞り込み検索 &amp; ページネーション |
+| CreatePost | [CreatePostReq](#post_grpc.CreatePostReq) | [Post](#post_grpc.Post) | 投稿を作成 |
+| UpdatePost | [UpdatePostReq](#post_grpc.UpdatePostReq) | [Post](#post_grpc.Post) | 投稿を更新 |
+| DeletePost | [DeletePostReq](#post_grpc.DeletePostReq) | [.google.protobuf.Empty](#google.protobuf.Empty) | 投稿を削除 |
+| ListApplyPosts | [ListApplyPostsReq](#post_grpc.ListApplyPostsReq) | [ListApplyPostsRes](#post_grpc.ListApplyPostsRes) | その投稿の応募情報を取得, そのユーザーの応募した投稿を取得 |
+| CreateApplyPost | [CreateApplyPostReq](#post_grpc.CreateApplyPostReq) | [ApplyPost](#post_grpc.ApplyPost) | ユーザーが投稿に応募する |
+| DeleteApplyPost | [DeleteApplyPostReq](#post_grpc.DeleteApplyPostReq) | [.google.protobuf.Empty](#google.protobuf.Empty) | ユーザーがその投稿の応募を取り消す |
 
  
 

@@ -17,7 +17,7 @@ extend type Post {
   id: ID!
   title: String!
   content: String!
-  fishingSpotTypeId: ID!
+  fishingSpotTypeId: ID! # 1: 陸っぱり, 2: 渓流釣り, 3: 釣り船, 4: 釣り堀, 
   fishTypeIds: [ID!]!
   prefectureId: ID!
   meetingPlaceId: String! 
