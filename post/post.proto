@@ -48,7 +48,7 @@ message ListPostsReq {
     int64 prefecture_id = 1 [(validate.rules).int64.lte = 47]; // フロントでenum管理 都道府県コード
     int64 fishing_spot_type_id = 2 [(validate.rules).int64.lte = 4]; // フロントでenum管理 1: 陸っぱり, 2: 渓流釣り, 3: 釣り船, 4: 釣り堀 
     repeated int64 fish_type_ids = 3 [(validate.rules).repeated.items.int64.lte = 95, (validate.rules).repeated.min_items = 1, (validate.rules).repeated.unique = true]; // フロントでenum管理
-    google.protobuf.Timestamp meeting_at_from = 4; // fromとtoはセットで必要
+    google.protobuf.Timestamp meeting_at_from = 4; // fromとtoはセットで必要 エラーは出ないけどクエリは無効になる
     google.protobuf.Timestamp meeting_at_to = 5;
     bool can_apply = 6; // trueにすると、応募可能な投稿のみを絞り込める。
     enum OrderBy {
