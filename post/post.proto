@@ -11,7 +11,7 @@ service PostService {
   rpc UpdatePost(UpdatePostReq) returns (Post); // 投稿を更新
   rpc DeletePost(DeletePostReq) returns (google.protobuf.Empty); // 投稿を削除
 
-  rpc ListApplyPosts(ListApplyPostsReq) returns (ListApplyPostsRes); // その投稿の応募情報を取得, そのユーザーの応募した投稿を取得
+  rpc ListApplyPosts(ListApplyPostsReq) returns (ListApplyPostsRes); // その投稿の応募情報のリストを取得, そのユーザーの応募した投稿リストを取得
   rpc CreateApplyPost(CreateApplyPostReq) returns (ApplyPost); // ユーザーが投稿に応募する
   rpc DeleteApplyPost(DeleteApplyPostReq) returns (google.protobuf.Empty); // ユーザーがその投稿の応募を取り消す
 }
