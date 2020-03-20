@@ -13,7 +13,6 @@ extend type Profile {
   id: ID!
   name: String!
   introduction: String!
-  age: Int!
   sex: Sex!
   userId: ID!
   created_at: Time!
@@ -23,7 +22,6 @@ extend type Profile {
 input CreateProfileInput {
   name: String!
   introduction: String!
-  age: Int!
   sex: Sex!
 }
 

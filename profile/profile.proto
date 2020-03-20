@@ -2,35 +2,49 @@ syntax = "proto3";
 package profile_grpc;
 import "validate/validate.proto";
 import "google/protobuf/timestamp.proto";
-import "google/protobuf/wrappers.proto";
+import "google/protobuf/empty.proto";
 
 
 service ProfileService {
-  rpc Create(CreateReq) returns (Profile);
-  rpc GetByUserID(ID) returns (Profile);
-  rpc UpdateByUserID(UpdateReq) returns (Profile);
-  rpc DeleteByUserID(ID) returns (google.protobuf.BoolValue);
+  rpc CreateProfile(CreateProfileReq) returns (Profile);
+  rpc GetProfile(GetProfileReq) returns (Profile);
+  rpc UpdateProfile(UpdateProfileReq) returns (Profile);
+  rpc DeleteProfile(DeleteProfileReq) returns (google.protobuf.Empty);
+}
+
+enum Sex {
+  SEX_UNSPECIFIED = 0;
+  MALE = 1;
+  FEMALE = 2;
 }
 
 message Profile {
   int64 id = 1;
   string name = 2;
-  int64 user_id = 3;
-  google.protobuf.Timestamp created_at = 4;
-  google.protobuf.Timestamp updated_at = 5;
+  string introduction = 3;
+  Sex sex = 4;
+  int64 user_id = 5;
+  google.protobuf.Timestamp created_at = 6;
+  google.protobuf.Timestamp updated_at = 7;
 }
 
-message CreateReq {
-  string name = 1 [(validate.rules).string = {min_len: 1, max_len: 10}];
-  int64 user_id = 2 [(validate.rules).int64.gte = 1];
-}
-
-message UpdateReq {
-  string name = 1 [(validate.rules).string = {min_len: 1, max_len: 10}];
-  int64 user_id = 2 [(validate.rules).int64.gte = 1];
-}
-
-message ID {
+message GetProfileReq {
   int64 user_id = 1 [(validate.rules).int64.gte = 1];
 }
 
+message CreateProfileReq {
+  string name = 1 [(validate.rules).string = {min_len: 1, max_len: 10}];
+  string introduction = 2 [(validate.rules).string = {min_len: 1, max_len: 1000}];
+  Sex sex = 3 [(validate.rules).enum = {not_in: [0]}, (validate.rules).enum.defined_only = true];
+  int64 user_id = 4 [(validate.rules).int64.gte = 1];
+}
+
+message UpdateProfileReq {
+  string name = 1 [(validate.rules).string = {min_len: 1, max_len: 10}];
+  string introduction = 2 [(validate.rules).string = {min_len: 1, max_len: 1000}];
+  int64 user_id = 3 [(validate.rules).int64.gte = 1];
+}
+
+message DeleteProfileReq {
+  int64 user_id = 1 [(validate.rules).int64.gte = 1];
+}

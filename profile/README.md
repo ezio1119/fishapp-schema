@@ -4,11 +4,13 @@
 ## Table of Contents
 
 - [profile.proto](#profile.proto)
-    - [CreateReq](#profile_grpc.CreateReq)
-    - [ID](#profile_grpc.ID)
+    - [CreateProfileReq](#profile_grpc.CreateProfileReq)
+    - [DeleteProfileReq](#profile_grpc.DeleteProfileReq)
+    - [GetProfileReq](#profile_grpc.GetProfileReq)
     - [Profile](#profile_grpc.Profile)
-    - [UpdateReq](#profile_grpc.UpdateReq)
+    - [UpdateProfileReq](#profile_grpc.UpdateProfileReq)
   
+    - [Sex](#profile_grpc.Sex)
   
   
     - [ProfileService](#profile_grpc.ProfileService)
@@ -25,15 +27,17 @@
 
 
 
-<a name="profile_grpc.CreateReq"></a>
+<a name="profile_grpc.CreateProfileReq"></a>
 
-### CreateReq
+### CreateProfileReq
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | name | [string](#string) |  |  |
+| introduction | [string](#string) |  |  |
+| sex | [Sex](#profile_grpc.Sex) |  |  |
 | user_id | [int64](#int64) |  |  |
 
 
@@ -41,9 +45,24 @@
 
 
 
-<a name="profile_grpc.ID"></a>
+<a name="profile_grpc.DeleteProfileReq"></a>
 
-### ID
+### DeleteProfileReq
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| user_id | [int64](#int64) |  |  |
+
+
+
+
+
+
+<a name="profile_grpc.GetProfileReq"></a>
+
+### GetProfileReq
 
 
 
@@ -66,6 +85,8 @@
 | ----- | ---- | ----- | ----------- |
 | id | [int64](#int64) |  |  |
 | name | [string](#string) |  |  |
+| introduction | [string](#string) |  |  |
+| sex | [Sex](#profile_grpc.Sex) |  |  |
 | user_id | [int64](#int64) |  |  |
 | created_at | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
@@ -75,15 +96,16 @@
 
 
 
-<a name="profile_grpc.UpdateReq"></a>
+<a name="profile_grpc.UpdateProfileReq"></a>
 
-### UpdateReq
+### UpdateProfileReq
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | name | [string](#string) |  |  |
+| introduction | [string](#string) |  |  |
 | user_id | [int64](#int64) |  |  |
 
 
@@ -91,6 +113,19 @@
 
 
  
+
+
+<a name="profile_grpc.Sex"></a>
+
+### Sex
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| SEX_UNSPECIFIED | 0 |  |
+| MALE | 1 |  |
+| FEMALE | 2 |  |
+
 
  
 
@@ -104,10 +139,10 @@
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| Create | [CreateReq](#profile_grpc.CreateReq) | [Profile](#profile_grpc.Profile) |  |
-| GetByUserID | [ID](#profile_grpc.ID) | [Profile](#profile_grpc.Profile) |  |
-| UpdateByUserID | [UpdateReq](#profile_grpc.UpdateReq) | [Profile](#profile_grpc.Profile) |  |
-| DeleteByUserID | [ID](#profile_grpc.ID) | [.google.protobuf.BoolValue](#google.protobuf.BoolValue) |  |
+| CreateProfile | [CreateProfileReq](#profile_grpc.CreateProfileReq) | [Profile](#profile_grpc.Profile) |  |
+| GetProfile | [GetProfileReq](#profile_grpc.GetProfileReq) | [Profile](#profile_grpc.Profile) |  |
+| UpdateProfile | [UpdateProfileReq](#profile_grpc.UpdateProfileReq) | [Profile](#profile_grpc.Profile) |  |
+| DeleteProfile | [DeleteProfileReq](#profile_grpc.DeleteProfileReq) | [.google.protobuf.Empty](#google.protobuf.Empty) |  |
 
  
 
