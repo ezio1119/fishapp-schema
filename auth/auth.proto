@@ -2,18 +2,17 @@ syntax = "proto3";
 package auth_grpc;
 import "validate/validate.proto";
 import "google/protobuf/timestamp.proto";
-import "google/protobuf/wrappers.proto";
 import "google/protobuf/empty.proto";
 
 
 service AuthService {
-  rpc Create(CreateReq) returns (UserWithToken);
-  rpc GetByID(ID) returns (User);
-  rpc Update(UpdateReq) returns (User);
-  rpc Delete(google.protobuf.Empty) returns (google.protobuf.BoolValue);
-  rpc Login(LoginReq) returns (UserWithToken);
-  rpc Logout(google.protobuf.Empty) returns (google.protobuf.BoolValue);
-  rpc RefreshIDToken(google.protobuf.Empty) returns (TokenPair);
+  rpc GetUser(GetUserReq) returns (User);
+  rpc CreateUser(CreateUserReq) returns (CreateUserRes);
+  rpc UpdateUser(UpdateUserReq) returns (User);
+  rpc DeleteUser(DeleteUserReq) returns (google.protobuf.Empty);
+  rpc Login(LoginReq) returns (LoginRes);
+  rpc Logout(LogoutReq) returns (google.protobuf.Empty);
+  rpc RefreshIDToken(RefreshIDTokenReq) returns (RefreshIDTokenRes);
 }
 
 message User {
@@ -23,31 +22,47 @@ message User {
   google.protobuf.Timestamp updated_at = 4;
 }
 
-message CreateReq {
+message TokenPair{
+  string id_token = 1;
+  string refresh_token = 2;
+}
+
+message GetUserReq {
+  int64 id = 1 [(validate.rules).int64.gte = 1];
+}
+
+message CreateUserReq {
   string email = 1 [(validate.rules).string.email = true];
   string password = 2 [(validate.rules).string.pattern = "^[A-Za-z0-9]{6,72}$"]; // 6文字以上72文字以下の英数字
 }
 
-message UpdateReq {
-  string email = 1 [(validate.rules).string.email = true];
-  string password = 2 [(validate.rules).string.pattern = "^[A-Za-z0-9]{6,72}$"]; // 6文字以上72文字以下の英数字
+message CreateUserRes {
+  User user = 1;
+  TokenPair token_pair = 2;
 }
+
+message UpdateUserReq {
+  string email = 1 [(validate.rules).string.email = true];
+  string old_password = 2 [(validate.rules).string.pattern = "^[A-Za-z0-9]{6,72}$"]; // 6文字以上72文字以下の英数字
+  string password = 3 [(validate.rules).string.pattern = "^[A-Za-z0-9]{6,72}$"]; // 6文字以上72文字以下の英数字
+}
+
+message DeleteUserReq {}
 
 message LoginReq {
   string email = 1 [(validate.rules).string.email = true];
   string password = 2 [(validate.rules).string.pattern = "^[A-Za-z0-9]{6,72}$"]; // 6文字以上72文字以下の英数字
 }
 
-message ID {
-  int64 id = 1 [(validate.rules).int64.gte = 1];
-}
-
-message UserWithToken {
+message LoginRes {
   User user = 1;
   TokenPair token_pair = 2;
 }
 
-message TokenPair{
-  string id_token = 1;
-  string refresh_token = 2;
+message LogoutReq {}
+
+message RefreshIDTokenReq {}
+
+message RefreshIDTokenRes {
+  TokenPair token_pair = 1;
 }

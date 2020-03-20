@@ -4,13 +4,18 @@
 ## Table of Contents
 
 - [auth.proto](#auth.proto)
-    - [CreateReq](#auth_grpc.CreateReq)
-    - [ID](#auth_grpc.ID)
+    - [CreateUserReq](#auth_grpc.CreateUserReq)
+    - [CreateUserRes](#auth_grpc.CreateUserRes)
+    - [DeleteUserReq](#auth_grpc.DeleteUserReq)
+    - [GetUserReq](#auth_grpc.GetUserReq)
     - [LoginReq](#auth_grpc.LoginReq)
+    - [LoginRes](#auth_grpc.LoginRes)
+    - [LogoutReq](#auth_grpc.LogoutReq)
+    - [RefreshIDTokenReq](#auth_grpc.RefreshIDTokenReq)
+    - [RefreshIDTokenRes](#auth_grpc.RefreshIDTokenRes)
     - [TokenPair](#auth_grpc.TokenPair)
-    - [UpdateReq](#auth_grpc.UpdateReq)
+    - [UpdateUserReq](#auth_grpc.UpdateUserReq)
     - [User](#auth_grpc.User)
-    - [UserWithToken](#auth_grpc.UserWithToken)
   
   
   
@@ -28,9 +33,9 @@
 
 
 
-<a name="auth_grpc.CreateReq"></a>
+<a name="auth_grpc.CreateUserReq"></a>
 
-### CreateReq
+### CreateUserReq
 
 
 
@@ -44,9 +49,35 @@
 
 
 
-<a name="auth_grpc.ID"></a>
+<a name="auth_grpc.CreateUserRes"></a>
 
-### ID
+### CreateUserRes
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| user | [User](#auth_grpc.User) |  |  |
+| token_pair | [TokenPair](#auth_grpc.TokenPair) |  |  |
+
+
+
+
+
+
+<a name="auth_grpc.DeleteUserReq"></a>
+
+### DeleteUserReq
+
+
+
+
+
+
+
+<a name="auth_grpc.GetUserReq"></a>
+
+### GetUserReq
 
 
 
@@ -75,6 +106,57 @@
 
 
 
+<a name="auth_grpc.LoginRes"></a>
+
+### LoginRes
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| user | [User](#auth_grpc.User) |  |  |
+| token_pair | [TokenPair](#auth_grpc.TokenPair) |  |  |
+
+
+
+
+
+
+<a name="auth_grpc.LogoutReq"></a>
+
+### LogoutReq
+
+
+
+
+
+
+
+<a name="auth_grpc.RefreshIDTokenReq"></a>
+
+### RefreshIDTokenReq
+
+
+
+
+
+
+
+<a name="auth_grpc.RefreshIDTokenRes"></a>
+
+### RefreshIDTokenRes
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| token_pair | [TokenPair](#auth_grpc.TokenPair) |  |  |
+
+
+
+
+
+
 <a name="auth_grpc.TokenPair"></a>
 
 ### TokenPair
@@ -91,15 +173,16 @@
 
 
 
-<a name="auth_grpc.UpdateReq"></a>
+<a name="auth_grpc.UpdateUserReq"></a>
 
-### UpdateReq
+### UpdateUserReq
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | email | [string](#string) |  |  |
+| old_password | [string](#string) |  | 6文字以上72文字以下の英数字 |
 | password | [string](#string) |  | 6文字以上72文字以下の英数字 |
 
 
@@ -124,22 +207,6 @@
 
 
 
-
-<a name="auth_grpc.UserWithToken"></a>
-
-### UserWithToken
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| user | [User](#auth_grpc.User) |  |  |
-| token_pair | [TokenPair](#auth_grpc.TokenPair) |  |  |
-
-
-
-
-
  
 
  
@@ -154,13 +221,13 @@
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| Create | [CreateReq](#auth_grpc.CreateReq) | [UserWithToken](#auth_grpc.UserWithToken) |  |
-| GetByID | [ID](#auth_grpc.ID) | [User](#auth_grpc.User) |  |
-| Update | [UpdateReq](#auth_grpc.UpdateReq) | [User](#auth_grpc.User) |  |
-| Delete | [.google.protobuf.Empty](#google.protobuf.Empty) | [.google.protobuf.BoolValue](#google.protobuf.BoolValue) |  |
-| Login | [LoginReq](#auth_grpc.LoginReq) | [UserWithToken](#auth_grpc.UserWithToken) |  |
-| Logout | [.google.protobuf.Empty](#google.protobuf.Empty) | [.google.protobuf.BoolValue](#google.protobuf.BoolValue) |  |
-| RefreshIDToken | [.google.protobuf.Empty](#google.protobuf.Empty) | [TokenPair](#auth_grpc.TokenPair) |  |
+| GetUser | [GetUserReq](#auth_grpc.GetUserReq) | [User](#auth_grpc.User) |  |
+| CreateUser | [CreateUserReq](#auth_grpc.CreateUserReq) | [CreateUserRes](#auth_grpc.CreateUserRes) |  |
+| UpdateUser | [UpdateUserReq](#auth_grpc.UpdateUserReq) | [User](#auth_grpc.User) |  |
+| DeleteUser | [DeleteUserReq](#auth_grpc.DeleteUserReq) | [.google.protobuf.Empty](#google.protobuf.Empty) |  |
+| Login | [LoginReq](#auth_grpc.LoginReq) | [LoginRes](#auth_grpc.LoginRes) |  |
+| Logout | [LogoutReq](#auth_grpc.LogoutReq) | [.google.protobuf.Empty](#google.protobuf.Empty) |  |
+| RefreshIDToken | [RefreshIDTokenReq](#auth_grpc.RefreshIDTokenReq) | [RefreshIDTokenRes](#auth_grpc.RefreshIDTokenRes) |  |
 
  
 
