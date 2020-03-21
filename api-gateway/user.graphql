@@ -8,7 +8,7 @@ extend type Query {
 
 extend type Mutation {
   createUser(input: CreateUserInput!): CreateUserPayload!
-  deleteUser: DeleteUserPayload! @isAuthenticated(authAPI: true)
+  # deleteUser: DeleteUserPayload! @isAuthenticated(authAPI: true)
   updateUser(input: UpdateUserInput!): UpdateUserPayload! @isAuthenticated(authAPI: true)
   refreshIDToken: RefreshIDTokenPayload! @isAuthenticated(authAPI: true)
   login(input: LoginInput!): LoginPayload!
@@ -35,12 +35,13 @@ type CreateUserPayload {
   tokenPair: TokenPair!
 }
 
-type DeleteUserPayload{
-  success: Boolean!
-}
+# type DeleteUserPayload{
+#   success: Boolean!
+# }
 
 input UpdateUserInput {
   email: String!
+  oldPassword: String!
   password: String!
 }
 

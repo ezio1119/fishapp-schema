@@ -1,6 +1,8 @@
+scalar Time
+
 extend type Mutation {
   createProfile(input: CreateProfileInput!): CreateProfilePayload! @isAuthenticated
-  deleteProfile(input: DeleteProfileInput!): DeleteProfilePayload! @isAuthenticated
+  # deleteProfile: DeleteProfilePayload! @isAuthenticated
   updateProfile(input: UpdateProfileInput!): UpdateProfilePayload! @isAuthenticated
 }
 
@@ -29,16 +31,12 @@ type CreateProfilePayload {
   profile: Profile!
 }
 
-type DeleteProfileInput {
-  id: ID!
-}
 
-type DeleteProfilePayload {
-  success: Boolean!
-}
+# type DeleteProfilePayload {
+#   success: Boolean!
+# }
 
 input UpdateProfileInput {
-  id: ID!
   name: String!
   introduction: String!
 }

@@ -1,5 +1,3 @@
-scalar Time
-
 extend type Query {
   posts(first: Int, after: String, input: PostsInput!): PostConnection! # Relay connection
   post(id: ID!): Post!
@@ -17,13 +15,13 @@ extend type Post {
   id: ID!
   title: String!
   content: String!
-  fishingSpotTypeId: ID! # 1: 陸っぱり, 2: 渓流釣り, 3: 釣り船, 4: 釣り堀, 
+  fishingSpotTypeId: ID! # 1: 陸っぱり, 2: 渓流釣り, 3: 釣り船, 4: 釣り堀
   fishTypeIds: [ID!]!
   prefectureId: ID!
   meetingPlaceId: String! 
   meetingAt: Time!
   applyPosts: [ApplyPost!]
-  user: User!
+  profile: Profile!
   maxApply: Int!
   createdAt: Time!
   updatedAt: Time!
@@ -31,7 +29,7 @@ extend type Post {
 
 type ApplyPost {
   id: ID!
-  user: User!
+  profile: Profile!
   post: Post!
   createdAt: Time!
   updatedAt: Time!
@@ -45,12 +43,12 @@ input PostsInput {
   meetingAtTo: Time
   orderBy: PostOrderBy!
   sortBy: PostSortBy!
-  userId: ID #ここに値が入っているとユーザーの投稿を絞り込める
+  userId: ID 
 }
 
 enum PostOrderBy {
-  ASC
   DESC
+  ASC
 }
 
 enum PostSortBy {
