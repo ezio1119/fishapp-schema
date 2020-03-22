@@ -8,6 +8,7 @@ import "google/protobuf/empty.proto";
 service ProfileService {
   rpc CreateProfile(CreateProfileReq) returns (Profile);
   rpc GetProfile(GetProfileReq) returns (Profile);
+  rpc BatchGetProfiles(BatchGetProfilesReq) returns (BatchGetProfilesRes);
   rpc UpdateProfile(UpdateProfileReq) returns (Profile);
   rpc DeleteProfile(DeleteProfileReq) returns (google.protobuf.Empty);
 }
@@ -30,6 +31,14 @@ message Profile {
 
 message GetProfileReq {
   int64 user_id = 1 [(validate.rules).int64.gte = 1];
+}
+
+message BatchGetProfilesReq {
+  repeated int64 user_ids = 1 [(validate.rules).repeated.items.int64.gte = 1, (validate.rules).repeated.min_items = 1, (validate.rules).repeated.max_items = 30, (validate.rules).repeated.unique = true];
+}
+
+message BatchGetProfilesRes {
+  repeated Profile profiles = 1;
 }
 
 message CreateProfileReq {

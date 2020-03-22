@@ -4,6 +4,8 @@
 ## Table of Contents
 
 - [profile.proto](#profile.proto)
+    - [BatchGetProfilesReq](#profile_grpc.BatchGetProfilesReq)
+    - [BatchGetProfilesRes](#profile_grpc.BatchGetProfilesRes)
     - [CreateProfileReq](#profile_grpc.CreateProfileReq)
     - [DeleteProfileReq](#profile_grpc.DeleteProfileReq)
     - [GetProfileReq](#profile_grpc.GetProfileReq)
@@ -24,6 +26,36 @@
 <p align="right"><a href="#top">Top</a></p>
 
 ## profile.proto
+
+
+
+<a name="profile_grpc.BatchGetProfilesReq"></a>
+
+### BatchGetProfilesReq
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| user_ids | [int64](#int64) | repeated |  |
+
+
+
+
+
+
+<a name="profile_grpc.BatchGetProfilesRes"></a>
+
+### BatchGetProfilesRes
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| profiles | [Profile](#profile_grpc.Profile) | repeated |  |
+
+
+
 
 
 
@@ -141,6 +173,7 @@
 | ----------- | ------------ | ------------- | ------------|
 | CreateProfile | [CreateProfileReq](#profile_grpc.CreateProfileReq) | [Profile](#profile_grpc.Profile) |  |
 | GetProfile | [GetProfileReq](#profile_grpc.GetProfileReq) | [Profile](#profile_grpc.Profile) |  |
+| BatchGetProfiles | [BatchGetProfilesReq](#profile_grpc.BatchGetProfilesReq) | [BatchGetProfilesRes](#profile_grpc.BatchGetProfilesRes) |  |
 | UpdateProfile | [UpdateProfileReq](#profile_grpc.UpdateProfileReq) | [Profile](#profile_grpc.Profile) |  |
 | DeleteProfile | [DeleteProfileReq](#profile_grpc.DeleteProfileReq) | [.google.protobuf.Empty](#google.protobuf.Empty) |  |
 
