@@ -41,8 +41,9 @@ input PostsInput {
   fishTypeIds: [ID!]
   meetingAtFrom: Time
   meetingAtTo: Time
-  orderBy: PostOrderBy!
-  sortBy: PostSortBy!
+  canApply: Boolean
+  orderBy: PostOrderBy # デフォルトは DESC
+  sortBy: PostSortBy # デフォルトはCREATED_AT
   userId: ID 
 }
 
@@ -63,7 +64,7 @@ extend type PageInfo {
 
 type PostConnection {
   pageInfo: PageInfo!
-  nodes: [Post!]
+  nodes: [Post]
 }
 
 input CreatePostInput {
