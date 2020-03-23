@@ -27,8 +27,9 @@ message Post {
   google.protobuf.Timestamp meeting_at = 8;
   int64 user_id = 9;
   int64 max_apply = 10;
-  google.protobuf.Timestamp created_at = 11;
-  google.protobuf.Timestamp updated_at = 12;
+  repeated ApplyPost apply_posts = 11;
+  google.protobuf.Timestamp created_at = 12;
+  google.protobuf.Timestamp updated_at = 13;
 }
 
 message ApplyPost {
