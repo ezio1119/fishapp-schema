@@ -1,22 +1,20 @@
 syntax = "proto3";
 package chat_grpc;
 import "validate/validate.proto";
+import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";
 
 service ChatService {
-  rpc CreateChatRoom(CreateRoomReq) returns (Room);
-  rpc AddMember(AddMemberReq) returns (Member);
-  rpc SendMessage(SendMessageReq) returns (Message);
-  rpc StreamMessage(StreamMessageReq)returns (stream Message);
-}
+  rpc CreateRoom(CreateRoomReq) returns (Room);
+  rpc GetRoom(GetRoomReq) returns (Room);
 
-message Message {
-  int64 id = 1;
-  string body = 2;
-  int64 room_id = 3;
-  int64 user_id = 4;
-  google.protobuf.Timestamp created_at = 5;
-  google.protobuf.Timestamp updated_at = 6;
+  rpc ListMembers(ListMembersReq) returns (ListMembersRes);
+  rpc CreateMember(CreateMemberReq) returns (Member);
+  rpc DeleteMember(DeleteMemberReq) returns (google.protobuf.Empty);
+
+  rpc ListMessages(ListMessagesReq) returns (ListMessagesRes);
+  rpc CreateMessage(CreateMessageReq) returns (Message);
+  rpc StreamMessage(StreamMessageReq)returns (stream Message);
 }
 
 message Room {
@@ -34,23 +32,57 @@ message Member {
   google.protobuf.Timestamp updated_at = 5;
 }
 
-message SendMessageReq {
+message Message {
+  int64 id = 1;
+  string body = 2;
+  int64 room_id = 3;
+  int64 user_id = 4;
+  google.protobuf.Timestamp created_at = 5;
+  google.protobuf.Timestamp updated_at = 6;
+}
+
+message CreateRoomReq {
+  int64 post_id = 1 [(validate.rules).int64.gte = 1];
+  int64 user_id = 2 [(validate.rules).int64.gte = 1];
+}
+
+message GetRoomReq {
+  int64 post_id = 1 [(validate.rules).int64.gte = 1];
+}
+
+message ListMembersReq {
+  int64 room_id = 1 [(validate.rules).int64.gte = 1];
+}
+
+message ListMembersRes {
+  repeated Member members = 1;
+}
+
+message CreateMemberReq {
+  int64 room_id = 1 [(validate.rules).int64.gte = 1];
+  int64 user_id = 2 [(validate.rules).int64.gte = 1];
+}
+
+message DeleteMemberReq {
+  int64 room_id = 1 [(validate.rules).int64.gte = 1];
+  int64 user_id = 2 [(validate.rules).int64.gte = 1];
+}
+
+message CreateMessageReq {
   string body = 1;
   int64 room_id = 2 [(validate.rules).int64.gte = 1];
   int64 user_id = 3 [(validate.rules).int64.gte = 1];
 }
 
+message ListMessagesReq {
+  int64 room_id = 1;
+}
+
+message ListMessagesRes {
+  repeated Message messages = 1;
+}
+
 message StreamMessageReq {
-  repeated int64 room_ids = 1 [(validate.rules).repeated = {min_items: 1, unique: true}, (validate.rules).repeated.items.int64.gte = 1];
-  int64 user_id = 2 [(validate.rules).int64.gte = 1];
-}
-
-message AddMemberReq {
   int64 room_id = 1 [(validate.rules).int64.gte = 1];
-  int64 user_id = 2 [(validate.rules).int64.gte = 1];
-}
-
-message CreateRoomReq {
-  int64 post_id = 1 [(validate.rules).int64.gte = 1];
   int64 user_id = 2 [(validate.rules).int64.gte = 1];
 }

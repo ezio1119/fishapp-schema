@@ -4,12 +4,18 @@
 ## Table of Contents
 
 - [chat.proto](#chat.proto)
-    - [AddMemberReq](#chat_grpc.AddMemberReq)
+    - [CreateMemberReq](#chat_grpc.CreateMemberReq)
+    - [CreateMessageReq](#chat_grpc.CreateMessageReq)
     - [CreateRoomReq](#chat_grpc.CreateRoomReq)
+    - [DeleteMemberReq](#chat_grpc.DeleteMemberReq)
+    - [GetRoomReq](#chat_grpc.GetRoomReq)
+    - [ListMembersReq](#chat_grpc.ListMembersReq)
+    - [ListMembersRes](#chat_grpc.ListMembersRes)
+    - [ListMessagesReq](#chat_grpc.ListMessagesReq)
+    - [ListMessagesRes](#chat_grpc.ListMessagesRes)
     - [Member](#chat_grpc.Member)
     - [Message](#chat_grpc.Message)
     - [Room](#chat_grpc.Room)
-    - [SendMessageReq](#chat_grpc.SendMessageReq)
     - [StreamMessageReq](#chat_grpc.StreamMessageReq)
   
   
@@ -28,14 +34,31 @@
 
 
 
-<a name="chat_grpc.AddMemberReq"></a>
+<a name="chat_grpc.CreateMemberReq"></a>
 
-### AddMemberReq
+### CreateMemberReq
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
+| room_id | [int64](#int64) |  |  |
+| user_id | [int64](#int64) |  |  |
+
+
+
+
+
+
+<a name="chat_grpc.CreateMessageReq"></a>
+
+### CreateMessageReq
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| body | [string](#string) |  |  |
 | room_id | [int64](#int64) |  |  |
 | user_id | [int64](#int64) |  |  |
 
@@ -54,6 +77,97 @@
 | ----- | ---- | ----- | ----------- |
 | post_id | [int64](#int64) |  |  |
 | user_id | [int64](#int64) |  |  |
+
+
+
+
+
+
+<a name="chat_grpc.DeleteMemberReq"></a>
+
+### DeleteMemberReq
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| room_id | [int64](#int64) |  |  |
+| user_id | [int64](#int64) |  |  |
+
+
+
+
+
+
+<a name="chat_grpc.GetRoomReq"></a>
+
+### GetRoomReq
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| post_id | [int64](#int64) |  |  |
+
+
+
+
+
+
+<a name="chat_grpc.ListMembersReq"></a>
+
+### ListMembersReq
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| room_id | [int64](#int64) |  |  |
+
+
+
+
+
+
+<a name="chat_grpc.ListMembersRes"></a>
+
+### ListMembersRes
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| members | [Member](#chat_grpc.Member) | repeated |  |
+
+
+
+
+
+
+<a name="chat_grpc.ListMessagesReq"></a>
+
+### ListMessagesReq
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| room_id | [int64](#int64) |  |  |
+
+
+
+
+
+
+<a name="chat_grpc.ListMessagesRes"></a>
+
+### ListMessagesRes
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| messages | [Message](#chat_grpc.Message) | repeated |  |
 
 
 
@@ -117,23 +231,6 @@
 
 
 
-<a name="chat_grpc.SendMessageReq"></a>
-
-### SendMessageReq
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| body | [string](#string) |  |  |
-| room_id | [int64](#int64) |  |  |
-| user_id | [int64](#int64) |  |  |
-
-
-
-
-
-
 <a name="chat_grpc.StreamMessageReq"></a>
 
 ### StreamMessageReq
@@ -142,7 +239,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| room_ids | [int64](#int64) | repeated |  |
+| room_id | [int64](#int64) |  |  |
 | user_id | [int64](#int64) |  |  |
 
 
@@ -163,9 +260,13 @@
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| CreateChatRoom | [CreateRoomReq](#chat_grpc.CreateRoomReq) | [Room](#chat_grpc.Room) |  |
-| AddMember | [AddMemberReq](#chat_grpc.AddMemberReq) | [Member](#chat_grpc.Member) |  |
-| SendMessage | [SendMessageReq](#chat_grpc.SendMessageReq) | [Message](#chat_grpc.Message) |  |
+| CreateRoom | [CreateRoomReq](#chat_grpc.CreateRoomReq) | [Room](#chat_grpc.Room) |  |
+| GetRoom | [GetRoomReq](#chat_grpc.GetRoomReq) | [Room](#chat_grpc.Room) |  |
+| ListMembers | [ListMembersReq](#chat_grpc.ListMembersReq) | [ListMembersRes](#chat_grpc.ListMembersRes) |  |
+| CreateMember | [CreateMemberReq](#chat_grpc.CreateMemberReq) | [Member](#chat_grpc.Member) |  |
+| DeleteMember | [DeleteMemberReq](#chat_grpc.DeleteMemberReq) | [.google.protobuf.Empty](#google.protobuf.Empty) |  |
+| ListMessages | [ListMessagesReq](#chat_grpc.ListMessagesReq) | [ListMessagesRes](#chat_grpc.ListMessagesRes) |  |
+| CreateMessage | [CreateMessageReq](#chat_grpc.CreateMessageReq) | [Message](#chat_grpc.Message) |  |
 | StreamMessage | [StreamMessageReq](#chat_grpc.StreamMessageReq) | [Message](#chat_grpc.Message) stream |  |
 
  
