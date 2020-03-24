@@ -48,10 +48,12 @@ message CreateRoomReq {
 
 message GetRoomReq {
   int64 post_id = 1 [(validate.rules).int64.gte = 1];
+  int64 user_id = 2 [(validate.rules).int64.gte = 1];
 }
 
 message ListMembersReq {
   int64 room_id = 1 [(validate.rules).int64.gte = 1];
+  int64 user_id = 2 [(validate.rules).int64.gte = 1];
 }
 
 message ListMembersRes {
@@ -75,7 +77,8 @@ message CreateMessageReq {
 }
 
 message ListMessagesReq {
-  int64 room_id = 1;
+  int64 room_id = 1 [(validate.rules).int64.gte = 1];
+  int64 user_id = 2 [(validate.rules).int64.gte = 1];
 }
 
 message ListMessagesRes {
