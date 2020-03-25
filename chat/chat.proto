@@ -8,6 +8,7 @@ service ChatService {
   rpc GetRoom(GetRoomReq) returns (Room);
   rpc CreateRoom(CreateRoomReq) returns (Room);
 
+  rpc GetMember(GetMemberReq) returns (GetMemberRes);
   rpc ListMembers(ListMembersReq) returns (ListMembersRes);
   rpc CreateMember(CreateMemberReq) returns (Member);
   rpc DeleteMember(DeleteMemberReq) returns (google.protobuf.Empty);
@@ -49,6 +50,15 @@ message GetRoomReq {
 message CreateRoomReq {
   int64 post_id = 1 [(validate.rules).int64.gte = 1];
   int64 user_id = 2 [(validate.rules).int64.gte = 1];
+}
+
+message GetMemberReq {
+  int64 room_id = 1 [(validate.rules).int64.gte = 1];
+  int64 user_id = 2 [(validate.rules).int64.gte = 1];
+}
+
+message GetMemberRes {
+  Member member = 1;
 }
 
 message ListMembersReq {

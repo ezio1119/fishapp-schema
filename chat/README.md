@@ -8,6 +8,8 @@
     - [CreateMessageReq](#chat_grpc.CreateMessageReq)
     - [CreateRoomReq](#chat_grpc.CreateRoomReq)
     - [DeleteMemberReq](#chat_grpc.DeleteMemberReq)
+    - [GetMemberReq](#chat_grpc.GetMemberReq)
+    - [GetMemberRes](#chat_grpc.GetMemberRes)
     - [GetRoomReq](#chat_grpc.GetRoomReq)
     - [ListMembersReq](#chat_grpc.ListMembersReq)
     - [ListMembersRes](#chat_grpc.ListMembersRes)
@@ -93,6 +95,37 @@
 | ----- | ---- | ----- | ----------- |
 | room_id | [int64](#int64) |  |  |
 | user_id | [int64](#int64) |  |  |
+
+
+
+
+
+
+<a name="chat_grpc.GetMemberReq"></a>
+
+### GetMemberReq
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| room_id | [int64](#int64) |  |  |
+| user_id | [int64](#int64) |  |  |
+
+
+
+
+
+
+<a name="chat_grpc.GetMemberRes"></a>
+
+### GetMemberRes
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| member | [Member](#chat_grpc.Member) |  |  |
 
 
 
@@ -263,8 +296,9 @@
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| CreateRoom | [CreateRoomReq](#chat_grpc.CreateRoomReq) | [Room](#chat_grpc.Room) |  |
 | GetRoom | [GetRoomReq](#chat_grpc.GetRoomReq) | [Room](#chat_grpc.Room) |  |
+| CreateRoom | [CreateRoomReq](#chat_grpc.CreateRoomReq) | [Room](#chat_grpc.Room) |  |
+| GetMember | [GetMemberReq](#chat_grpc.GetMemberReq) | [GetMemberRes](#chat_grpc.GetMemberRes) |  |
 | ListMembers | [ListMembersReq](#chat_grpc.ListMembersReq) | [ListMembersRes](#chat_grpc.ListMembersRes) |  |
 | CreateMember | [CreateMemberReq](#chat_grpc.CreateMemberReq) | [Member](#chat_grpc.Member) |  |
 | DeleteMember | [DeleteMemberReq](#chat_grpc.DeleteMemberReq) | [.google.protobuf.Empty](#google.protobuf.Empty) |  |
