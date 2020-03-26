@@ -1,71 +1,72 @@
-# extend type Query {
-#   roomMessages(roomId: ID!): [RoomMessage!]! @isAuthenticated
-# }
+extend type Query {
+  room(post_id: ID!): Room!
+}
 
-# extend type Mutation {
-#   createChatRoom(input: CreateChatRoomInput!): CreateChatRoomPayload! @isAuthenticated
-#   addMemberChatRoom(input: AddMemberChatRoomInput!): AddMemberChatRoomPayload! @isAuthenticated 
-#   sendMessageChatRoom(input: SendMessageChatRoomInput!): SendMessageChatRoomPayload! @isAuthenticated
-# }
+extend type Mutation {
+  createRoom(input: CreateRoomInput!): CreateRoomPayload! @isAuthenticated
+  createMember(input: CreateMemberInput!): CreateMemberPayload! @isAuthenticated
+  createMessage(input: CreateMessageInput!): CreateMessagePayload! @isAuthenticated
+}
 
-# extend type Subscription {
-#   messageAdded(input: MessageAddedInput!): MessageAddedPayload! @isAuthenticated
-# }
+extend type Subscription {
+  messageAdded(input: MessageAddedInput!): MessageAddedPayload! @isAuthenticated
+}
 
-# extend type ChatRoom {
-#   id: ID!
-#   postId: ID!
-#   roomMember: [RoomMember!]!
-#   createdAt: Time!
-#   updatedAt: Time!
-# }
+extend type Room {
+  id: ID!
+  post: Post!
+  messages: [Message!]
+  members: [Member!]!
+  createdAt: Time!
+  updatedAt: Time!
+}
 
-# type RoomMember {
-#   id: ID!
-#   roomId: ID!
-#   userId: ID!
-#   createdAt: Time!
-#   updatedAt: Time!
-# }
+type Member {
+  id: ID!
+  roomId: ID!
+  profile: Profile!
+  createdAt: Time!
+  updatedAt: Time!
+}
 
-# type RoomMessage {
-#   id: ID!
-#   body: String!
-#   roomId: ID!
-#   userId: ID!
-#   createdAt: Time!
-#   updatedAt: Time!
-# }
+type Message {
+  id: ID!
+  body: String!
+  roomId: ID!
+  profile: Profile!
+  createdAt: Time!
+  updatedAt: Time!
+}
 
-# input CreateChatRoomInput {
-#   postId: ID!
-# }
+input CreateRoomInput {
+  postId: ID!
+}
 
-# type CreateChatRoomPayload{
-#   room: ChatRoom!
-# }
+type CreateRoomPayload{
+  room: Room!
+}
 
-# input AddMemberChatRoomInput {
-#   roomId: ID!
-# }
+input CreateMemberInput {
+  roomId: ID!
+}
 
-# type AddMemberChatRoomPayload {
-#   member: RoomMember!
-# }
+type CreateMemberPayload {
+  member: Member!
+}
 
-# input SendMessageChatRoomInput {
-#   body: String!
-#   roomId: ID!
-# }
+input CreateMessageInput {
+  body: String!
+  roomId: ID!
+}
 
-# type SendMessageChatRoomPayload {
-#   message: RoomMessage!
-# }
+type CreateMessagePayload {
+  message: Message!
+}
 
-# input MessageAddedInput {
-#   roomIds: [ID!]!
-# }
+input MessageAddedInput {
+  roomId: ID!
+}
 
-# type MessageAddedPayload {
-#   message: RoomMessage!
-# }
+type MessageAddedPayload {
+  message: Message!
+}
