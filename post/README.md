@@ -152,6 +152,7 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | id | [int64](#int64) |  |  |
+| with_children | [bool](#bool) |  | apply_postsやfish_type_idsを含めるか |
 
 
 
