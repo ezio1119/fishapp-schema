@@ -1,5 +1,5 @@
 extend type Query {
-  room(post_id: ID!): Room!
+  room(post_id: ID!): Room! @isAuthenticated
 }
 
 extend type Mutation {
@@ -13,7 +13,7 @@ extend type Subscription {
 }
 
 extend type Room {
-  id: ID!
+  id: ID! 
   post: Post!
   messages: [Message!]
   members: [Member!]!

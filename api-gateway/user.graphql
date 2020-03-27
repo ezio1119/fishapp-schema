@@ -1,18 +1,16 @@
-directive @isAuthenticated(
-  authAPI: Boolean! = false # Token is required when requesting authAPI
-) on FIELD_DEFINITION
-
+directive @isAuthenticated on FIELD_DEFINITION # これがついてるとidTokenが必要
+# authAPIにトークンをプロキシするだけでgatewayでは認証をしないので、isAuthenticatedをつけない。
 extend type Query {
-  user(id: ID!): User!
+  user: User! # require id_token
 }
 
 extend type Mutation {
-  createUser(input: CreateUserInput!): CreateUserPayload!
-  # deleteUser: DeleteUserPayload! @isAuthenticated(authAPI: true)
-  updateUser(input: UpdateUserInput!): UpdateUserPayload! @isAuthenticated(authAPI: true)
-  refreshIDToken: RefreshIDTokenPayload! @isAuthenticated(authAPI: true)
+  createUser(input: CreateUserInput!): CreateUserPayload! # require id_token
+  # deleteUser: DeleteUserPayload!
+  updateUser(input: UpdateUserInput!): UpdateUserPayload! # require id_token
+  refreshIDToken: RefreshIDTokenPayload! # require refresh_token
   login(input: LoginInput!): LoginPayload!
-  logout: LogoutPayload! @isAuthenticated(authAPI: true)
+  logout: LogoutPayload! # require refresh_token
 }
 
 extend type User {

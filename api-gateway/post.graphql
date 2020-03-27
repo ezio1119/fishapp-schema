@@ -23,7 +23,6 @@ extend type Post {
   applyPosts: [ApplyPost!]
   profile: Profile!
   maxApply: Int!
-  room: Room!
   createdAt: Time!
   updatedAt: Time!
 }
