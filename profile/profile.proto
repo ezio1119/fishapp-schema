@@ -8,7 +8,7 @@ import "google/protobuf/empty.proto";
 service ProfileService {
   rpc CreateProfile(CreateProfileReq) returns (Profile);
   rpc GetProfile(GetProfileReq) returns (Profile);
-  rpc BatchGetProfiles(BatchGetProfilesReq) returns (BatchGetProfilesRes);
+  rpc BatchGetProfiles(BatchGetProfilesReq) returns (BatchGetProfilesRes); // もらったIDの配列の順番でprofileの配列を返す
   rpc UpdateProfile(UpdateProfileReq) returns (Profile);
   rpc DeleteProfile(DeleteProfileReq) returns (google.protobuf.Empty);
 }
