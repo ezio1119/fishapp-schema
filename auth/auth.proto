@@ -27,9 +27,7 @@ message TokenPair{
   string refresh_token = 2;
 }
 
-message GetUserReq {
-  int64 id = 1 [(validate.rules).int64.gte = 1];
-}
+message GetUserReq {}
 
 message CreateUserReq {
   string email = 1 [(validate.rules).string.email = true];
