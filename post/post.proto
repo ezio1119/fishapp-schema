@@ -13,6 +13,7 @@ service PostService {
 
   rpc GetApplyPost(GetApplyPostReq) returns (ApplyPost);
   rpc ListApplyPosts(ListApplyPostsReq) returns (ListApplyPostsRes); // その投稿の応募情報のリストを取得, そのユーザーの応募した投稿リストを取得
+  rpc BatchGetApplyPostsByPostIDs(BatchGetApplyPostsByPostIDsReq) returns (BatchGetApplyPostsByPostIDsRes);
   rpc CreateApplyPost(CreateApplyPostReq) returns (ApplyPost); // ユーザーが投稿に応募する
   rpc DeleteApplyPost(DeleteApplyPostReq) returns (google.protobuf.Empty); // ユーザーがその投稿の応募を取り消す
 }
@@ -119,6 +120,14 @@ message ListApplyPostsReq {
 }
 
 message ListApplyPostsRes {
+  repeated ApplyPost apply_posts = 1;
+}
+
+message BatchGetApplyPostsByPostIDsReq  {
+  repeated int64 post_ids = 1;
+}
+
+message BatchGetApplyPostsByPostIDsRes {
   repeated ApplyPost apply_posts = 1;
 }
 
