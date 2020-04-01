@@ -5,6 +5,7 @@ extend type Query {
 extend type Mutation {
   createRoom(input: CreateRoomInput!): CreateRoomPayload! @isAuthenticated
   createMember(input: CreateMemberInput!): CreateMemberPayload! @isAuthenticated
+  deleteMember(input: DeleteMemberInput!): DeleteMemberIPayload! @isAuthenticated
   createMessage(input: CreateMessageInput!): CreateMessagePayload! @isAuthenticated
 }
 
@@ -52,6 +53,14 @@ input CreateMemberInput {
 
 type CreateMemberPayload {
   member: Member!
+}
+
+input DeleteMemberInput {
+  roomId: ID!
+}
+
+type DeleteMemberPayload {
+  success: Boolean!
 }
 
 input CreateMessageInput {
