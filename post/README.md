@@ -10,6 +10,7 @@
     - [DeleteApplyPostReq](#post_grpc.DeleteApplyPostReq)
     - [DeletePostReq](#post_grpc.DeletePostReq)
     - [DeletePostRes](#post_grpc.DeletePostRes)
+    - [GetApplyPostReq](#post_grpc.GetApplyPostReq)
     - [GetPostReq](#post_grpc.GetPostReq)
     - [ListApplyPostsReq](#post_grpc.ListApplyPostsReq)
     - [ListApplyPostsReq.Filter](#post_grpc.ListApplyPostsReq.Filter)
@@ -105,7 +106,6 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | id | [int64](#int64) |  |  |
-| user_id | [int64](#int64) |  |  |
 
 
 
@@ -121,7 +121,6 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | id | [int64](#int64) |  |  |
-| user_id | [int64](#int64) |  |  |
 
 
 
@@ -137,6 +136,21 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | success | [bool](#bool) |  |  |
+
+
+
+
+
+
+<a name="post_grpc.GetApplyPostReq"></a>
+
+### GetApplyPostReq
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [int64](#int64) |  |  |
 
 
 
@@ -278,7 +292,6 @@
 | meeting_at | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
 | user_id | [int64](#int64) |  |  |
 | max_apply | [int64](#int64) |  |  |
-| apply_posts | [ApplyPost](#post_grpc.ApplyPost) | repeated |  |
 | created_at | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
 
@@ -304,7 +317,6 @@
 | meeting_place_id | [string](#string) |  |  |
 | meeting_at | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
 | max_apply | [int64](#int64) |  |  |
-| user_id | [int64](#int64) |  | 投稿したユーザーか判断する用 |
 
 
 
@@ -353,6 +365,7 @@
 | CreatePost | [CreatePostReq](#post_grpc.CreatePostReq) | [Post](#post_grpc.Post) | 投稿を作成 |
 | UpdatePost | [UpdatePostReq](#post_grpc.UpdatePostReq) | [Post](#post_grpc.Post) | 投稿を更新 |
 | DeletePost | [DeletePostReq](#post_grpc.DeletePostReq) | [.google.protobuf.Empty](#google.protobuf.Empty) | 投稿を削除 |
+| GetApplyPost | [GetApplyPostReq](#post_grpc.GetApplyPostReq) | [ApplyPost](#post_grpc.ApplyPost) |  |
 | ListApplyPosts | [ListApplyPostsReq](#post_grpc.ListApplyPostsReq) | [ListApplyPostsRes](#post_grpc.ListApplyPostsRes) | その投稿の応募情報のリストを取得, そのユーザーの応募した投稿リストを取得 |
 | CreateApplyPost | [CreateApplyPostReq](#post_grpc.CreateApplyPostReq) | [ApplyPost](#post_grpc.ApplyPost) | ユーザーが投稿に応募する |
 | DeleteApplyPost | [DeleteApplyPostReq](#post_grpc.DeleteApplyPostReq) | [.google.protobuf.Empty](#google.protobuf.Empty) | ユーザーがその投稿の応募を取り消す |
