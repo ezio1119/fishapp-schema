@@ -168,7 +168,6 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | id | [int64](#int64) |  |  |
-| with_children | [bool](#bool) |  | apply_postsやfish_type_idsを含めるか |
 
 
 
@@ -295,7 +294,6 @@
 | meeting_at | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
 | user_id | [int64](#int64) |  |  |
 | max_apply | [int64](#int64) |  |  |
-| apply_posts | [ApplyPost](#post_grpc.ApplyPost) | repeated |  |
 | created_at | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
 

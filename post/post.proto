@@ -28,9 +28,8 @@ message Post {
   google.protobuf.Timestamp meeting_at = 8;
   int64 user_id = 9;
   int64 max_apply = 10;
-  repeated ApplyPost apply_posts = 11;
-  google.protobuf.Timestamp created_at = 12;
-  google.protobuf.Timestamp updated_at = 13;
+  google.protobuf.Timestamp created_at = 11;
+  google.protobuf.Timestamp updated_at = 12;
 }
 
 message ApplyPost {
@@ -43,7 +42,6 @@ message ApplyPost {
 
 message GetPostReq {
   int64 id = 1 [(validate.rules).int64.gte = 1];
-  bool with_children = 2; // apply_postsやfish_type_idsを含めるか
 }
 
 message ListPostsReq {
@@ -80,7 +78,7 @@ message CreatePostReq {
   string title = 1 [(validate.rules).string = {min_len: 1, max_len: 20}]; // 20文字以下
   string content = 2 [(validate.rules).string = {min_len: 1, max_len: 2000}]; // 2000文字以下
   int64 fishing_spot_type_id = 3 [(validate.rules).int64 = {gte:1, lte: 4}]; // 1~4
-  repeated int64 fish_type_ids = 4 [(validate.rules).repeated.items.int64 = {gte:1, lte: 95}, (validate.rules).repeated.min_items = 1, (validate.rules).repeated.unique = true]; // 1~95 一個以上 ユニーク
+  repeated int64 fish_type_ids = 4 [(validate.rules).repeated = {min_items: 1, unique: true, items: {int64: {gte:1, lte: 95}}}]; // 1~95 一個以上 ユニーク
   int64 prefecture_id = 5 [(validate.rules).int64 = {gte:1, lte: 47}]; // 1~47
   string meeting_place_id = 6 [(validate.rules).string = {min_len: 27, max_len: 255}]; // google place ID, いまはサーバー側では叩かず保存して返すだけ。後々API叩く。
   google.protobuf.Timestamp meeting_at = 7 [(validate.rules).timestamp.gt_now = true];
@@ -93,7 +91,7 @@ message UpdatePostReq  {
   string title = 2 [(validate.rules).string = {min_len: 1, max_len: 20}];
   string content = 3 [(validate.rules).string = {min_len: 1, max_len: 2000}];
   int64 fishing_spot_type_id = 4 [(validate.rules).int64 = {gte:1, lte: 4}];
-  repeated int64 fish_type_ids = 5 [(validate.rules).repeated.items.int64 = {gte:1, lte: 95}, (validate.rules).repeated.min_items = 1, (validate.rules).repeated.unique = true];
+  repeated int64 fish_type_ids = 5 [(validate.rules).repeated = {min_items: 1, unique: true, items: {int64: {gte:1, lte: 95}}}];
   int64 prefecture_id = 6 [(validate.rules).int64 = {gte:1, lte: 47}];
   string meeting_place_id = 7 [(validate.rules).string = {min_len: 27, max_len: 255}];
   google.protobuf.Timestamp meeting_at = 8 [(validate.rules).timestamp.gt_now = true];
