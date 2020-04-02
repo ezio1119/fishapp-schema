@@ -5,7 +5,7 @@ extend type Query {
 extend type Mutation {
   createRoom(input: CreateRoomInput!): CreateRoomPayload! @isAuthenticated
   createMember(input: CreateMemberInput!): CreateMemberPayload! @isAuthenticated
-  deleteMember(input: DeleteMemberInput!): DeleteMemberIPayload! @isAuthenticated
+  deleteMember(input: DeleteMemberInput!): DeleteMemberPayload! @isAuthenticated
   createMessage(input: CreateMessageInput!): CreateMessagePayload! @isAuthenticated
 }
 
