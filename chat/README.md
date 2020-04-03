@@ -124,6 +124,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
+| id | [int64](#int64) |  |  |
 | post_id | [int64](#int64) |  |  |
 
 
