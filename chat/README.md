@@ -77,7 +77,6 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | post_id | [int64](#int64) |  |  |
-| user_id | [int64](#int64) |  |  |
 
 
 

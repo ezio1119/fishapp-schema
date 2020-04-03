@@ -49,7 +49,6 @@ message GetRoomReq {
 
 message CreateRoomReq {
   int64 post_id = 1 [(validate.rules).int64.gte = 1];
-  int64 user_id = 2 [(validate.rules).int64.gte = 1];
 }
 
 message GetMemberReq {
