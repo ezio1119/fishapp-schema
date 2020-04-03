@@ -140,7 +140,6 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | room_id | [int64](#int64) |  |  |
-| user_id | [int64](#int64) |  |  |
 
 
 
