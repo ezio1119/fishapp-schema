@@ -125,7 +125,6 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | post_id | [int64](#int64) |  |  |
-| user_id | [int64](#int64) |  |  |
 
 
 
@@ -172,7 +171,6 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | room_id | [int64](#int64) |  |  |
-| user_id | [int64](#int64) |  |  |
 
 
 
