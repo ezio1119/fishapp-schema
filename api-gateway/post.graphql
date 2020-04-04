@@ -18,7 +18,7 @@ extend type Post {
   fishingSpotTypeId: ID! # 1: 陸っぱり, 2: 渓流釣り, 3: 釣り船, 4: 釣り堀
   fishTypeIds: [ID!]!
   prefectureId: ID!
-  meetingPlaceId: String! 
+  meetingPlaceId: String!
   meetingAt: Time!
   applyPosts: [ApplyPost!]
   profile: Profile!
