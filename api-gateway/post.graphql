@@ -115,7 +115,7 @@ type CreateApplyPostPayload {
 }
 
 input DeleteApplyPostInput {
-  post_id: ID!
+  id: ID!
 }
 
 type DeleteApplyPostPayload {
