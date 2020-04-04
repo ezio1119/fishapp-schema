@@ -6,7 +6,7 @@ import "google/protobuf/timestamp.proto";
 
 service ChatService {
   rpc GetRoom(GetRoomReq) returns (Room);
-  rpc CreateRoom(CreateRoomReq) returns (Room);
+  rpc CreateRoom(CreateRoomReq) returns (Room); // user_idでcreateMemberもする
 
   rpc GetMember(GetMemberReq) returns (Member);
   rpc ListMembers(ListMembersReq) returns (ListMembersRes);
@@ -49,6 +49,7 @@ message GetRoomReq {
 
 message CreateRoomReq {
   int64 post_id = 1 [(validate.rules).int64.gte = 1];
+  int64 user_id = 2 [(validate.rules).int64.gte = 1];
 }
 
 message GetMemberReq {
