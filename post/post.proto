@@ -124,7 +124,7 @@ message ListApplyPostsRes {
 }
 
 message BatchGetApplyPostsByPostIDsReq  {
-  repeated int64 post_ids = 1;
+  repeated int64 post_ids = 1 [(validate.rules).repeated = {min_items: 1, unique: true, items: {int64: {gte:1}}}];
 }
 
 message BatchGetApplyPostsByPostIDsRes {
