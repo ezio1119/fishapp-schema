@@ -1,5 +1,6 @@
 syntax = "proto3";
-package post_grpc;
+// package post_grpc;
+option go_package = "post_grpc";
 import "validate/validate.proto";
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/empty.proto";

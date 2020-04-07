@@ -4,30 +4,30 @@
 ## Table of Contents
 
 - [post.proto](#post.proto)
-    - [ApplyPost](#post_grpc.ApplyPost)
-    - [BatchGetApplyPostsByPostIDsReq](#post_grpc.BatchGetApplyPostsByPostIDsReq)
-    - [BatchGetApplyPostsByPostIDsRes](#post_grpc.BatchGetApplyPostsByPostIDsRes)
-    - [CreateApplyPostReq](#post_grpc.CreateApplyPostReq)
-    - [CreatePostReq](#post_grpc.CreatePostReq)
-    - [DeleteApplyPostReq](#post_grpc.DeleteApplyPostReq)
-    - [DeletePostReq](#post_grpc.DeletePostReq)
-    - [DeletePostRes](#post_grpc.DeletePostRes)
-    - [GetApplyPostReq](#post_grpc.GetApplyPostReq)
-    - [GetPostReq](#post_grpc.GetPostReq)
-    - [ListApplyPostsReq](#post_grpc.ListApplyPostsReq)
-    - [ListApplyPostsReq.Filter](#post_grpc.ListApplyPostsReq.Filter)
-    - [ListApplyPostsRes](#post_grpc.ListApplyPostsRes)
-    - [ListPostsReq](#post_grpc.ListPostsReq)
-    - [ListPostsReq.Filter](#post_grpc.ListPostsReq.Filter)
-    - [ListPostsRes](#post_grpc.ListPostsRes)
-    - [Post](#post_grpc.Post)
-    - [UpdatePostReq](#post_grpc.UpdatePostReq)
+    - [ApplyPost](#.ApplyPost)
+    - [BatchGetApplyPostsByPostIDsReq](#.BatchGetApplyPostsByPostIDsReq)
+    - [BatchGetApplyPostsByPostIDsRes](#.BatchGetApplyPostsByPostIDsRes)
+    - [CreateApplyPostReq](#.CreateApplyPostReq)
+    - [CreatePostReq](#.CreatePostReq)
+    - [DeleteApplyPostReq](#.DeleteApplyPostReq)
+    - [DeletePostReq](#.DeletePostReq)
+    - [DeletePostRes](#.DeletePostRes)
+    - [GetApplyPostReq](#.GetApplyPostReq)
+    - [GetPostReq](#.GetPostReq)
+    - [ListApplyPostsReq](#.ListApplyPostsReq)
+    - [ListApplyPostsReq.Filter](#.ListApplyPostsReq.Filter)
+    - [ListApplyPostsRes](#.ListApplyPostsRes)
+    - [ListPostsReq](#.ListPostsReq)
+    - [ListPostsReq.Filter](#.ListPostsReq.Filter)
+    - [ListPostsRes](#.ListPostsRes)
+    - [Post](#.Post)
+    - [UpdatePostReq](#.UpdatePostReq)
   
-    - [ListPostsReq.Filter.OrderBy](#post_grpc.ListPostsReq.Filter.OrderBy)
-    - [ListPostsReq.Filter.SortBy](#post_grpc.ListPostsReq.Filter.SortBy)
+    - [ListPostsReq.Filter.OrderBy](#.ListPostsReq.Filter.OrderBy)
+    - [ListPostsReq.Filter.SortBy](#.ListPostsReq.Filter.SortBy)
   
   
-    - [PostService](#post_grpc.PostService)
+    - [PostService](#.PostService)
   
 
 - [Scalar Value Types](#scalar-value-types)
@@ -41,7 +41,7 @@
 
 
 
-<a name="post_grpc.ApplyPost"></a>
+<a name=".ApplyPost"></a>
 
 ### ApplyPost
 
@@ -60,7 +60,7 @@
 
 
 
-<a name="post_grpc.BatchGetApplyPostsByPostIDsReq"></a>
+<a name=".BatchGetApplyPostsByPostIDsReq"></a>
 
 ### BatchGetApplyPostsByPostIDsReq
 
@@ -75,7 +75,7 @@
 
 
 
-<a name="post_grpc.BatchGetApplyPostsByPostIDsRes"></a>
+<a name=".BatchGetApplyPostsByPostIDsRes"></a>
 
 ### BatchGetApplyPostsByPostIDsRes
 
@@ -83,14 +83,14 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| apply_posts | [ApplyPost](#post_grpc.ApplyPost) | repeated |  |
+| apply_posts | [ApplyPost](#ApplyPost) | repeated |  |
 
 
 
 
 
 
-<a name="post_grpc.CreateApplyPostReq"></a>
+<a name=".CreateApplyPostReq"></a>
 
 ### CreateApplyPostReq
 
@@ -106,7 +106,7 @@
 
 
 
-<a name="post_grpc.CreatePostReq"></a>
+<a name=".CreatePostReq"></a>
 
 ### CreatePostReq
 
@@ -129,7 +129,7 @@
 
 
 
-<a name="post_grpc.DeleteApplyPostReq"></a>
+<a name=".DeleteApplyPostReq"></a>
 
 ### DeleteApplyPostReq
 
@@ -144,7 +144,7 @@
 
 
 
-<a name="post_grpc.DeletePostReq"></a>
+<a name=".DeletePostReq"></a>
 
 ### DeletePostReq
 
@@ -159,7 +159,7 @@
 
 
 
-<a name="post_grpc.DeletePostRes"></a>
+<a name=".DeletePostRes"></a>
 
 ### DeletePostRes
 
@@ -174,7 +174,7 @@
 
 
 
-<a name="post_grpc.GetApplyPostReq"></a>
+<a name=".GetApplyPostReq"></a>
 
 ### GetApplyPostReq
 
@@ -189,7 +189,7 @@
 
 
 
-<a name="post_grpc.GetPostReq"></a>
+<a name=".GetPostReq"></a>
 
 ### GetPostReq
 
@@ -204,7 +204,7 @@
 
 
 
-<a name="post_grpc.ListApplyPostsReq"></a>
+<a name=".ListApplyPostsReq"></a>
 
 ### ListApplyPostsReq
 
@@ -212,14 +212,14 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| filter | [ListApplyPostsReq.Filter](#post_grpc.ListApplyPostsReq.Filter) |  |  |
+| filter | [ListApplyPostsReq.Filter](#ListApplyPostsReq.Filter) |  |  |
 
 
 
 
 
 
-<a name="post_grpc.ListApplyPostsReq.Filter"></a>
+<a name=".ListApplyPostsReq.Filter"></a>
 
 ### ListApplyPostsReq.Filter
 
@@ -235,7 +235,7 @@
 
 
 
-<a name="post_grpc.ListApplyPostsRes"></a>
+<a name=".ListApplyPostsRes"></a>
 
 ### ListApplyPostsRes
 
@@ -243,14 +243,14 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| apply_posts | [ApplyPost](#post_grpc.ApplyPost) | repeated |  |
+| apply_posts | [ApplyPost](#ApplyPost) | repeated |  |
 
 
 
 
 
 
-<a name="post_grpc.ListPostsReq"></a>
+<a name=".ListPostsReq"></a>
 
 ### ListPostsReq
 
@@ -258,7 +258,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| filter | [ListPostsReq.Filter](#post_grpc.ListPostsReq.Filter) |  |  |
+| filter | [ListPostsReq.Filter](#ListPostsReq.Filter) |  |  |
 | page_size | [int64](#int64) |  | 30件以下。ゼロ値の場合、デフォルト設定で10件 |
 | page_token | [string](#string) |  |  |
 
@@ -267,7 +267,7 @@
 
 
 
-<a name="post_grpc.ListPostsReq.Filter"></a>
+<a name=".ListPostsReq.Filter"></a>
 
 ### ListPostsReq.Filter
 
@@ -281,8 +281,8 @@
 | meeting_at_from | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  | fromとtoはセットで必要 エラーは出ないけどクエリは無効になる |
 | meeting_at_to | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
 | can_apply | [bool](#bool) |  | trueにすると、応募可能な投稿のみを絞り込める。 |
-| order_by | [ListPostsReq.Filter.OrderBy](#post_grpc.ListPostsReq.Filter.OrderBy) |  |  |
-| sort_by | [ListPostsReq.Filter.SortBy](#post_grpc.ListPostsReq.Filter.SortBy) |  |  |
+| order_by | [ListPostsReq.Filter.OrderBy](#ListPostsReq.Filter.OrderBy) |  |  |
+| sort_by | [ListPostsReq.Filter.SortBy](#ListPostsReq.Filter.SortBy) |  |  |
 | user_id | [int64](#int64) |  | ここに値が入っているとユーザーの投稿を絞り込める |
 
 
@@ -290,7 +290,7 @@
 
 
 
-<a name="post_grpc.ListPostsRes"></a>
+<a name=".ListPostsRes"></a>
 
 ### ListPostsRes
 
@@ -298,7 +298,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| posts | [Post](#post_grpc.Post) | repeated |  |
+| posts | [Post](#Post) | repeated |  |
 | next_page_token | [string](#string) |  |  |
 
 
@@ -306,7 +306,7 @@
 
 
 
-<a name="post_grpc.Post"></a>
+<a name=".Post"></a>
 
 ### Post
 
@@ -332,7 +332,7 @@
 
 
 
-<a name="post_grpc.UpdatePostReq"></a>
+<a name=".UpdatePostReq"></a>
 
 ### UpdatePostReq
 
@@ -357,7 +357,7 @@
  
 
 
-<a name="post_grpc.ListPostsReq.Filter.OrderBy"></a>
+<a name=".ListPostsReq.Filter.OrderBy"></a>
 
 ### ListPostsReq.Filter.OrderBy
 
@@ -369,7 +369,7 @@
 
 
 
-<a name="post_grpc.ListPostsReq.Filter.SortBy"></a>
+<a name=".ListPostsReq.Filter.SortBy"></a>
 
 ### ListPostsReq.Filter.SortBy
 
@@ -385,23 +385,23 @@
  
 
 
-<a name="post_grpc.PostService"></a>
+<a name=".PostService"></a>
 
 ### PostService
 
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| GetPost | [GetPostReq](#post_grpc.GetPostReq) | [Post](#post_grpc.Post) | 投稿の詳細を取得 |
-| ListPosts | [ListPostsReq](#post_grpc.ListPostsReq) | [ListPostsRes](#post_grpc.ListPostsRes) | 投稿の絞り込み検索 &amp; ページネーション |
-| CreatePost | [CreatePostReq](#post_grpc.CreatePostReq) | [Post](#post_grpc.Post) | 投稿を作成 |
-| UpdatePost | [UpdatePostReq](#post_grpc.UpdatePostReq) | [Post](#post_grpc.Post) | 投稿を更新 |
-| DeletePost | [DeletePostReq](#post_grpc.DeletePostReq) | [.google.protobuf.Empty](#google.protobuf.Empty) | 投稿を削除 |
-| GetApplyPost | [GetApplyPostReq](#post_grpc.GetApplyPostReq) | [ApplyPost](#post_grpc.ApplyPost) |  |
-| ListApplyPosts | [ListApplyPostsReq](#post_grpc.ListApplyPostsReq) | [ListApplyPostsRes](#post_grpc.ListApplyPostsRes) | その投稿の応募情報のリストを取得, そのユーザーの応募した投稿リストを取得 |
-| BatchGetApplyPostsByPostIDs | [BatchGetApplyPostsByPostIDsReq](#post_grpc.BatchGetApplyPostsByPostIDsReq) | [BatchGetApplyPostsByPostIDsRes](#post_grpc.BatchGetApplyPostsByPostIDsRes) |  |
-| CreateApplyPost | [CreateApplyPostReq](#post_grpc.CreateApplyPostReq) | [ApplyPost](#post_grpc.ApplyPost) | ユーザーが投稿に応募する |
-| DeleteApplyPost | [DeleteApplyPostReq](#post_grpc.DeleteApplyPostReq) | [.google.protobuf.Empty](#google.protobuf.Empty) | ユーザーがその投稿の応募を取り消す |
+| GetPost | [.GetPostReq](#GetPostReq) | [.Post](#Post) | 投稿の詳細を取得 |
+| ListPosts | [.ListPostsReq](#ListPostsReq) | [.ListPostsRes](#ListPostsRes) | 投稿の絞り込み検索 &amp; ページネーション |
+| CreatePost | [.CreatePostReq](#CreatePostReq) | [.Post](#Post) | 投稿を作成 |
+| UpdatePost | [.UpdatePostReq](#UpdatePostReq) | [.Post](#Post) | 投稿を更新 |
+| DeletePost | [.DeletePostReq](#DeletePostReq) | [.google.protobuf.Empty](#google.protobuf.Empty) | 投稿を削除 |
+| GetApplyPost | [.GetApplyPostReq](#GetApplyPostReq) | [.ApplyPost](#ApplyPost) |  |
+| ListApplyPosts | [.ListApplyPostsReq](#ListApplyPostsReq) | [.ListApplyPostsRes](#ListApplyPostsRes) | その投稿の応募情報のリストを取得, そのユーザーの応募した投稿リストを取得 |
+| BatchGetApplyPostsByPostIDs | [.BatchGetApplyPostsByPostIDsReq](#BatchGetApplyPostsByPostIDsReq) | [.BatchGetApplyPostsByPostIDsRes](#BatchGetApplyPostsByPostIDsRes) |  |
+| CreateApplyPost | [.CreateApplyPostReq](#CreateApplyPostReq) | [.ApplyPost](#ApplyPost) | ユーザーが投稿に応募する |
+| DeleteApplyPost | [.DeleteApplyPostReq](#DeleteApplyPostReq) | [.google.protobuf.Empty](#google.protobuf.Empty) | ユーザーがその投稿の応募を取り消す |
 
  
 
