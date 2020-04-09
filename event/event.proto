@@ -6,6 +6,10 @@ message PostCreateRequested {
   Post post = 1;
 }
 
+message PostCreated { 
+  Post post = 1;
+}
+
 message Post {
   int64 id = 1; 
   string title = 2;
