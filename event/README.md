@@ -6,6 +6,7 @@
 - [event/event.proto](#event/event.proto)
     - [Post](#event.Post)
     - [PostCreateRequested](#event.PostCreateRequested)
+    - [PostCreated](#event.PostCreated)
   
   
   
@@ -51,6 +52,21 @@
 <a name="event.PostCreateRequested"></a>
 
 ### PostCreateRequested
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| post | [Post](#event.Post) |  |  |
+
+
+
+
+
+
+<a name="event.PostCreated"></a>
+
+### PostCreated
 
 
 
