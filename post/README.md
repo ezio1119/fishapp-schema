@@ -4,9 +4,7 @@
 ## Table of Contents
 
 - [event/event.proto](#event/event.proto)
-    - [Post](#event.Post)
-    - [PostCreateRequested](#event.PostCreateRequested)
-    - [PostCreated](#event.PostCreated)
+    - [Event](#event.Event)
   
   
   
@@ -23,56 +21,19 @@
 
 
 
-<a name="event.Post"></a>
+<a name="event.Event"></a>
 
-### Post
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| id | [int64](#int64) |  |  |
-| title | [string](#string) |  |  |
-| content | [string](#string) |  |  |
-| fishing_spot_type_id | [int64](#int64) |  |  |
-| fish_type_ids | [int64](#int64) | repeated |  |
-| prefecture_id | [int64](#int64) |  |  |
-| meeting_place_id | [string](#string) |  |  |
-| meeting_at | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
-| user_id | [int64](#int64) |  |  |
-| max_apply | [int64](#int64) |  |  |
-| created_at | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
-| updated_at | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
-
-
-
-
-
-
-<a name="event.PostCreateRequested"></a>
-
-### PostCreateRequested
+### Event
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| post | [Post](#event.Post) |  |  |
-
-
-
-
-
-
-<a name="event.PostCreated"></a>
-
-### PostCreated
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| post | [Post](#event.Post) |  |  |
+| id | [string](#string) |  |  |
+| event_type | [string](#string) |  |  |
+| aggregate_id | [string](#string) |  |  |
+| aggregate_type | [string](#string) |  |  |
+| event_data | [string](#string) |  |  |
 
 
 

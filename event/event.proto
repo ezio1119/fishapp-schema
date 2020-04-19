@@ -1,6 +1,5 @@
 syntax = "proto3";
 package event;
-import "google/protobuf/timestamp.proto";
 
 message Event {
   string id = 1;
