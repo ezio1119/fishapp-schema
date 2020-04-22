@@ -30,7 +30,7 @@
 | event_type | [string](#string) |  | message broker channel name |
 | aggregate_id | [string](#string) |  |  |
 | aggregate_type | [string](#string) |  |  |
-| post_created | [PostCreated](#event.PostCreated) |  |  |
+| event_data | [bytes](#bytes) |  |  |
 
 
 

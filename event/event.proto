@@ -7,9 +7,7 @@ message Event {
   string event_type = 2; // message broker channel name
   string aggregate_id = 3;
   string aggregate_type = 4;
-  oneof event_data {
-    PostCreated post_created = 5;
-  }
+  bytes event_data = 5;
 }
 
 message PostCreated {
