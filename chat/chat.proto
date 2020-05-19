@@ -1,7 +1,7 @@
 syntax = "proto3";
-package chat_grpc;
-option go_package = "github.com/ezio1119/fishapp-post/pb/chat_grpc"; // postapiからインポートするとき用
-// option go_package = "github.com/ezio1119/fishapp-chat/pb/chat_grpc";
+package chat;
+option go_package = "github.com/ezio1119/fishapp-post/pb/chat"; // postapiからインポートするとき用
+// option go_package = "github.com/ezio1119/fishapp-chat/pb/chat";
 import "validate/validate.proto";
 import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";
