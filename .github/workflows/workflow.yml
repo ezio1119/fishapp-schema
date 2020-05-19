@@ -17,15 +17,12 @@ jobs:
         chmod +x ./proto-gen-doc.sh
         ./proto-gen-doc.sh
 
-    - name: test
-      run: |
-        touch testfile
-
     - name: Commit
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git commit -a -m "[Add] Generate protobuf README"
+        git add .
+        git commit -m "[Add] Generate protobuf README"
     
     - name: Push to GitHub
       run: git push
