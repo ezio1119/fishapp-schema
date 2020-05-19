@@ -4,81 +4,81 @@
 ## Table of Contents
 
 - [chat/chat.proto](#chat/chat.proto)
-    - [CreateMemberReq](#chat_grpc.CreateMemberReq)
-    - [CreateMessageReq](#chat_grpc.CreateMessageReq)
-    - [CreateRoomReq](#chat_grpc.CreateRoomReq)
-    - [DeleteMemberReq](#chat_grpc.DeleteMemberReq)
-    - [GetMemberReq](#chat_grpc.GetMemberReq)
-    - [GetRoomReq](#chat_grpc.GetRoomReq)
-    - [ListMembersReq](#chat_grpc.ListMembersReq)
-    - [ListMembersRes](#chat_grpc.ListMembersRes)
-    - [ListMessagesReq](#chat_grpc.ListMessagesReq)
-    - [ListMessagesRes](#chat_grpc.ListMessagesRes)
-    - [Member](#chat_grpc.Member)
-    - [Message](#chat_grpc.Message)
-    - [Room](#chat_grpc.Room)
-    - [StreamMessageReq](#chat_grpc.StreamMessageReq)
+    - [CreateMemberReq](#chat.CreateMemberReq)
+    - [CreateMessageReq](#chat.CreateMessageReq)
+    - [CreateRoomReq](#chat.CreateRoomReq)
+    - [DeleteMemberReq](#chat.DeleteMemberReq)
+    - [GetMemberReq](#chat.GetMemberReq)
+    - [GetRoomReq](#chat.GetRoomReq)
+    - [ListMembersReq](#chat.ListMembersReq)
+    - [ListMembersRes](#chat.ListMembersRes)
+    - [ListMessagesReq](#chat.ListMessagesReq)
+    - [ListMessagesRes](#chat.ListMessagesRes)
+    - [Member](#chat.Member)
+    - [Message](#chat.Message)
+    - [Room](#chat.Room)
+    - [StreamMessageReq](#chat.StreamMessageReq)
   
-    - [ChatService](#chat_grpc.ChatService)
+    - [ChatService](#chat.ChatService)
   
 - [event/event.proto](#event/event.proto)
     - [Event](#event.Event)
     - [RoomCreated](#event.RoomCreated)
   
 - [auth/auth.proto](#auth/auth.proto)
-    - [CreateUserReq](#auth_grpc.CreateUserReq)
-    - [CreateUserRes](#auth_grpc.CreateUserRes)
-    - [DeleteUserReq](#auth_grpc.DeleteUserReq)
-    - [GetUserReq](#auth_grpc.GetUserReq)
-    - [LoginReq](#auth_grpc.LoginReq)
-    - [LoginRes](#auth_grpc.LoginRes)
-    - [LogoutReq](#auth_grpc.LogoutReq)
-    - [RefreshIDTokenReq](#auth_grpc.RefreshIDTokenReq)
-    - [RefreshIDTokenRes](#auth_grpc.RefreshIDTokenRes)
-    - [TokenPair](#auth_grpc.TokenPair)
-    - [UpdateUserReq](#auth_grpc.UpdateUserReq)
-    - [User](#auth_grpc.User)
+    - [CreateUserReq](#auth.CreateUserReq)
+    - [CreateUserRes](#auth.CreateUserRes)
+    - [DeleteUserReq](#auth.DeleteUserReq)
+    - [GetUserReq](#auth.GetUserReq)
+    - [LoginReq](#auth.LoginReq)
+    - [LoginRes](#auth.LoginRes)
+    - [LogoutReq](#auth.LogoutReq)
+    - [RefreshIDTokenReq](#auth.RefreshIDTokenReq)
+    - [RefreshIDTokenRes](#auth.RefreshIDTokenRes)
+    - [TokenPair](#auth.TokenPair)
+    - [UpdateUserReq](#auth.UpdateUserReq)
+    - [User](#auth.User)
   
-    - [AuthService](#auth_grpc.AuthService)
+    - [AuthService](#auth.AuthService)
   
 - [post/post.proto](#post/post.proto)
-    - [ApplyPost](#post_grpc.ApplyPost)
-    - [BatchGetApplyPostsByPostIDsReq](#post_grpc.BatchGetApplyPostsByPostIDsReq)
-    - [BatchGetApplyPostsByPostIDsRes](#post_grpc.BatchGetApplyPostsByPostIDsRes)
-    - [CreateApplyPostReq](#post_grpc.CreateApplyPostReq)
-    - [CreatePostReq](#post_grpc.CreatePostReq)
-    - [CreatePostRes](#post_grpc.CreatePostRes)
-    - [DeleteApplyPostReq](#post_grpc.DeleteApplyPostReq)
-    - [DeletePostReq](#post_grpc.DeletePostReq)
-    - [DeletePostRes](#post_grpc.DeletePostRes)
-    - [GetApplyPostReq](#post_grpc.GetApplyPostReq)
-    - [GetPostReq](#post_grpc.GetPostReq)
-    - [ListApplyPostsReq](#post_grpc.ListApplyPostsReq)
-    - [ListApplyPostsReq.Filter](#post_grpc.ListApplyPostsReq.Filter)
-    - [ListApplyPostsRes](#post_grpc.ListApplyPostsRes)
-    - [ListPostsReq](#post_grpc.ListPostsReq)
-    - [ListPostsReq.Filter](#post_grpc.ListPostsReq.Filter)
-    - [ListPostsRes](#post_grpc.ListPostsRes)
-    - [Post](#post_grpc.Post)
-    - [UpdatePostReq](#post_grpc.UpdatePostReq)
+    - [ApplyPost](#post.ApplyPost)
+    - [BatchGetApplyPostsByPostIDsReq](#post.BatchGetApplyPostsByPostIDsReq)
+    - [BatchGetApplyPostsByPostIDsRes](#post.BatchGetApplyPostsByPostIDsRes)
+    - [CreateApplyPostReq](#post.CreateApplyPostReq)
+    - [CreatePostReq](#post.CreatePostReq)
+    - [CreatePostRes](#post.CreatePostRes)
+    - [DeleteApplyPostReq](#post.DeleteApplyPostReq)
+    - [DeletePostReq](#post.DeletePostReq)
+    - [DeletePostRes](#post.DeletePostRes)
+    - [GetApplyPostReq](#post.GetApplyPostReq)
+    - [GetPostReq](#post.GetPostReq)
+    - [ListApplyPostsReq](#post.ListApplyPostsReq)
+    - [ListApplyPostsReq.Filter](#post.ListApplyPostsReq.Filter)
+    - [ListApplyPostsRes](#post.ListApplyPostsRes)
+    - [ListPostsReq](#post.ListPostsReq)
+    - [ListPostsReq.Filter](#post.ListPostsReq.Filter)
+    - [ListPostsRes](#post.ListPostsRes)
+    - [Post](#post.Post)
+    - [UpdatePostReq](#post.UpdatePostReq)
   
-    - [ListPostsReq.Filter.OrderBy](#post_grpc.ListPostsReq.Filter.OrderBy)
-    - [ListPostsReq.Filter.SortBy](#post_grpc.ListPostsReq.Filter.SortBy)
+    - [ListPostsReq.Filter.OrderBy](#post.ListPostsReq.Filter.OrderBy)
+    - [ListPostsReq.Filter.SortBy](#post.ListPostsReq.Filter.SortBy)
   
-    - [PostService](#post_grpc.PostService)
+    - [PostService](#post.PostService)
   
 - [profile/profile.proto](#profile/profile.proto)
-    - [BatchGetProfilesReq](#profile_grpc.BatchGetProfilesReq)
-    - [BatchGetProfilesRes](#profile_grpc.BatchGetProfilesRes)
-    - [CreateProfileReq](#profile_grpc.CreateProfileReq)
-    - [DeleteProfileReq](#profile_grpc.DeleteProfileReq)
-    - [GetProfileReq](#profile_grpc.GetProfileReq)
-    - [Profile](#profile_grpc.Profile)
-    - [UpdateProfileReq](#profile_grpc.UpdateProfileReq)
+    - [BatchGetProfilesReq](#profile.BatchGetProfilesReq)
+    - [BatchGetProfilesRes](#profile.BatchGetProfilesRes)
+    - [CreateProfileReq](#profile.CreateProfileReq)
+    - [DeleteProfileReq](#profile.DeleteProfileReq)
+    - [GetProfileReq](#profile.GetProfileReq)
+    - [Profile](#profile.Profile)
+    - [UpdateProfileReq](#profile.UpdateProfileReq)
   
-    - [Sex](#profile_grpc.Sex)
+    - [Sex](#profile.Sex)
   
-    - [ProfileService](#profile_grpc.ProfileService)
+    - [ProfileService](#profile.ProfileService)
   
 - [Scalar Value Types](#scalar-value-types)
 
@@ -91,7 +91,7 @@
 
 
 
-<a name="chat_grpc.CreateMemberReq"></a>
+<a name="chat.CreateMemberReq"></a>
 
 ### CreateMemberReq
 
@@ -107,7 +107,7 @@
 
 
 
-<a name="chat_grpc.CreateMessageReq"></a>
+<a name="chat.CreateMessageReq"></a>
 
 ### CreateMessageReq
 
@@ -124,7 +124,7 @@
 
 
 
-<a name="chat_grpc.CreateRoomReq"></a>
+<a name="chat.CreateRoomReq"></a>
 
 ### CreateRoomReq
 
@@ -140,7 +140,7 @@
 
 
 
-<a name="chat_grpc.DeleteMemberReq"></a>
+<a name="chat.DeleteMemberReq"></a>
 
 ### DeleteMemberReq
 
@@ -156,7 +156,7 @@
 
 
 
-<a name="chat_grpc.GetMemberReq"></a>
+<a name="chat.GetMemberReq"></a>
 
 ### GetMemberReq
 
@@ -172,7 +172,7 @@
 
 
 
-<a name="chat_grpc.GetRoomReq"></a>
+<a name="chat.GetRoomReq"></a>
 
 ### GetRoomReq
 
@@ -188,7 +188,7 @@
 
 
 
-<a name="chat_grpc.ListMembersReq"></a>
+<a name="chat.ListMembersReq"></a>
 
 ### ListMembersReq
 
@@ -203,7 +203,7 @@
 
 
 
-<a name="chat_grpc.ListMembersRes"></a>
+<a name="chat.ListMembersRes"></a>
 
 ### ListMembersRes
 
@@ -211,14 +211,14 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| members | [Member](#chat_grpc.Member) | repeated |  |
+| members | [Member](#chat.Member) | repeated |  |
 
 
 
 
 
 
-<a name="chat_grpc.ListMessagesReq"></a>
+<a name="chat.ListMessagesReq"></a>
 
 ### ListMessagesReq
 
@@ -233,7 +233,7 @@
 
 
 
-<a name="chat_grpc.ListMessagesRes"></a>
+<a name="chat.ListMessagesRes"></a>
 
 ### ListMessagesRes
 
@@ -241,14 +241,14 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| messages | [Message](#chat_grpc.Message) | repeated |  |
+| messages | [Message](#chat.Message) | repeated |  |
 
 
 
 
 
 
-<a name="chat_grpc.Member"></a>
+<a name="chat.Member"></a>
 
 ### Member
 
@@ -267,7 +267,7 @@
 
 
 
-<a name="chat_grpc.Message"></a>
+<a name="chat.Message"></a>
 
 ### Message
 
@@ -287,7 +287,7 @@
 
 
 
-<a name="chat_grpc.Room"></a>
+<a name="chat.Room"></a>
 
 ### Room
 
@@ -305,7 +305,7 @@
 
 
 
-<a name="chat_grpc.StreamMessageReq"></a>
+<a name="chat.StreamMessageReq"></a>
 
 ### StreamMessageReq
 
@@ -327,22 +327,22 @@
  
 
 
-<a name="chat_grpc.ChatService"></a>
+<a name="chat.ChatService"></a>
 
 ### ChatService
 
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| GetRoom | [GetRoomReq](#chat_grpc.GetRoomReq) | [Room](#chat_grpc.Room) |  |
-| CreateRoom | [CreateRoomReq](#chat_grpc.CreateRoomReq) | [Room](#chat_grpc.Room) | user_idでcreateMemberもする |
-| GetMember | [GetMemberReq](#chat_grpc.GetMemberReq) | [Member](#chat_grpc.Member) |  |
-| ListMembers | [ListMembersReq](#chat_grpc.ListMembersReq) | [ListMembersRes](#chat_grpc.ListMembersRes) |  |
-| CreateMember | [CreateMemberReq](#chat_grpc.CreateMemberReq) | [Member](#chat_grpc.Member) |  |
-| DeleteMember | [DeleteMemberReq](#chat_grpc.DeleteMemberReq) | [.google.protobuf.Empty](#google.protobuf.Empty) |  |
-| ListMessages | [ListMessagesReq](#chat_grpc.ListMessagesReq) | [ListMessagesRes](#chat_grpc.ListMessagesRes) |  |
-| CreateMessage | [CreateMessageReq](#chat_grpc.CreateMessageReq) | [Message](#chat_grpc.Message) |  |
-| StreamMessage | [StreamMessageReq](#chat_grpc.StreamMessageReq) | [Message](#chat_grpc.Message) stream |  |
+| GetRoom | [GetRoomReq](#chat.GetRoomReq) | [Room](#chat.Room) |  |
+| CreateRoom | [CreateRoomReq](#chat.CreateRoomReq) | [Room](#chat.Room) | user_idでcreateMemberもする |
+| GetMember | [GetMemberReq](#chat.GetMemberReq) | [Member](#chat.Member) |  |
+| ListMembers | [ListMembersReq](#chat.ListMembersReq) | [ListMembersRes](#chat.ListMembersRes) |  |
+| CreateMember | [CreateMemberReq](#chat.CreateMemberReq) | [Member](#chat.Member) |  |
+| DeleteMember | [DeleteMemberReq](#chat.DeleteMemberReq) | [.google.protobuf.Empty](#google.protobuf.Empty) |  |
+| ListMessages | [ListMessagesReq](#chat.ListMessagesReq) | [ListMessagesRes](#chat.ListMessagesRes) |  |
+| CreateMessage | [CreateMessageReq](#chat.CreateMessageReq) | [Message](#chat.Message) |  |
+| StreamMessage | [StreamMessageReq](#chat.StreamMessageReq) | [Message](#chat.Message) stream |  |
 
  
 
@@ -382,7 +382,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| room | [chat_grpc.Room](#chat_grpc.Room) |  |  |
+| room | [chat.Room](#chat.Room) |  |  |
 | saga_id | [string](#string) |  |  |
 
 
@@ -406,7 +406,7 @@
 
 
 
-<a name="auth_grpc.CreateUserReq"></a>
+<a name="auth.CreateUserReq"></a>
 
 ### CreateUserReq
 
@@ -422,7 +422,7 @@
 
 
 
-<a name="auth_grpc.CreateUserRes"></a>
+<a name="auth.CreateUserRes"></a>
 
 ### CreateUserRes
 
@@ -430,15 +430,15 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| user | [User](#auth_grpc.User) |  |  |
-| token_pair | [TokenPair](#auth_grpc.TokenPair) |  |  |
+| user | [User](#auth.User) |  |  |
+| token_pair | [TokenPair](#auth.TokenPair) |  |  |
 
 
 
 
 
 
-<a name="auth_grpc.DeleteUserReq"></a>
+<a name="auth.DeleteUserReq"></a>
 
 ### DeleteUserReq
 
@@ -448,7 +448,7 @@
 
 
 
-<a name="auth_grpc.GetUserReq"></a>
+<a name="auth.GetUserReq"></a>
 
 ### GetUserReq
 
@@ -458,7 +458,7 @@
 
 
 
-<a name="auth_grpc.LoginReq"></a>
+<a name="auth.LoginReq"></a>
 
 ### LoginReq
 
@@ -474,7 +474,7 @@
 
 
 
-<a name="auth_grpc.LoginRes"></a>
+<a name="auth.LoginRes"></a>
 
 ### LoginRes
 
@@ -482,15 +482,15 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| user | [User](#auth_grpc.User) |  |  |
-| token_pair | [TokenPair](#auth_grpc.TokenPair) |  |  |
+| user | [User](#auth.User) |  |  |
+| token_pair | [TokenPair](#auth.TokenPair) |  |  |
 
 
 
 
 
 
-<a name="auth_grpc.LogoutReq"></a>
+<a name="auth.LogoutReq"></a>
 
 ### LogoutReq
 
@@ -500,7 +500,7 @@
 
 
 
-<a name="auth_grpc.RefreshIDTokenReq"></a>
+<a name="auth.RefreshIDTokenReq"></a>
 
 ### RefreshIDTokenReq
 
@@ -510,7 +510,7 @@
 
 
 
-<a name="auth_grpc.RefreshIDTokenRes"></a>
+<a name="auth.RefreshIDTokenRes"></a>
 
 ### RefreshIDTokenRes
 
@@ -518,14 +518,14 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| token_pair | [TokenPair](#auth_grpc.TokenPair) |  |  |
+| token_pair | [TokenPair](#auth.TokenPair) |  |  |
 
 
 
 
 
 
-<a name="auth_grpc.TokenPair"></a>
+<a name="auth.TokenPair"></a>
 
 ### TokenPair
 
@@ -541,7 +541,7 @@
 
 
 
-<a name="auth_grpc.UpdateUserReq"></a>
+<a name="auth.UpdateUserReq"></a>
 
 ### UpdateUserReq
 
@@ -558,7 +558,7 @@
 
 
 
-<a name="auth_grpc.User"></a>
+<a name="auth.User"></a>
 
 ### User
 
@@ -582,20 +582,20 @@
  
 
 
-<a name="auth_grpc.AuthService"></a>
+<a name="auth.AuthService"></a>
 
 ### AuthService
 
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| GetUser | [GetUserReq](#auth_grpc.GetUserReq) | [User](#auth_grpc.User) |  |
-| CreateUser | [CreateUserReq](#auth_grpc.CreateUserReq) | [CreateUserRes](#auth_grpc.CreateUserRes) |  |
-| UpdateUser | [UpdateUserReq](#auth_grpc.UpdateUserReq) | [User](#auth_grpc.User) |  |
-| DeleteUser | [DeleteUserReq](#auth_grpc.DeleteUserReq) | [.google.protobuf.Empty](#google.protobuf.Empty) |  |
-| Login | [LoginReq](#auth_grpc.LoginReq) | [LoginRes](#auth_grpc.LoginRes) |  |
-| Logout | [LogoutReq](#auth_grpc.LogoutReq) | [.google.protobuf.Empty](#google.protobuf.Empty) |  |
-| RefreshIDToken | [RefreshIDTokenReq](#auth_grpc.RefreshIDTokenReq) | [RefreshIDTokenRes](#auth_grpc.RefreshIDTokenRes) |  |
+| GetUser | [GetUserReq](#auth.GetUserReq) | [User](#auth.User) |  |
+| CreateUser | [CreateUserReq](#auth.CreateUserReq) | [CreateUserRes](#auth.CreateUserRes) |  |
+| UpdateUser | [UpdateUserReq](#auth.UpdateUserReq) | [User](#auth.User) |  |
+| DeleteUser | [DeleteUserReq](#auth.DeleteUserReq) | [.google.protobuf.Empty](#google.protobuf.Empty) |  |
+| Login | [LoginReq](#auth.LoginReq) | [LoginRes](#auth.LoginRes) |  |
+| Logout | [LogoutReq](#auth.LogoutReq) | [.google.protobuf.Empty](#google.protobuf.Empty) |  |
+| RefreshIDToken | [RefreshIDTokenReq](#auth.RefreshIDTokenReq) | [RefreshIDTokenRes](#auth.RefreshIDTokenRes) |  |
 
  
 
@@ -608,7 +608,7 @@
 
 
 
-<a name="post_grpc.ApplyPost"></a>
+<a name="post.ApplyPost"></a>
 
 ### ApplyPost
 
@@ -627,7 +627,7 @@
 
 
 
-<a name="post_grpc.BatchGetApplyPostsByPostIDsReq"></a>
+<a name="post.BatchGetApplyPostsByPostIDsReq"></a>
 
 ### BatchGetApplyPostsByPostIDsReq
 
@@ -642,7 +642,7 @@
 
 
 
-<a name="post_grpc.BatchGetApplyPostsByPostIDsRes"></a>
+<a name="post.BatchGetApplyPostsByPostIDsRes"></a>
 
 ### BatchGetApplyPostsByPostIDsRes
 
@@ -650,14 +650,14 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| apply_posts | [ApplyPost](#post_grpc.ApplyPost) | repeated |  |
+| apply_posts | [ApplyPost](#post.ApplyPost) | repeated |  |
 
 
 
 
 
 
-<a name="post_grpc.CreateApplyPostReq"></a>
+<a name="post.CreateApplyPostReq"></a>
 
 ### CreateApplyPostReq
 
@@ -673,7 +673,7 @@
 
 
 
-<a name="post_grpc.CreatePostReq"></a>
+<a name="post.CreatePostReq"></a>
 
 ### CreatePostReq
 
@@ -696,7 +696,7 @@
 
 
 
-<a name="post_grpc.CreatePostRes"></a>
+<a name="post.CreatePostRes"></a>
 
 ### CreatePostRes
 
@@ -704,7 +704,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| post | [Post](#post_grpc.Post) |  |  |
+| post | [Post](#post.Post) |  |  |
 | saga_id | [string](#string) |  |  |
 
 
@@ -712,7 +712,7 @@
 
 
 
-<a name="post_grpc.DeleteApplyPostReq"></a>
+<a name="post.DeleteApplyPostReq"></a>
 
 ### DeleteApplyPostReq
 
@@ -727,7 +727,7 @@
 
 
 
-<a name="post_grpc.DeletePostReq"></a>
+<a name="post.DeletePostReq"></a>
 
 ### DeletePostReq
 
@@ -742,7 +742,7 @@
 
 
 
-<a name="post_grpc.DeletePostRes"></a>
+<a name="post.DeletePostRes"></a>
 
 ### DeletePostRes
 
@@ -757,7 +757,7 @@
 
 
 
-<a name="post_grpc.GetApplyPostReq"></a>
+<a name="post.GetApplyPostReq"></a>
 
 ### GetApplyPostReq
 
@@ -772,7 +772,7 @@
 
 
 
-<a name="post_grpc.GetPostReq"></a>
+<a name="post.GetPostReq"></a>
 
 ### GetPostReq
 
@@ -787,7 +787,7 @@
 
 
 
-<a name="post_grpc.ListApplyPostsReq"></a>
+<a name="post.ListApplyPostsReq"></a>
 
 ### ListApplyPostsReq
 
@@ -795,14 +795,14 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| filter | [ListApplyPostsReq.Filter](#post_grpc.ListApplyPostsReq.Filter) |  |  |
+| filter | [ListApplyPostsReq.Filter](#post.ListApplyPostsReq.Filter) |  |  |
 
 
 
 
 
 
-<a name="post_grpc.ListApplyPostsReq.Filter"></a>
+<a name="post.ListApplyPostsReq.Filter"></a>
 
 ### ListApplyPostsReq.Filter
 
@@ -818,7 +818,7 @@
 
 
 
-<a name="post_grpc.ListApplyPostsRes"></a>
+<a name="post.ListApplyPostsRes"></a>
 
 ### ListApplyPostsRes
 
@@ -826,14 +826,14 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| apply_posts | [ApplyPost](#post_grpc.ApplyPost) | repeated |  |
+| apply_posts | [ApplyPost](#post.ApplyPost) | repeated |  |
 
 
 
 
 
 
-<a name="post_grpc.ListPostsReq"></a>
+<a name="post.ListPostsReq"></a>
 
 ### ListPostsReq
 
@@ -841,7 +841,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| filter | [ListPostsReq.Filter](#post_grpc.ListPostsReq.Filter) |  |  |
+| filter | [ListPostsReq.Filter](#post.ListPostsReq.Filter) |  |  |
 | page_size | [int64](#int64) |  | 30件以下。ゼロ値の場合、デフォルト設定で10件 |
 | page_token | [string](#string) |  |  |
 
@@ -850,7 +850,7 @@
 
 
 
-<a name="post_grpc.ListPostsReq.Filter"></a>
+<a name="post.ListPostsReq.Filter"></a>
 
 ### ListPostsReq.Filter
 
@@ -864,8 +864,8 @@
 | meeting_at_from | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  | fromとtoはセットで必要 エラーは出ないけどクエリは無効になる |
 | meeting_at_to | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
 | can_apply | [bool](#bool) |  | trueにすると、応募可能な投稿のみを絞り込める。 |
-| order_by | [ListPostsReq.Filter.OrderBy](#post_grpc.ListPostsReq.Filter.OrderBy) |  |  |
-| sort_by | [ListPostsReq.Filter.SortBy](#post_grpc.ListPostsReq.Filter.SortBy) |  |  |
+| order_by | [ListPostsReq.Filter.OrderBy](#post.ListPostsReq.Filter.OrderBy) |  |  |
+| sort_by | [ListPostsReq.Filter.SortBy](#post.ListPostsReq.Filter.SortBy) |  |  |
 | user_id | [int64](#int64) |  | ここに値が入っているとユーザーの投稿を絞り込める |
 
 
@@ -873,7 +873,7 @@
 
 
 
-<a name="post_grpc.ListPostsRes"></a>
+<a name="post.ListPostsRes"></a>
 
 ### ListPostsRes
 
@@ -881,7 +881,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| posts | [Post](#post_grpc.Post) | repeated |  |
+| posts | [Post](#post.Post) | repeated |  |
 | next_page_token | [string](#string) |  |  |
 
 
@@ -889,7 +889,7 @@
 
 
 
-<a name="post_grpc.Post"></a>
+<a name="post.Post"></a>
 
 ### Post
 
@@ -915,7 +915,7 @@
 
 
 
-<a name="post_grpc.UpdatePostReq"></a>
+<a name="post.UpdatePostReq"></a>
 
 ### UpdatePostReq
 
@@ -940,7 +940,7 @@
  
 
 
-<a name="post_grpc.ListPostsReq.Filter.OrderBy"></a>
+<a name="post.ListPostsReq.Filter.OrderBy"></a>
 
 ### ListPostsReq.Filter.OrderBy
 
@@ -952,7 +952,7 @@
 
 
 
-<a name="post_grpc.ListPostsReq.Filter.SortBy"></a>
+<a name="post.ListPostsReq.Filter.SortBy"></a>
 
 ### ListPostsReq.Filter.SortBy
 
@@ -968,23 +968,23 @@
  
 
 
-<a name="post_grpc.PostService"></a>
+<a name="post.PostService"></a>
 
 ### PostService
 
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| GetPost | [GetPostReq](#post_grpc.GetPostReq) | [Post](#post_grpc.Post) | 投稿の詳細を取得 |
-| ListPosts | [ListPostsReq](#post_grpc.ListPostsReq) | [ListPostsRes](#post_grpc.ListPostsRes) | 投稿の絞り込み検索 &amp; ページネーション |
-| CreatePost | [CreatePostReq](#post_grpc.CreatePostReq) | [CreatePostRes](#post_grpc.CreatePostRes) | 投稿を作成 |
-| UpdatePost | [UpdatePostReq](#post_grpc.UpdatePostReq) | [Post](#post_grpc.Post) | 投稿を更新 |
-| DeletePost | [DeletePostReq](#post_grpc.DeletePostReq) | [.google.protobuf.Empty](#google.protobuf.Empty) | 投稿を削除 |
-| GetApplyPost | [GetApplyPostReq](#post_grpc.GetApplyPostReq) | [ApplyPost](#post_grpc.ApplyPost) |  |
-| ListApplyPosts | [ListApplyPostsReq](#post_grpc.ListApplyPostsReq) | [ListApplyPostsRes](#post_grpc.ListApplyPostsRes) | その投稿の応募情報のリストを取得, そのユーザーの応募した投稿リストを取得 |
-| BatchGetApplyPostsByPostIDs | [BatchGetApplyPostsByPostIDsReq](#post_grpc.BatchGetApplyPostsByPostIDsReq) | [BatchGetApplyPostsByPostIDsRes](#post_grpc.BatchGetApplyPostsByPostIDsRes) |  |
-| CreateApplyPost | [CreateApplyPostReq](#post_grpc.CreateApplyPostReq) | [ApplyPost](#post_grpc.ApplyPost) | ユーザーが投稿に応募する |
-| DeleteApplyPost | [DeleteApplyPostReq](#post_grpc.DeleteApplyPostReq) | [.google.protobuf.Empty](#google.protobuf.Empty) | ユーザーがその投稿の応募を取り消す |
+| GetPost | [GetPostReq](#post.GetPostReq) | [Post](#post.Post) | 投稿の詳細を取得 |
+| ListPosts | [ListPostsReq](#post.ListPostsReq) | [ListPostsRes](#post.ListPostsRes) | 投稿の絞り込み検索 &amp; ページネーション |
+| CreatePost | [CreatePostReq](#post.CreatePostReq) | [CreatePostRes](#post.CreatePostRes) | 投稿を作成 |
+| UpdatePost | [UpdatePostReq](#post.UpdatePostReq) | [Post](#post.Post) | 投稿を更新 |
+| DeletePost | [DeletePostReq](#post.DeletePostReq) | [.google.protobuf.Empty](#google.protobuf.Empty) | 投稿を削除 |
+| GetApplyPost | [GetApplyPostReq](#post.GetApplyPostReq) | [ApplyPost](#post.ApplyPost) |  |
+| ListApplyPosts | [ListApplyPostsReq](#post.ListApplyPostsReq) | [ListApplyPostsRes](#post.ListApplyPostsRes) | その投稿の応募情報のリストを取得, そのユーザーの応募した投稿リストを取得 |
+| BatchGetApplyPostsByPostIDs | [BatchGetApplyPostsByPostIDsReq](#post.BatchGetApplyPostsByPostIDsReq) | [BatchGetApplyPostsByPostIDsRes](#post.BatchGetApplyPostsByPostIDsRes) |  |
+| CreateApplyPost | [CreateApplyPostReq](#post.CreateApplyPostReq) | [ApplyPost](#post.ApplyPost) | ユーザーが投稿に応募する |
+| DeleteApplyPost | [DeleteApplyPostReq](#post.DeleteApplyPostReq) | [.google.protobuf.Empty](#google.protobuf.Empty) | ユーザーがその投稿の応募を取り消す |
 
  
 
@@ -997,7 +997,7 @@
 
 
 
-<a name="profile_grpc.BatchGetProfilesReq"></a>
+<a name="profile.BatchGetProfilesReq"></a>
 
 ### BatchGetProfilesReq
 
@@ -1012,7 +1012,7 @@
 
 
 
-<a name="profile_grpc.BatchGetProfilesRes"></a>
+<a name="profile.BatchGetProfilesRes"></a>
 
 ### BatchGetProfilesRes
 
@@ -1020,14 +1020,14 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| profiles | [Profile](#profile_grpc.Profile) | repeated |  |
+| profiles | [Profile](#profile.Profile) | repeated |  |
 
 
 
 
 
 
-<a name="profile_grpc.CreateProfileReq"></a>
+<a name="profile.CreateProfileReq"></a>
 
 ### CreateProfileReq
 
@@ -1037,7 +1037,7 @@
 | ----- | ---- | ----- | ----------- |
 | name | [string](#string) |  |  |
 | introduction | [string](#string) |  |  |
-| sex | [Sex](#profile_grpc.Sex) |  |  |
+| sex | [Sex](#profile.Sex) |  |  |
 | user_id | [int64](#int64) |  |  |
 
 
@@ -1045,7 +1045,7 @@
 
 
 
-<a name="profile_grpc.DeleteProfileReq"></a>
+<a name="profile.DeleteProfileReq"></a>
 
 ### DeleteProfileReq
 
@@ -1060,7 +1060,7 @@
 
 
 
-<a name="profile_grpc.GetProfileReq"></a>
+<a name="profile.GetProfileReq"></a>
 
 ### GetProfileReq
 
@@ -1075,7 +1075,7 @@
 
 
 
-<a name="profile_grpc.Profile"></a>
+<a name="profile.Profile"></a>
 
 ### Profile
 
@@ -1086,7 +1086,7 @@
 | id | [int64](#int64) |  |  |
 | name | [string](#string) |  |  |
 | introduction | [string](#string) |  |  |
-| sex | [Sex](#profile_grpc.Sex) |  |  |
+| sex | [Sex](#profile.Sex) |  |  |
 | user_id | [int64](#int64) |  |  |
 | created_at | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
@@ -1096,7 +1096,7 @@
 
 
 
-<a name="profile_grpc.UpdateProfileReq"></a>
+<a name="profile.UpdateProfileReq"></a>
 
 ### UpdateProfileReq
 
@@ -1115,7 +1115,7 @@
  
 
 
-<a name="profile_grpc.Sex"></a>
+<a name="profile.Sex"></a>
 
 ### Sex
 
@@ -1132,18 +1132,18 @@
  
 
 
-<a name="profile_grpc.ProfileService"></a>
+<a name="profile.ProfileService"></a>
 
 ### ProfileService
 
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| CreateProfile | [CreateProfileReq](#profile_grpc.CreateProfileReq) | [Profile](#profile_grpc.Profile) |  |
-| GetProfile | [GetProfileReq](#profile_grpc.GetProfileReq) | [Profile](#profile_grpc.Profile) |  |
-| BatchGetProfiles | [BatchGetProfilesReq](#profile_grpc.BatchGetProfilesReq) | [BatchGetProfilesRes](#profile_grpc.BatchGetProfilesRes) | もらったIDの配列の順番でprofileの配列を返す |
-| UpdateProfile | [UpdateProfileReq](#profile_grpc.UpdateProfileReq) | [Profile](#profile_grpc.Profile) |  |
-| DeleteProfile | [DeleteProfileReq](#profile_grpc.DeleteProfileReq) | [.google.protobuf.Empty](#google.protobuf.Empty) |  |
+| CreateProfile | [CreateProfileReq](#profile.CreateProfileReq) | [Profile](#profile.Profile) |  |
+| GetProfile | [GetProfileReq](#profile.GetProfileReq) | [Profile](#profile.Profile) |  |
+| BatchGetProfiles | [BatchGetProfilesReq](#profile.BatchGetProfilesReq) | [BatchGetProfilesRes](#profile.BatchGetProfilesRes) | もらったIDの配列の順番でprofileの配列を返す |
+| UpdateProfile | [UpdateProfileReq](#profile.UpdateProfileReq) | [Profile](#profile.Profile) |  |
+| DeleteProfile | [DeleteProfileReq](#profile.DeleteProfileReq) | [.google.protobuf.Empty](#google.protobuf.Empty) |  |
 
  
 
