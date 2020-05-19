@@ -7,13 +7,15 @@ on:
 
 jobs:
   genreadme-push:
-    name: Setup, Build, Publish
+    name: Generate, Push
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
 
     - name: Gen Protobuf README
-      run: ./proto-gen-doc.sh
+      run: |
+        chmod +x ./proto-gen-doc.sh
+        ./proto-gen-doc.sh
 
     - name: Commit
       run: |
