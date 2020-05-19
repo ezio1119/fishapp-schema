@@ -27,7 +27,7 @@ extend type Post {
   updatedAt: Time!
 }
 
-type ApplyPost {
+extend type ApplyPost {
   id: ID!
   profile: Profile!
   post: Post!
