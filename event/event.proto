@@ -12,6 +12,6 @@ message Event {
 }
 
 message RoomCreated {
-  chat_grpc.Room room = 1;
+  chat.Room room = 1;
   string saga_id = 2;
 }
