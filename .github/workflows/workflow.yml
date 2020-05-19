@@ -1,0 +1,25 @@
+name: Gen protobuf README and Push to GitHub
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  genreadme-push:
+    name: Setup, Build, Publish
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Gen Protobuf README
+      run: ./proto-gen-doc.sh
+
+    - name: Commit
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git commit -a -m "[Add] Generate protobuf README"
+    
+    - name: Push to GitHub
+      run: git push
