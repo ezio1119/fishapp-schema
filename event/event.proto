@@ -1,26 +1,17 @@
 syntax = "proto3";
 package event;
-import "google/protobuf/timestamp.proto";
+option go_package = "github.com/ezio1119/fishapp-post/pb/event";
+import "chat/chat.proto";
 
 message Event {
   string id = 1;
-  string event_type = 2; // message broker channel name
+  string event_type = 2;
   string aggregate_id = 3;
   string aggregate_type = 4;
   bytes event_data = 5;
 }
 
-message PostCreated {
-  int64 id = 1; 
-  string title = 2;
-  string content = 3;
-  int64 fishing_spot_type_id = 4;
-  repeated int64 fish_type_ids = 5;
-  int64 prefecture_id = 6;
-  string meeting_place_id = 7;
-  google.protobuf.Timestamp meeting_at = 8;
-  int64 user_id = 9;
-  int64 max_apply = 10;
-  google.protobuf.Timestamp created_at = 11;
-  google.protobuf.Timestamp updated_at = 12;
+message RoomCreated {
+  chat_grpc.Room room = 1;
+  string saga_id = 2;
 }

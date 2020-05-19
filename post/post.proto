@@ -1,5 +1,6 @@
 syntax = "proto3";
 package post_grpc;
+option go_package = "github.com/ezio1119/fishapp-post/pb/post_grpc";
 import "validate/validate.proto";
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/empty.proto";
@@ -7,7 +8,7 @@ import "google/protobuf/empty.proto";
 service PostService {
   rpc GetPost(GetPostReq) returns (Post); // 投稿の詳細を取得
   rpc ListPosts(ListPostsReq) returns (ListPostsRes); // 投稿の絞り込み検索 & ページネーション
-  rpc CreatePost(CreatePostReq) returns (Post); // 投稿を作成
+  rpc CreatePost(CreatePostReq) returns (CreatePostRes); // 投稿を作成
   rpc UpdatePost(UpdatePostReq) returns (Post); // 投稿を更新
   rpc DeletePost(DeletePostReq) returns (google.protobuf.Empty); // 投稿を削除
 
@@ -85,6 +86,11 @@ message CreatePostReq {
   google.protobuf.Timestamp meeting_at = 7 [(validate.rules).timestamp.gt_now = true];
   int64 max_apply = 8 [(validate.rules).int64.gte = 1];
   int64 user_id= 9 [(validate.rules).int64.gte = 1];
+}
+
+message CreatePostRes {
+  Post post = 1;
+  string saga_id = 2;
 }
 
 message UpdatePostReq  {
