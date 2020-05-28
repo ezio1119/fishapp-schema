@@ -22,6 +22,8 @@
     - [ChatService](#chat.ChatService)
   
 - [event/event.proto](#event/event.proto)
+    - [CreateRoom](#event.CreateRoom)
+    - [CreateRoomFailed](#event.CreateRoomFailed)
     - [Event](#event.Event)
     - [RoomCreated](#event.RoomCreated)
   
@@ -355,6 +357,39 @@
 
 
 
+<a name="event.CreateRoom"></a>
+
+### CreateRoom
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| saga_id | [string](#string) |  |  |
+| post_id | [int64](#int64) |  |  |
+| user_id | [int64](#int64) |  |  |
+
+
+
+
+
+
+<a name="event.CreateRoomFailed"></a>
+
+### CreateRoomFailed
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| saga_id | [string](#string) |  |  |
+| message | [string](#string) |  |  |
+
+
+
+
+
+
 <a name="event.Event"></a>
 
 ### Event
@@ -368,6 +403,7 @@
 | aggregate_id | [string](#string) |  |  |
 | aggregate_type | [string](#string) |  |  |
 | event_data | [bytes](#bytes) |  |  |
+| channel | [string](#string) |  |  |
 
 
 
@@ -382,8 +418,8 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| room | [chat.Room](#chat.Room) |  |  |
 | saga_id | [string](#string) |  |  |
+| room | [chat.Room](#chat.Room) |  |  |
 
 
 
