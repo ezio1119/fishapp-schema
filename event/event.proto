@@ -1,6 +1,7 @@
 syntax = "proto3";
 package event;
 option go_package = "github.com/ezio1119/fishapp-post/pb/event";
+import "validate/validate.proto";
 import "chat/chat.proto";
 
 message Event {
