@@ -49,6 +49,7 @@
     - [BatchGetApplyPostsByPostIDsRes](#post.BatchGetApplyPostsByPostIDsRes)
     - [CreateApplyPostReq](#post.CreateApplyPostReq)
     - [CreatePostReq](#post.CreatePostReq)
+    - [CreatePostReqDetails](#post.CreatePostReqDetails)
     - [CreatePostRes](#post.CreatePostRes)
     - [DeleteApplyPostReq](#post.DeleteApplyPostReq)
     - [DeletePostReq](#post.DeletePostReq)
@@ -717,6 +718,22 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
+| details | [CreatePostReqDetails](#post.CreatePostReqDetails) |  |  |
+| image_chunk | [bytes](#bytes) |  |  |
+
+
+
+
+
+
+<a name="post.CreatePostReqDetails"></a>
+
+### CreatePostReqDetails
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
 | title | [string](#string) |  | 20文字以下 |
 | content | [string](#string) |  | 2000文字以下 |
 | fishing_spot_type_id | [int64](#int64) |  | 1~4 |
@@ -1013,7 +1030,7 @@
 | ----------- | ------------ | ------------- | ------------|
 | GetPost | [GetPostReq](#post.GetPostReq) | [Post](#post.Post) | 投稿の詳細を取得 |
 | ListPosts | [ListPostsReq](#post.ListPostsReq) | [ListPostsRes](#post.ListPostsRes) | 投稿の絞り込み検索 &amp; ページネーション |
-| CreatePost | [CreatePostReq](#post.CreatePostReq) | [CreatePostRes](#post.CreatePostRes) | 投稿を作成 |
+| CreatePost | [CreatePostReq](#post.CreatePostReq) stream | [CreatePostRes](#post.CreatePostRes) | 投稿を作成 |
 | UpdatePost | [UpdatePostReq](#post.UpdatePostReq) | [Post](#post.Post) | 投稿を更新 |
 | DeletePost | [DeletePostReq](#post.DeletePostReq) | [.google.protobuf.Empty](#google.protobuf.Empty) | 投稿を削除 |
 | GetApplyPost | [GetApplyPostReq](#post.GetApplyPostReq) | [ApplyPost](#post.ApplyPost) |  |
