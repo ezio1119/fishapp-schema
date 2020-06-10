@@ -2,6 +2,7 @@ syntax = "proto3";
 package event;
 option go_package = ".;pb";
 import "validate/validate.proto";
+import "google/protobuf/timestamp.proto";
 import "chat.proto";
 
 message Event {
