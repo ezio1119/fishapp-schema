@@ -11,6 +11,8 @@ message Event {
   string aggregate_type = 4;
   bytes event_data = 5;
   string channel = 6;
+  google.protobuf.Timestamp created_at = 7;
+  google.protobuf.Timestamp updated_at = 8;
 }
 
 message RoomCreated {
