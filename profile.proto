@@ -1,6 +1,6 @@
 syntax = "proto3";
 package profile;
-option go_package = "github.com/ezio1119/fishapp-profile/pb/profile";
+option go_package = ".;pb";
 import "validate/validate.proto";
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/empty.proto";

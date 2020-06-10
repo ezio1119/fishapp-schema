@@ -1,6 +1,6 @@
 syntax = "proto3";
 package chat;
-option go_package = "github.com/ezio1119/fishapp-post/pb/chat"; // postapiからインポートするとき用
+option go_package = ".;pb";
 // option go_package = "github.com/ezio1119/fishapp-chat/pb/chat";
 import "validate/validate.proto";
 import "google/protobuf/empty.proto";

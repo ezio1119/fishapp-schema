@@ -1,6 +1,6 @@
 syntax = "proto3";
 package post;
-option go_package = "github.com/ezio1119/fishapp-post/pb/post";
+option go_package = ".;pb";
 import "validate/validate.proto";
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/empty.proto";
@@ -77,14 +77,20 @@ message ListPostsRes {
 }
 
 message CreatePostReq {
-  oneof request {
+  oneof data{
     option (validate.required) = true;
-    CreatePostReqDetails details = 1;
-    bytes image_chunk = 2;
+
+    CreatePostReqInfo info = 1;
+    ImageChunk image_chunk = 2;
   }
 }
 
-message CreatePostReqDetails {
+message ImageChunk {
+  int64 chunk_num = 1;
+  bytes chunk_data = 2;
+}
+
+message CreatePostReqInfo {
   string title = 1 [(validate.rules).string = {min_len: 1, max_len: 20}]; // 20文字以下
   string content = 2 [(validate.rules).string = {min_len: 1, max_len: 2000}]; // 2000文字以下
   int64 fishing_spot_type_id = 3 [(validate.rules).int64 = {gte:1, lte: 4}]; // 1~4
