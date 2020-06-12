@@ -4,6 +4,7 @@ option go_package = ".;pb";
 import "validate/validate.proto";
 import "google/protobuf/timestamp.proto";
 import "chat.proto";
+import "post.proto";
 
 message Event {
   string id = 1;
@@ -33,5 +34,5 @@ message CreateRoom {
 }
 
 message PostDeleted {
-  int64 post_id = 1 [(validate.rules).int64.gte = 1];
+  post.Post post = 1;
 }
