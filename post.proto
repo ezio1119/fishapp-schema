@@ -9,7 +9,7 @@ service PostService {
   rpc GetPost(GetPostReq) returns (Post); // 投稿の詳細を取得
   rpc ListPosts(ListPostsReq) returns (ListPostsRes); // 投稿の絞り込み検索 & ページネーション
   rpc CreatePost(stream CreatePostReq) returns (CreatePostRes); // 投稿を作成
-  rpc UpdatePost(UpdatePostReq) returns (Post); // 投稿を更新
+  rpc UpdatePost(stream UpdatePostReq) returns (Post); // 投稿を更新
   rpc DeletePost(DeletePostReq) returns (google.protobuf.Empty); // 投稿を削除
 
   rpc GetApplyPost(GetApplyPostReq) returns (ApplyPost);
@@ -49,6 +49,11 @@ message Image {
   int64 post_id = 3;
   google.protobuf.Timestamp created_at = 4;
   google.protobuf.Timestamp updated_at = 5;
+}
+
+message ImageChunk {
+  int64 chunk_num = 1;
+  bytes chunk_data = 2;
 }
 
 message GetPostReq {
@@ -94,11 +99,6 @@ message CreatePostReq {
   }
 }
 
-message ImageChunk {
-  int64 chunk_num = 1;
-  bytes chunk_data = 2;
-}
-
 message CreatePostReqInfo {
   string title = 1 [(validate.rules).string = {min_len: 1, max_len: 20}]; // 20文字以下
   string content = 2 [(validate.rules).string = {min_len: 1, max_len: 2000}]; // 2000文字以下
@@ -116,7 +116,7 @@ message CreatePostRes {
   string saga_id = 2;
 }
 
-message UpdatePostReq  {
+message UpdatePostReqInfo  {
   int64 id = 1 [(validate.rules).int64.gte = 1];
   string title = 2 [(validate.rules).string = {min_len: 1, max_len: 20}];
   string content = 3 [(validate.rules).string = {min_len: 1, max_len: 2000}];
@@ -126,6 +126,16 @@ message UpdatePostReq  {
   string meeting_place_id = 7 [(validate.rules).string = {min_len: 27, max_len: 255}];
   google.protobuf.Timestamp meeting_at = 8 [(validate.rules).timestamp.gt_now = true];
   int64 max_apply = 9 [(validate.rules).int64.gte = 1];
+  repeated int64 delete_image_ids = 10;
+}
+
+message UpdatePostReq{
+  oneof data{
+    option (validate.required) = true;
+
+    UpdatePostReqInfo info = 1;
+    ImageChunk image_chunk = 2;
+  }
 }
 
 message DeletePostReq {
