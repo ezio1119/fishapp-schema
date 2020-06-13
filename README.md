@@ -18,7 +18,6 @@
     - [User](#auth.User)
   
     - [AuthService](#auth.AuthService)
-    
   
 - [chat.proto](#chat.proto)
     - [CreateMemberReq](#chat.CreateMemberReq)
