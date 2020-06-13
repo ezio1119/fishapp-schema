@@ -3,7 +3,23 @@
 
 ## Table of Contents
 
-- [chat/chat.proto](#chat/chat.proto)
+- [auth.proto](#auth.proto)
+    - [CreateUserReq](#auth.CreateUserReq)
+    - [CreateUserRes](#auth.CreateUserRes)
+    - [DeleteUserReq](#auth.DeleteUserReq)
+    - [GetUserReq](#auth.GetUserReq)
+    - [LoginReq](#auth.LoginReq)
+    - [LoginRes](#auth.LoginRes)
+    - [LogoutReq](#auth.LogoutReq)
+    - [RefreshIDTokenReq](#auth.RefreshIDTokenReq)
+    - [RefreshIDTokenRes](#auth.RefreshIDTokenRes)
+    - [TokenPair](#auth.TokenPair)
+    - [UpdateUserReq](#auth.UpdateUserReq)
+    - [User](#auth.User)
+  
+    - [AuthService](#auth.AuthService)
+  
+- [chat.proto](#chat.proto)
     - [CreateMemberReq](#chat.CreateMemberReq)
     - [CreateMessageReq](#chat.CreateMessageReq)
     - [CreateRoomReq](#chat.CreateRoomReq)
@@ -21,41 +37,28 @@
   
     - [ChatService](#chat.ChatService)
   
-- [event/event.proto](#event/event.proto)
+- [event.proto](#event.proto)
     - [CreateRoom](#event.CreateRoom)
     - [CreateRoomFailed](#event.CreateRoomFailed)
     - [Event](#event.Event)
+    - [PostDeleted](#event.PostDeleted)
     - [RoomCreated](#event.RoomCreated)
   
-- [auth/auth.proto](#auth/auth.proto)
-    - [CreateUserReq](#auth.CreateUserReq)
-    - [CreateUserRes](#auth.CreateUserRes)
-    - [DeleteUserReq](#auth.DeleteUserReq)
-    - [GetUserReq](#auth.GetUserReq)
-    - [LoginReq](#auth.LoginReq)
-    - [LoginRes](#auth.LoginRes)
-    - [LogoutReq](#auth.LogoutReq)
-    - [RefreshIDTokenReq](#auth.RefreshIDTokenReq)
-    - [RefreshIDTokenRes](#auth.RefreshIDTokenRes)
-    - [TokenPair](#auth.TokenPair)
-    - [UpdateUserReq](#auth.UpdateUserReq)
-    - [User](#auth.User)
-  
-    - [AuthService](#auth.AuthService)
-  
-- [post/post.proto](#post/post.proto)
+- [post.proto](#post.proto)
     - [ApplyPost](#post.ApplyPost)
     - [BatchGetApplyPostsByPostIDsReq](#post.BatchGetApplyPostsByPostIDsReq)
     - [BatchGetApplyPostsByPostIDsRes](#post.BatchGetApplyPostsByPostIDsRes)
     - [CreateApplyPostReq](#post.CreateApplyPostReq)
     - [CreatePostReq](#post.CreatePostReq)
-    - [CreatePostReqDetails](#post.CreatePostReqDetails)
+    - [CreatePostReqInfo](#post.CreatePostReqInfo)
     - [CreatePostRes](#post.CreatePostRes)
     - [DeleteApplyPostReq](#post.DeleteApplyPostReq)
     - [DeletePostReq](#post.DeletePostReq)
     - [DeletePostRes](#post.DeletePostRes)
     - [GetApplyPostReq](#post.GetApplyPostReq)
     - [GetPostReq](#post.GetPostReq)
+    - [Image](#post.Image)
+    - [ImageChunk](#post.ImageChunk)
     - [ListApplyPostsReq](#post.ListApplyPostsReq)
     - [ListApplyPostsReq.Filter](#post.ListApplyPostsReq.Filter)
     - [ListApplyPostsRes](#post.ListApplyPostsRes)
@@ -64,13 +67,14 @@
     - [ListPostsRes](#post.ListPostsRes)
     - [Post](#post.Post)
     - [UpdatePostReq](#post.UpdatePostReq)
+    - [UpdatePostReqInfo](#post.UpdatePostReqInfo)
   
     - [ListPostsReq.Filter.OrderBy](#post.ListPostsReq.Filter.OrderBy)
     - [ListPostsReq.Filter.SortBy](#post.ListPostsReq.Filter.SortBy)
   
     - [PostService](#post.PostService)
   
-- [profile/profile.proto](#profile/profile.proto)
+- [profile.proto](#profile.proto)
     - [BatchGetProfilesReq](#profile.BatchGetProfilesReq)
     - [BatchGetProfilesRes](#profile.BatchGetProfilesRes)
     - [CreateProfileReq](#profile.CreateProfileReq)
@@ -87,10 +91,212 @@
 
 
 
-<a name="chat/chat.proto"></a>
+<a name="auth.proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## chat/chat.proto
+## auth.proto
+
+
+
+<a name="auth.CreateUserReq"></a>
+
+### CreateUserReq
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| email | [string](#string) |  |  |
+| password | [string](#string) |  | 6文字以上72文字以下の英数字 |
+
+
+
+
+
+
+<a name="auth.CreateUserRes"></a>
+
+### CreateUserRes
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| user | [User](#auth.User) |  |  |
+| token_pair | [TokenPair](#auth.TokenPair) |  |  |
+
+
+
+
+
+
+<a name="auth.DeleteUserReq"></a>
+
+### DeleteUserReq
+
+
+
+
+
+
+
+<a name="auth.GetUserReq"></a>
+
+### GetUserReq
+
+
+
+
+
+
+
+<a name="auth.LoginReq"></a>
+
+### LoginReq
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| email | [string](#string) |  |  |
+| password | [string](#string) |  | 6文字以上72文字以下の英数字 |
+
+
+
+
+
+
+<a name="auth.LoginRes"></a>
+
+### LoginRes
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| user | [User](#auth.User) |  |  |
+| token_pair | [TokenPair](#auth.TokenPair) |  |  |
+
+
+
+
+
+
+<a name="auth.LogoutReq"></a>
+
+### LogoutReq
+
+
+
+
+
+
+
+<a name="auth.RefreshIDTokenReq"></a>
+
+### RefreshIDTokenReq
+
+
+
+
+
+
+
+<a name="auth.RefreshIDTokenRes"></a>
+
+### RefreshIDTokenRes
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| token_pair | [TokenPair](#auth.TokenPair) |  |  |
+
+
+
+
+
+
+<a name="auth.TokenPair"></a>
+
+### TokenPair
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id_token | [string](#string) |  |  |
+| refresh_token | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="auth.UpdateUserReq"></a>
+
+### UpdateUserReq
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| email | [string](#string) |  |  |
+| old_password | [string](#string) |  | 6文字以上72文字以下の英数字 |
+| password | [string](#string) |  | 6文字以上72文字以下の英数字 |
+
+
+
+
+
+
+<a name="auth.User"></a>
+
+### User
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [int64](#int64) |  |  |
+| email | [string](#string) |  |  |
+| created_at | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="auth.AuthService"></a>
+
+### AuthService
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| GetUser | [GetUserReq](#auth.GetUserReq) | [User](#auth.User) |  |
+| CreateUser | [CreateUserReq](#auth.CreateUserReq) | [CreateUserRes](#auth.CreateUserRes) |  |
+| UpdateUser | [UpdateUserReq](#auth.UpdateUserReq) | [User](#auth.User) |  |
+| DeleteUser | [DeleteUserReq](#auth.DeleteUserReq) | [.google.protobuf.Empty](#google.protobuf.Empty) |  |
+| Login | [LoginReq](#auth.LoginReq) | [LoginRes](#auth.LoginRes) |  |
+| Logout | [LogoutReq](#auth.LogoutReq) | [.google.protobuf.Empty](#google.protobuf.Empty) |  |
+| RefreshIDToken | [RefreshIDTokenReq](#auth.RefreshIDTokenReq) | [RefreshIDTokenRes](#auth.RefreshIDTokenRes) |  |
+
+ 
+
+
+
+<a name="chat.proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## chat.proto
 
 
 
@@ -351,10 +557,10 @@
 
 
 
-<a name="event/event.proto"></a>
+<a name="event.proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## event/event.proto
+## event.proto
 
 
 
@@ -405,6 +611,23 @@
 | aggregate_type | [string](#string) |  |  |
 | event_data | [bytes](#bytes) |  |  |
 | channel | [string](#string) |  |  |
+| created_at | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
+
+
+
+
+
+
+<a name="event.PostDeleted"></a>
+
+### PostDeleted
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| post | [post.Post](#post.Post) |  |  |
 
 
 
@@ -436,212 +659,10 @@
 
 
 
-<a name="auth/auth.proto"></a>
+<a name="post.proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## auth/auth.proto
-
-
-
-<a name="auth.CreateUserReq"></a>
-
-### CreateUserReq
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| email | [string](#string) |  |  |
-| password | [string](#string) |  | 6文字以上72文字以下の英数字 |
-
-
-
-
-
-
-<a name="auth.CreateUserRes"></a>
-
-### CreateUserRes
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| user | [User](#auth.User) |  |  |
-| token_pair | [TokenPair](#auth.TokenPair) |  |  |
-
-
-
-
-
-
-<a name="auth.DeleteUserReq"></a>
-
-### DeleteUserReq
-
-
-
-
-
-
-
-<a name="auth.GetUserReq"></a>
-
-### GetUserReq
-
-
-
-
-
-
-
-<a name="auth.LoginReq"></a>
-
-### LoginReq
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| email | [string](#string) |  |  |
-| password | [string](#string) |  | 6文字以上72文字以下の英数字 |
-
-
-
-
-
-
-<a name="auth.LoginRes"></a>
-
-### LoginRes
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| user | [User](#auth.User) |  |  |
-| token_pair | [TokenPair](#auth.TokenPair) |  |  |
-
-
-
-
-
-
-<a name="auth.LogoutReq"></a>
-
-### LogoutReq
-
-
-
-
-
-
-
-<a name="auth.RefreshIDTokenReq"></a>
-
-### RefreshIDTokenReq
-
-
-
-
-
-
-
-<a name="auth.RefreshIDTokenRes"></a>
-
-### RefreshIDTokenRes
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| token_pair | [TokenPair](#auth.TokenPair) |  |  |
-
-
-
-
-
-
-<a name="auth.TokenPair"></a>
-
-### TokenPair
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| id_token | [string](#string) |  |  |
-| refresh_token | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="auth.UpdateUserReq"></a>
-
-### UpdateUserReq
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| email | [string](#string) |  |  |
-| old_password | [string](#string) |  | 6文字以上72文字以下の英数字 |
-| password | [string](#string) |  | 6文字以上72文字以下の英数字 |
-
-
-
-
-
-
-<a name="auth.User"></a>
-
-### User
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| id | [int64](#int64) |  |  |
-| email | [string](#string) |  |  |
-| created_at | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
-| updated_at | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
-
-
-
-
-
- 
-
- 
-
- 
-
-
-<a name="auth.AuthService"></a>
-
-### AuthService
-
-
-| Method Name | Request Type | Response Type | Description |
-| ----------- | ------------ | ------------- | ------------|
-| GetUser | [GetUserReq](#auth.GetUserReq) | [User](#auth.User) |  |
-| CreateUser | [CreateUserReq](#auth.CreateUserReq) | [CreateUserRes](#auth.CreateUserRes) |  |
-| UpdateUser | [UpdateUserReq](#auth.UpdateUserReq) | [User](#auth.User) |  |
-| DeleteUser | [DeleteUserReq](#auth.DeleteUserReq) | [.google.protobuf.Empty](#google.protobuf.Empty) |  |
-| Login | [LoginReq](#auth.LoginReq) | [LoginRes](#auth.LoginRes) |  |
-| Logout | [LogoutReq](#auth.LogoutReq) | [.google.protobuf.Empty](#google.protobuf.Empty) |  |
-| RefreshIDToken | [RefreshIDTokenReq](#auth.RefreshIDTokenReq) | [RefreshIDTokenRes](#auth.RefreshIDTokenRes) |  |
-
- 
-
-
-
-<a name="post/post.proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## post/post.proto
+## post.proto
 
 
 
@@ -718,17 +739,17 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| details | [CreatePostReqDetails](#post.CreatePostReqDetails) |  |  |
-| image_chunk | [bytes](#bytes) |  |  |
+| info | [CreatePostReqInfo](#post.CreatePostReqInfo) |  |  |
+| image_chunk | [ImageChunk](#post.ImageChunk) |  |  |
 
 
 
 
 
 
-<a name="post.CreatePostReqDetails"></a>
+<a name="post.CreatePostReqInfo"></a>
 
-### CreatePostReqDetails
+### CreatePostReqInfo
 
 
 
@@ -834,6 +855,41 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | id | [int64](#int64) |  |  |
+
+
+
+
+
+
+<a name="post.Image"></a>
+
+### Image
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [int64](#int64) |  |  |
+| name | [string](#string) |  |  |
+| post_id | [int64](#int64) |  |  |
+| created_at | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
+
+
+
+
+
+
+<a name="post.ImageChunk"></a>
+
+### ImageChunk
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| chunk_num | [int64](#int64) |  |  |
+| chunk_data | [bytes](#bytes) |  |  |
 
 
 
@@ -960,6 +1016,7 @@
 | meeting_at | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
 | user_id | [int64](#int64) |  |  |
 | max_apply | [int64](#int64) |  |  |
+| images | [Image](#post.Image) | repeated |  |
 | created_at | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
 
@@ -976,6 +1033,22 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
+| info | [UpdatePostReqInfo](#post.UpdatePostReqInfo) |  |  |
+| image_chunk | [ImageChunk](#post.ImageChunk) |  |  |
+
+
+
+
+
+
+<a name="post.UpdatePostReqInfo"></a>
+
+### UpdatePostReqInfo
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
 | id | [int64](#int64) |  |  |
 | title | [string](#string) |  |  |
 | content | [string](#string) |  |  |
@@ -985,6 +1058,7 @@
 | meeting_place_id | [string](#string) |  |  |
 | meeting_at | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
 | max_apply | [int64](#int64) |  |  |
+| leave_image_ids | [int64](#int64) | repeated |  |
 
 
 
@@ -1031,7 +1105,7 @@
 | GetPost | [GetPostReq](#post.GetPostReq) | [Post](#post.Post) | 投稿の詳細を取得 |
 | ListPosts | [ListPostsReq](#post.ListPostsReq) | [ListPostsRes](#post.ListPostsRes) | 投稿の絞り込み検索 &amp; ページネーション |
 | CreatePost | [CreatePostReq](#post.CreatePostReq) stream | [CreatePostRes](#post.CreatePostRes) | 投稿を作成 |
-| UpdatePost | [UpdatePostReq](#post.UpdatePostReq) | [Post](#post.Post) | 投稿を更新 |
+| UpdatePost | [UpdatePostReq](#post.UpdatePostReq) stream | [Post](#post.Post) | 投稿を更新 |
 | DeletePost | [DeletePostReq](#post.DeletePostReq) | [.google.protobuf.Empty](#google.protobuf.Empty) | 投稿を削除 |
 | GetApplyPost | [GetApplyPostReq](#post.GetApplyPostReq) | [ApplyPost](#post.ApplyPost) |  |
 | ListApplyPosts | [ListApplyPostsReq](#post.ListApplyPostsReq) | [ListApplyPostsRes](#post.ListApplyPostsRes) | その投稿の応募情報のリストを取得, そのユーザーの応募した投稿リストを取得 |
@@ -1043,10 +1117,10 @@
 
 
 
-<a name="profile/profile.proto"></a>
+<a name="profile.proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## profile/profile.proto
+## profile.proto
 
 
 
