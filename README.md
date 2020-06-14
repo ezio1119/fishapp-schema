@@ -24,8 +24,8 @@
     - [CreateMessageReq](#chat.CreateMessageReq)
     - [CreateRoomReq](#chat.CreateRoomReq)
     - [DeleteMemberReq](#chat.DeleteMemberReq)
-    - [GetMemberReq](#chat.GetMemberReq)
     - [GetRoomReq](#chat.GetRoomReq)
+    - [IsMemberReq](#chat.IsMemberReq)
     - [ListMembersReq](#chat.ListMembersReq)
     - [ListMembersRes](#chat.ListMembersRes)
     - [ListMessagesReq](#chat.ListMessagesReq)
@@ -365,22 +365,6 @@
 
 
 
-<a name="chat.GetMemberReq"></a>
-
-### GetMemberReq
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| room_id | [int64](#int64) |  |  |
-| user_id | [int64](#int64) |  |  |
-
-
-
-
-
-
 <a name="chat.GetRoomReq"></a>
 
 ### GetRoomReq
@@ -391,6 +375,22 @@
 | ----- | ---- | ----- | ----------- |
 | id | [int64](#int64) |  |  |
 | post_id | [int64](#int64) |  |  |
+
+
+
+
+
+
+<a name="chat.IsMemberReq"></a>
+
+### IsMemberReq
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| post_id | [int64](#int64) |  |  |
+| user_id | [int64](#int64) |  |  |
 
 
 
@@ -547,7 +547,7 @@
 | ----------- | ------------ | ------------- | ------------|
 | GetRoom | [GetRoomReq](#chat.GetRoomReq) | [Room](#chat.Room) |  |
 | CreateRoom | [CreateRoomReq](#chat.CreateRoomReq) | [Room](#chat.Room) | user_idでcreateMemberもする |
-| GetMember | [GetMemberReq](#chat.GetMemberReq) | [Member](#chat.Member) |  |
+| IsMember | [IsMemberReq](#chat.IsMemberReq) | [.google.protobuf.BoolValue](#google.protobuf.BoolValue) | ユーザーがルームメンバーか確認。post_idからroomを取る |
 | ListMembers | [ListMembersReq](#chat.ListMembersReq) | [ListMembersRes](#chat.ListMembersRes) |  |
 | CreateMember | [CreateMemberReq](#chat.CreateMemberReq) | [Member](#chat.Member) |  |
 | DeleteMember | [DeleteMemberReq](#chat.DeleteMemberReq) | [.google.protobuf.Empty](#google.protobuf.Empty) |  |
