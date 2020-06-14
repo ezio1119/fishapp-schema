@@ -506,6 +506,8 @@
 | ----- | ---- | ----- | ----------- |
 | id | [int64](#int64) |  |  |
 | post_id | [int64](#int64) |  |  |
+| members | [Member](#chat.Member) | repeated |  |
+| messages | [Message](#chat.Message) | repeated |  |
 | created_at | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
 
