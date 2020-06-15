@@ -1,16 +1,15 @@
+directive @isMember on FIELD_DEFINITION
+
 extend type Query {
-  room(post_id: ID!): Room! @isAuthenticated
+  room(post_id: ID!): Room! @isMember @isAuthenticated # isAuthenticatedが先に発火
 }
 
 extend type Mutation {
-  createRoom(input: CreateRoomInput!): CreateRoomPayload! @isAuthenticated
-  createMember(input: CreateMemberInput!): CreateMemberPayload! @isAuthenticated
-  deleteMember(input: DeleteMemberInput!): DeleteMemberPayload! @isAuthenticated
-  createMessage(input: CreateMessageInput!): CreateMessagePayload! @isAuthenticated
+  createMessage(input: CreateMessageInput!): CreateMessagePayload! @isMember @isAuthenticated
 }
 
 extend type Subscription {
-  messageAdded(input: MessageAddedInput!): MessageAddedPayload! @isAuthenticated
+  messageAdded(input: MessageAddedInput!): MessageAddedPayload! @isMember @isAuthenticated
 }
 
 extend type Room {
@@ -37,30 +36,6 @@ type Message {
   profile: Profile!
   createdAt: Time!
   updatedAt: Time!
-}
-
-input CreateRoomInput {
-  postId: ID!
-}
-
-type CreateRoomPayload{
-  room: Room!
-}
-
-input CreateMemberInput {
-  roomId: ID!
-}
-
-type CreateMemberPayload {
-  member: Member!
-}
-
-input DeleteMemberInput {
-  roomId: ID!
-}
-
-type DeleteMemberPayload {
-  success: Boolean!
 }
 
 input CreateMessageInput {

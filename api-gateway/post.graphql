@@ -22,10 +22,18 @@ extend type Post {
   meetingAt: Time!
   applyPosts: [ApplyPost!]
   profile: Profile!
+  # images: [PostImage]
   maxApply: Int!
   createdAt: Time!
   updatedAt: Time!
 }
+
+# type PostImage {
+#   id: ID!
+#   name: String
+#   postID: ID!
+
+# }
 
 extend type ApplyPost {
   id: ID!
