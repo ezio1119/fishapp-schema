@@ -36,3 +36,11 @@ message CreateRoom {
 message PostDeleted {
   post.Post post = 1;
 }
+
+message ApplyPostCreated {
+  post.ApplyPost apply_post = 1;
+}
+
+message ApplyPostDeleted {
+  post.ApplyPost apply_post = 1;
+}
