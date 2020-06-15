@@ -38,6 +38,8 @@
     - [ChatService](#chat.ChatService)
   
 - [event.proto](#event.proto)
+    - [ApplyPostCreated](#event.ApplyPostCreated)
+    - [ApplyPostDeleted](#event.ApplyPostDeleted)
     - [CreateRoom](#event.CreateRoom)
     - [CreateRoomFailed](#event.CreateRoomFailed)
     - [Event](#event.Event)
@@ -563,6 +565,36 @@
 <p align="right"><a href="#top">Top</a></p>
 
 ## event.proto
+
+
+
+<a name="event.ApplyPostCreated"></a>
+
+### ApplyPostCreated
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| apply_post | [post.ApplyPost](#post.ApplyPost) |  |  |
+
+
+
+
+
+
+<a name="event.ApplyPostDeleted"></a>
+
+### ApplyPostDeleted
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| apply_post | [post.ApplyPost](#post.ApplyPost) |  |  |
+
+
+
 
 
 
