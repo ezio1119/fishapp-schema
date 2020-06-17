@@ -1214,7 +1214,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| user_id | [int64](#int64) |  |  |
+| id | [int64](#int64) |  |  |
 
 
 
@@ -1265,9 +1265,9 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
+| id | [int64](#int64) |  |  |
 | name | [string](#string) |  |  |
 | introduction | [string](#string) |  |  |
-| user_id | [int64](#int64) |  |  |
 
 
 
