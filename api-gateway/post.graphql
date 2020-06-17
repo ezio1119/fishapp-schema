@@ -1,3 +1,7 @@
+directive @isPostOwner on FIELD_DEFINITION
+directive @isApplyPostOwner on FIELD_DEFINITION
+scalar Upload
+
 extend type Query {
   posts(first: Int, after: String, input: PostsInput!): PostConnection! # Relay connection
   post(id: ID!): Post!
@@ -5,10 +9,10 @@ extend type Query {
 
 extend type Mutation {
   createPost(input: CreatePostInput!): CreatePostPayload! @isAuthenticated
-  updatePost(input: UpdatePostInput!): UpdatePostPayload! @isAuthenticated
-  deletePost(input: DeletePostInput!): DeletePostPayload! @isAuthenticated
+  updatePost(input: UpdatePostInput!): UpdatePostPayload! @isPostOwner @isAuthenticated
+  deletePost(input: DeletePostInput!): DeletePostPayload! @isPostOwner @isAuthenticated
   createApplyPost(input: CreateApplyPostInput!): CreateApplyPostPayload! @isAuthenticated
-  deleteApplyPost(input: DeleteApplyPostInput!): DeleteApplyPostPayload! @isAuthenticated
+  deleteApplyPost(input: DeleteApplyPostInput!): DeleteApplyPostPayload! @isApplyPostOwner @isAuthenticated
 }
 
 extend type Post {
@@ -22,18 +26,18 @@ extend type Post {
   meetingAt: Time!
   applyPosts: [ApplyPost!]
   profile: Profile!
-  # images: [PostImage]
+  images: [PostImage!]
   maxApply: Int!
   createdAt: Time!
   updatedAt: Time!
 }
 
-# type PostImage {
-#   id: ID!
-#   name: String
-#   postID: ID!
-
-# }
+type PostImage {
+  id: ID!
+  name: String!
+  createdAt: Time!
+  updatedAt: Time!
+}
 
 extend type ApplyPost {
   id: ID!
@@ -84,10 +88,12 @@ input CreatePostInput {
   meetingPlaceId: String! # Google Place ID
   meetingAt: Time!
   maxApply: Int!
+  images: [Upload!]
 }
 
 type CreatePostPayload {
   post: Post!
+  sagaId: String!
 }
 
 input UpdatePostInput{
@@ -100,6 +106,8 @@ input UpdatePostInput{
   meetingPlaceId: String!
   meetingAt: Time!
   maxApply: Int!
+  leaveImageIds: [Int!]
+  images: [Upload!]
 }
 
 type UpdatePostPayload {

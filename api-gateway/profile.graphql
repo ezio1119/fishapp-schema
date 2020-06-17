@@ -1,9 +1,10 @@
+directive @isProfileOwner on FIELD_DEFINITION
 scalar Time
 
 extend type Mutation {
   createProfile(input: CreateProfileInput!): CreateProfilePayload! @isAuthenticated
   # deleteProfile: DeleteProfilePayload! @isAuthenticated
-  updateProfile(input: UpdateProfileInput!): UpdateProfilePayload! @isAuthenticated
+  updateProfile(input: UpdateProfileInput!): UpdateProfilePayload! @isProfileOwner @isAuthenticated
 }
 
 enum Sex {
