@@ -50,12 +50,12 @@ message CreateProfileReq {
 }
 
 message UpdateProfileReq {
-  int64 id = 1 [(validate.rules).int64.gte = 1];
-  string name = 2 [(validate.rules).string = {min_len: 1, max_len: 10}];
-  string introduction = 3 [(validate.rules).string = {min_len: 1, max_len: 1000}];
+  string name = 1 [(validate.rules).string = {min_len: 1, max_len: 10}];
+  string introduction = 2 [(validate.rules).string = {min_len: 1, max_len: 1000}];
+  int64 user_id = 3 [(validate.rules).int64.gte = 1];
   
 }
 
 message DeleteProfileReq {
-  int64 id = 1 [(validate.rules).int64.gte = 1];
+  int64 user_id = 1 [(validate.rules).int64.gte = 1];
 }
