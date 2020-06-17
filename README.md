@@ -110,6 +110,9 @@
 | ----- | ---- | ----- | ----------- |
 | email | [string](#string) |  |  |
 | password | [string](#string) |  | 6文字以上72文字以下の英数字 |
+| profile_name | [string](#string) |  | profileAPIにプロキシする |
+| profile_introduction | [string](#string) |  | profileAPIにプロキシする |
+| profile_sex | [profile.Sex](#profile.Sex) |  | profileAPIにプロキシする |
 
 
 
@@ -125,6 +128,7 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | user | [User](#auth.User) |  |  |
+| profile | [profile.Profile](#profile.Profile) |  |  |
 | token_pair | [TokenPair](#auth.TokenPair) |  |  |
 
 
@@ -283,13 +287,13 @@
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| GetUser | [GetUserReq](#auth.GetUserReq) | [User](#auth.User) |  |
+| GetUser | [GetUserReq](#auth.GetUserReq) | [User](#auth.User) | require id_token |
 | CreateUser | [CreateUserReq](#auth.CreateUserReq) | [CreateUserRes](#auth.CreateUserRes) |  |
-| UpdateUser | [UpdateUserReq](#auth.UpdateUserReq) | [User](#auth.User) |  |
-| DeleteUser | [DeleteUserReq](#auth.DeleteUserReq) | [.google.protobuf.Empty](#google.protobuf.Empty) |  |
+| UpdateUser | [UpdateUserReq](#auth.UpdateUserReq) | [User](#auth.User) | require id_token |
+| DeleteUser | [DeleteUserReq](#auth.DeleteUserReq) | [.google.protobuf.Empty](#google.protobuf.Empty) | require id_token |
 | Login | [LoginReq](#auth.LoginReq) | [LoginRes](#auth.LoginRes) |  |
-| Logout | [LogoutReq](#auth.LogoutReq) | [.google.protobuf.Empty](#google.protobuf.Empty) |  |
-| RefreshIDToken | [RefreshIDTokenReq](#auth.RefreshIDTokenReq) | [RefreshIDTokenRes](#auth.RefreshIDTokenRes) |  |
+| Logout | [LogoutReq](#auth.LogoutReq) | [.google.protobuf.Empty](#google.protobuf.Empty) | require id_token |
+| RefreshIDToken | [RefreshIDTokenReq](#auth.RefreshIDTokenReq) | [RefreshIDTokenRes](#auth.RefreshIDTokenRes) | require refresh_token |
 
  
 
