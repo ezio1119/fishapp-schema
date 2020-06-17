@@ -4,16 +4,16 @@ option go_package = ".;pb";
 import "validate/validate.proto";
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/empty.proto";
-
+import "profile.proto";
 
 service AuthService {
-  rpc GetUser(GetUserReq) returns (User);
+  rpc GetUser(GetUserReq) returns (User); // require id_token
   rpc CreateUser(CreateUserReq) returns (CreateUserRes);
-  rpc UpdateUser(UpdateUserReq) returns (User);
-  rpc DeleteUser(DeleteUserReq) returns (google.protobuf.Empty);
+  rpc UpdateUser(UpdateUserReq) returns (User); // require id_token
+  rpc DeleteUser(DeleteUserReq) returns (google.protobuf.Empty); // require id_token
   rpc Login(LoginReq) returns (LoginRes);
-  rpc Logout(LogoutReq) returns (google.protobuf.Empty);
-  rpc RefreshIDToken(RefreshIDTokenReq) returns (RefreshIDTokenRes);
+  rpc Logout(LogoutReq) returns (google.protobuf.Empty); // require id_token
+  rpc RefreshIDToken(RefreshIDTokenReq) returns (RefreshIDTokenRes); // require refresh_token
 }
 
 message User {
@@ -33,11 +33,16 @@ message GetUserReq {}
 message CreateUserReq {
   string email = 1 [(validate.rules).string.email = true];
   string password = 2 [(validate.rules).string.pattern = "^[A-Za-z0-9]{6,72}$"]; // 6文字以上72文字以下の英数字
+
+  string profile_name = 3; // profileAPIにプロキシする
+  string profile_introduction = 4; // profileAPIにプロキシする
+  profile.Sex profile_sex = 5; // profileAPIにプロキシする
 }
 
 message CreateUserRes {
   User user = 1;
-  TokenPair token_pair = 2;
+  profile.Profile profile = 2;
+  TokenPair token_pair = 3;
 }
 
 message UpdateUserReq {
