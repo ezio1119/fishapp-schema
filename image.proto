@@ -7,6 +7,7 @@ import "google/protobuf/empty.proto";
 
 service ImageService {
   rpc BatchCreateImages(stream BatchCreateImagesReq) returns (BatchCreateImagesRes);
+  rpc BatchDeleteImages(BatchDeleteImagesReq) returns (google.protobuf.Empty);
   rpc DeleteImagesByOwnerID(DeleteImagesByOwnerIDReq) returns (google.protobuf.Empty);
 }
 
@@ -42,6 +43,10 @@ message BatchCreateImagesReq {
     ImageInfo info = 1;
     bytes chunk = 2 [(validate.rules).bytes = {max_len: 65536}]; // ~ 64KiB
   }
+}
+
+message BatchDeleteImagesReq {
+  repeated int64 id = 1 [(validate.rules).repeated.items.int64.gte = 14, (validate.rules).repeated.min_items = 1, (validate.rules).repeated.unique = true];
 }
 
 message DeleteImagesByOwnerIDReq {
