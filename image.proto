@@ -6,6 +6,7 @@ import "google/protobuf/timestamp.proto";
 import "google/protobuf/empty.proto";
 
 service ImageService {
+  rpc ListImagesByOwnerID(ListImagesByOwnerIDReq) returns (ListImagesByOwnerIDRes);
   rpc BatchCreateImages(stream BatchCreateImagesReq) returns (BatchCreateImagesRes);
   rpc BatchDeleteImages(BatchDeleteImagesReq) returns (google.protobuf.Empty); // 削除するレコードがなくてもエラーなし
   rpc DeleteImagesByOwnerID(DeleteImagesByOwnerIDReq) returns (google.protobuf.Empty);
@@ -30,6 +31,15 @@ enum OwnerType {
   POST = 1;
   PROFILE = 2;
   MESSAGE = 3;
+}
+
+message ListImagesByOwnerIDReq {
+  int64 owner_id = 1 [(validate.rules).int64.gte = 1];
+  OwnerType owner_type = 2 [(validate.rules).enum = {not_in: [0]}, (validate.rules).enum.defined_only = true];
+}
+
+message ListImagesByOwnerIDRes {
+  repeated Image images = 1;
 }
 
 message BatchCreateImagesRes {
