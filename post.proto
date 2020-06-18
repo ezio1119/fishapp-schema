@@ -113,7 +113,7 @@ message UpdatePostReqInfo  {
   string meeting_place_id = 7 [(validate.rules).string = {min_len: 27, max_len: 255}];
   google.protobuf.Timestamp meeting_at = 8 [(validate.rules).timestamp.gt_now = true];
   int64 max_apply = 9 [(validate.rules).int64.gte = 1];
-  repeated int64 leave_image_ids = 10;
+  repeated int64 image_ids_to_delete = 10;
 }
 
 message UpdatePostReq{

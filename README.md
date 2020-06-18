@@ -1060,7 +1060,7 @@
 | meeting_place_id | [string](#string) |  |  |
 | meeting_at | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
 | max_apply | [int64](#int64) |  |  |
-| leave_image_ids | [int64](#int64) | repeated |  |
+| image_ids_to_delete | [int64](#int64) | repeated |  |
 
 
 
