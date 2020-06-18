@@ -59,8 +59,6 @@
     - [DeletePostRes](#post.DeletePostRes)
     - [GetApplyPostReq](#post.GetApplyPostReq)
     - [GetPostReq](#post.GetPostReq)
-    - [Image](#post.Image)
-    - [ImageChunk](#post.ImageChunk)
     - [ListApplyPostsReq](#post.ListApplyPostsReq)
     - [ListApplyPostsReq.Filter](#post.ListApplyPostsReq.Filter)
     - [ListApplyPostsRes](#post.ListApplyPostsRes)
@@ -778,7 +776,8 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | info | [CreatePostReqInfo](#post.CreatePostReqInfo) |  |  |
-| image_chunk | [ImageChunk](#post.ImageChunk) |  |  |
+| next_image_signal | [bool](#bool) |  |  |
+| image_chunk | [bytes](#bytes) |  |  |
 
 
 
@@ -893,41 +892,6 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | id | [int64](#int64) |  |  |
-
-
-
-
-
-
-<a name="post.Image"></a>
-
-### Image
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| id | [int64](#int64) |  |  |
-| name | [string](#string) |  |  |
-| post_id | [int64](#int64) |  |  |
-| created_at | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
-| updated_at | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
-
-
-
-
-
-
-<a name="post.ImageChunk"></a>
-
-### ImageChunk
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| chunk_num | [int64](#int64) |  |  |
-| chunk_data | [bytes](#bytes) |  |  |
 
 
 
@@ -1054,7 +1018,6 @@
 | meeting_at | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
 | user_id | [int64](#int64) |  |  |
 | max_apply | [int64](#int64) |  |  |
-| images | [Image](#post.Image) | repeated |  |
 | created_at | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
 
@@ -1072,7 +1035,8 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | info | [UpdatePostReqInfo](#post.UpdatePostReqInfo) |  |  |
-| image_chunk | [ImageChunk](#post.ImageChunk) |  |  |
+| next_image_signal | [bool](#bool) |  |  |
+| image_chunk | [bytes](#bytes) |  |  |
 
 
 
