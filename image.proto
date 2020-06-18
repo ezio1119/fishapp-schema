@@ -12,14 +12,21 @@ message Image {
   int64 id = 1;
   string name = 2;
   int64 owner_id = 3;
-  string owner_type = 4;
+  OwnerType owner_type = 4;
   google.protobuf.Timestamp created_at = 5;
   google.protobuf.Timestamp updated_at = 6;
 }
 
 message ImageInfo {
-  int64 owner_id = 1;
-  string owner_type = 2;
+  int64 owner_id = 1 [(validate.rules).int64.gte = 1];
+  OwnerType owner_type = 2 [(validate.rules).enum = {not_in: [0]}, (validate.rules).enum.defined_only = true];
+}
+
+enum OwnerType {
+  OWNERTYPE_UNSPECIFIED = 0;
+  POST = 1;
+  PROFILE = 2;
+  MESSAGE = 3;
 }
 
 message BatchCreateImagesRes {
@@ -31,6 +38,6 @@ message BatchCreateImagesReq {
     option (validate.required) = true;
 
     ImageInfo info = 1;
-    bytes chunk = 2;
+    bytes chunk = 2 [(validate.rules).bytes = {max_len: 65536}]; // ~ 64KiB
   }
 }
