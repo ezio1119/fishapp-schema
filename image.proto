@@ -1,5 +1,5 @@
 syntax = "proto3";
-package event;
+package image;
 option go_package = ".;pb";
 import "validate/validate.proto";
 import "google/protobuf/timestamp.proto";
