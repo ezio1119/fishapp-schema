@@ -1,0 +1,36 @@
+syntax = "proto3";
+package event;
+option go_package = ".;pb";
+import "validate/validate.proto";
+import "google/protobuf/timestamp.proto";
+
+service ImageService {
+  rpc BatchCreateImages(stream BatchCreateImagesReq) returns (BatchCreateImagesRes);
+}
+
+message Image {
+  int64 id = 1;
+  string name = 2;
+  int64 owner_id = 3;
+  string owner_type = 4;
+  google.protobuf.Timestamp created_at = 5;
+  google.protobuf.Timestamp updated_at = 6;
+}
+
+message ImageInfo {
+  int64 owner_id = 1;
+  string owner_type = 2;
+}
+
+message BatchCreateImagesRes {
+  repeated Image images = 1;
+}
+
+message BatchCreateImagesReq {
+  oneof data{
+    option (validate.required) = true;
+
+    ImageInfo info = 1;
+    bytes chunk = 2;
+  }
+}
