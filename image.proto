@@ -7,7 +7,7 @@ import "google/protobuf/empty.proto";
 
 service ImageService {
   rpc BatchCreateImages(stream BatchCreateImagesReq) returns (BatchCreateImagesRes);
-  rpc BatchDeleteImages(BatchDeleteImagesReq) returns (google.protobuf.Empty);
+  rpc BatchDeleteImages(BatchDeleteImagesReq) returns (google.protobuf.Empty); // 削除するレコードがなくてもエラーなし
   rpc DeleteImagesByOwnerID(DeleteImagesByOwnerIDReq) returns (google.protobuf.Empty);
 }
 
