@@ -1,10 +1,8 @@
-directive @isProfileOwner on FIELD_DEFINITION
 scalar Time
 
 extend type Mutation {
-  createProfile(input: CreateProfileInput!): CreateProfilePayload! @isAuthenticated
   # deleteProfile: DeleteProfilePayload! @isAuthenticated
-  updateProfile(input: UpdateProfileInput!): UpdateProfilePayload! @isProfileOwner @isAuthenticated
+  updateProfile(input: UpdateProfileInput!): UpdateProfilePayload! @isAuthenticated
 }
 
 enum Sex {
@@ -21,17 +19,6 @@ extend type Profile {
   created_at: Time!
   updated_at: Time!
 }
-
-input CreateProfileInput {
-  name: String!
-  introduction: String!
-  sex: Sex!
-}
-
-type CreateProfilePayload {
-  profile: Profile!
-}
-
 
 # type DeleteProfilePayload {
 #   success: Boolean!

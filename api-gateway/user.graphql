@@ -1,7 +1,7 @@
 directive @isAuthenticated on FIELD_DEFINITION # これがついてるとidTokenが必要
 # authAPIにトークンをプロキシするだけでgatewayでは認証をしないので、isAuthenticatedをつけない。
 extend type Query {
-  user: User! # require id_token
+  currentUser: User! # require id_token
 }
 
 extend type Mutation {
@@ -26,9 +26,13 @@ extend type User {
 input CreateUserInput {
   email: String!
   password: String! # 6文字以上72文字以下の英数字
+  profileName: String!
+  profileSex: Sex!
+  profileIntroduction: String!
 }
 
 type CreateUserPayload {
+  profile: Profile!
   user: User!
   tokenPair: TokenPair!
 }

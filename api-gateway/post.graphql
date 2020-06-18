@@ -26,18 +26,12 @@ extend type Post {
   meetingAt: Time!
   applyPosts: [ApplyPost!]
   profile: Profile!
-  images: [PostImage!]
+  images: [Image!]
   maxApply: Int!
   createdAt: Time!
   updatedAt: Time!
 }
 
-type PostImage {
-  id: ID!
-  name: String!
-  createdAt: Time!
-  updatedAt: Time!
-}
 
 extend type ApplyPost {
   id: ID!
@@ -106,7 +100,7 @@ input UpdatePostInput{
   meetingPlaceId: String!
   meetingAt: Time!
   maxApply: Int!
-  leaveImageIds: [Int!]
+  imageIdsToDelete: [Int!]
   images: [Upload!]
 }
 
