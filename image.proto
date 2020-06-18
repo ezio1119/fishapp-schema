@@ -46,7 +46,7 @@ message BatchCreateImagesReq {
 }
 
 message BatchDeleteImagesReq {
-  repeated int64 id = 1 [(validate.rules).repeated.items.int64.gte = 14, (validate.rules).repeated.min_items = 1, (validate.rules).repeated.unique = true];
+  repeated int64 ids = 1 [(validate.rules).repeated.items.int64.gte = 14, (validate.rules).repeated.min_items = 1, (validate.rules).repeated.unique = true];
 }
 
 message DeleteImagesByOwnerIDReq {
