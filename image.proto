@@ -29,7 +29,7 @@ message ImageInfo {
 enum OwnerType {
   OWNERTYPE_UNSPECIFIED = 0;
   POST = 1;
-  PROFILE = 2;
+  USER = 2;
   MESSAGE = 3;
 }
 
