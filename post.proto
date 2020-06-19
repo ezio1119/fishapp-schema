@@ -82,7 +82,7 @@ message CreatePostReq {
 
     CreatePostReqInfo info = 1;
     bool next_image_signal = 2 [(validate.rules).bool.const = true];
-    bytes image_chunk = 3;
+    bytes image_chunk = 3 [(validate.rules).bytes = {max_len: 65536}]; // ~ 64KiB
   }
 }
 
