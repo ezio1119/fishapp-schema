@@ -38,12 +38,14 @@ message PostDeleted {
 }
 
 message PostRejected {
-  post.Post post = 1;
-  string error_message = 2;
+  string saga_id = 1;
+  post.Post post = 2;
+  string error_message = 3;
 }
 
 message PostApproved {
-  post.Post post = 1;
+  string saga_id = 1;
+  post.Post post = 2;
 }
 
 message ApplyPostCreated {
