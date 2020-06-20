@@ -138,6 +138,7 @@ message GetApplyPostReq  {
   int64 id = 1 [(validate.rules).int64.gte = 1];
 }
 
+// one of 使える
 message ListApplyPostsReq {
   message Filter {
     int64 user_id = 1; 
