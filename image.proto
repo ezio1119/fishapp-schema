@@ -9,6 +9,7 @@ service ImageService {
   rpc ListImagesByOwnerID(ListImagesByOwnerIDReq) returns (ListImagesByOwnerIDRes);
   rpc BatchCreateImages(stream BatchCreateImagesReq) returns (BatchCreateImagesRes);
   rpc BatchDeleteImages(BatchDeleteImagesReq) returns (google.protobuf.Empty); // 削除するレコードがなくてもエラーなし
+  rpc BatchDeleteImagesByOwnerIDs(BatchDeleteImagesByOwnerIDsReq) returns (google.protobuf.Empty); // 削除するレコードがなくてもエラーなし
   rpc DeleteImagesByOwnerID(DeleteImagesByOwnerIDReq) returns (google.protobuf.Empty);
 }
 
@@ -57,6 +58,11 @@ message BatchCreateImagesReq {
 
 message BatchDeleteImagesReq {
   repeated int64 ids = 1 [(validate.rules).repeated.items.int64.gte = 14, (validate.rules).repeated.min_items = 1, (validate.rules).repeated.unique = true];
+}
+
+message BatchDeleteImagesByOwnerIDsReq {
+  repeated int64 owner_ids = 1;
+  OwnerType owner_type = 2 [(validate.rules).enum = {not_in: [0]}, (validate.rules).enum.defined_only = true];
 }
 
 message DeleteImagesByOwnerIDReq {
