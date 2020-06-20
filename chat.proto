@@ -16,7 +16,7 @@ service ChatService {
   rpc DeleteMember(DeleteMemberReq) returns (google.protobuf.Empty);
 
   rpc ListMessages(ListMessagesReq) returns (ListMessagesRes);
-  rpc CreateMessage(CreateMessageReq) returns (Message);
+  rpc CreateMessage(stream CreateMessageReq) returns (Message);
   rpc StreamMessage(StreamMessageReq)returns (stream Message);
 }
 
@@ -80,6 +80,15 @@ message DeleteMemberReq {
 }
 
 message CreateMessageReq {
+  oneof data{
+    option (validate.required) = true;
+
+    CreateMessageReqInfo info = 1;
+    bytes image_chunk = 2 [(validate.rules).bytes = {max_len: 65536}]; // ~ 64KiB;
+  }
+}
+
+message CreateMessageReqInfo {
   string body = 1;
   int64 room_id = 2 [(validate.rules).int64.gte = 1];
   int64 user_id = 3 [(validate.rules).int64.gte = 1];
