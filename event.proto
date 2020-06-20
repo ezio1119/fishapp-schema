@@ -37,6 +37,15 @@ message PostDeleted {
   post.Post post = 1;
 }
 
+message PostRejected {
+  post.Post post = 1;
+  string error_message = 2;
+}
+
+message PostApproved {
+  post.Post post = 1;
+}
+
 message ApplyPostCreated {
   post.ApplyPost apply_post = 1;
 }
