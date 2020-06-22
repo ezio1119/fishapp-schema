@@ -3,25 +3,31 @@
 
 ## Table of Contents
 
-- [auth.proto](#auth.proto)
-    - [CreateUserReq](#auth.CreateUserReq)
-    - [CreateUserRes](#auth.CreateUserRes)
-    - [DeleteUserReq](#auth.DeleteUserReq)
-    - [GetUserReq](#auth.GetUserReq)
-    - [LoginReq](#auth.LoginReq)
-    - [LoginRes](#auth.LoginRes)
-    - [LogoutReq](#auth.LogoutReq)
-    - [RefreshIDTokenReq](#auth.RefreshIDTokenReq)
-    - [RefreshIDTokenRes](#auth.RefreshIDTokenRes)
-    - [TokenPair](#auth.TokenPair)
-    - [UpdateUserReq](#auth.UpdateUserReq)
-    - [User](#auth.User)
+- [user.proto](#user.proto)
+    - [CreateUserReq](#user.CreateUserReq)
+    - [CreateUserReqInfo](#user.CreateUserReqInfo)
+    - [CreateUserRes](#user.CreateUserRes)
+    - [CurrentUserReq](#user.CurrentUserReq)
+    - [GetUserReq](#user.GetUserReq)
+    - [LoginReq](#user.LoginReq)
+    - [LoginRes](#user.LoginRes)
+    - [LogoutReq](#user.LogoutReq)
+    - [RefreshIDTokenReq](#user.RefreshIDTokenReq)
+    - [RefreshIDTokenRes](#user.RefreshIDTokenRes)
+    - [TokenPair](#user.TokenPair)
+    - [UpdatePasswordReq](#user.UpdatePasswordReq)
+    - [UpdateUserReq](#user.UpdateUserReq)
+    - [UpdateUserReqInfo](#user.UpdateUserReqInfo)
+    - [User](#user.User)
   
-    - [AuthService](#auth.AuthService)
+    - [Sex](#user.Sex)
+  
+    - [UserService](#user.UserService)
   
 - [chat.proto](#chat.proto)
     - [CreateMemberReq](#chat.CreateMemberReq)
     - [CreateMessageReq](#chat.CreateMessageReq)
+    - [CreateMessageReqInfo](#chat.CreateMessageReqInfo)
     - [CreateRoomReq](#chat.CreateRoomReq)
     - [DeleteMemberReq](#chat.DeleteMemberReq)
     - [GetRoomReq](#chat.GetRoomReq)
@@ -43,7 +49,9 @@
     - [CreateRoom](#event.CreateRoom)
     - [CreateRoomFailed](#event.CreateRoomFailed)
     - [Event](#event.Event)
+    - [PostApproved](#event.PostApproved)
     - [PostDeleted](#event.PostDeleted)
+    - [PostRejected](#event.PostRejected)
     - [RoomCreated](#event.RoomCreated)
   
 - [post.proto](#post.proto)
@@ -74,31 +82,44 @@
   
     - [PostService](#post.PostService)
   
-- [profile.proto](#profile.proto)
-    - [BatchGetProfilesReq](#profile.BatchGetProfilesReq)
-    - [BatchGetProfilesRes](#profile.BatchGetProfilesRes)
-    - [CreateProfileReq](#profile.CreateProfileReq)
-    - [DeleteProfileReq](#profile.DeleteProfileReq)
-    - [GetProfileReq](#profile.GetProfileReq)
-    - [Profile](#profile.Profile)
-    - [UpdateProfileReq](#profile.UpdateProfileReq)
+- [event.proto](#event.proto)
+    - [ApplyPostCreated](#event.ApplyPostCreated)
+    - [ApplyPostDeleted](#event.ApplyPostDeleted)
+    - [CreateRoom](#event.CreateRoom)
+    - [CreateRoomFailed](#event.CreateRoomFailed)
+    - [Event](#event.Event)
+    - [PostApproved](#event.PostApproved)
+    - [PostDeleted](#event.PostDeleted)
+    - [PostRejected](#event.PostRejected)
+    - [RoomCreated](#event.RoomCreated)
   
-    - [Sex](#profile.Sex)
+- [image.proto](#image.proto)
+    - [BatchCreateImagesReq](#image.BatchCreateImagesReq)
+    - [BatchCreateImagesRes](#image.BatchCreateImagesRes)
+    - [BatchDeleteImagesByOwnerIDsReq](#image.BatchDeleteImagesByOwnerIDsReq)
+    - [BatchDeleteImagesReq](#image.BatchDeleteImagesReq)
+    - [DeleteImagesByOwnerIDReq](#image.DeleteImagesByOwnerIDReq)
+    - [Image](#image.Image)
+    - [ImageInfo](#image.ImageInfo)
+    - [ListImagesByOwnerIDReq](#image.ListImagesByOwnerIDReq)
+    - [ListImagesByOwnerIDRes](#image.ListImagesByOwnerIDRes)
   
-    - [ProfileService](#profile.ProfileService)
+    - [OwnerType](#image.OwnerType)
+  
+    - [ImageService](#image.ImageService)
   
 - [Scalar Value Types](#scalar-value-types)
 
 
 
-<a name="auth.proto"></a>
+<a name="user.proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## auth.proto
+## user.proto
 
 
 
-<a name="auth.CreateUserReq"></a>
+<a name="user.CreateUserReq"></a>
 
 ### CreateUserReq
 
@@ -106,18 +127,34 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
+| info | [CreateUserReqInfo](#user.CreateUserReqInfo) |  |  |
+| image_chunk | [bytes](#bytes) |  | ~ 64KiB; |
+
+
+
+
+
+
+<a name="user.CreateUserReqInfo"></a>
+
+### CreateUserReqInfo
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
 | email | [string](#string) |  |  |
 | password | [string](#string) |  | 6文字以上72文字以下の英数字 |
-| profile_name | [string](#string) |  | profileAPIにプロキシする |
-| profile_introduction | [string](#string) |  | profileAPIにプロキシする |
-| profile_sex | [profile.Sex](#profile.Sex) |  | profileAPIにプロキシする |
+| name | [string](#string) |  |  |
+| introduction | [string](#string) |  |  |
+| sex | [Sex](#user.Sex) |  |  |
 
 
 
 
 
 
-<a name="auth.CreateUserRes"></a>
+<a name="user.CreateUserRes"></a>
 
 ### CreateUserRes
 
@@ -125,36 +162,40 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| user | [User](#auth.User) |  |  |
-| profile | [profile.Profile](#profile.Profile) |  |  |
-| token_pair | [TokenPair](#auth.TokenPair) |  |  |
+| user | [User](#user.User) |  |  |
+| token_pair | [TokenPair](#user.TokenPair) |  |  |
 
 
 
 
 
 
-<a name="auth.DeleteUserReq"></a>
+<a name="user.CurrentUserReq"></a>
 
-### DeleteUserReq
-
-
+### CurrentUserReq
 
 
 
 
 
-<a name="auth.GetUserReq"></a>
+
+
+<a name="user.GetUserReq"></a>
 
 ### GetUserReq
 
 
 
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [int64](#int64) |  |  |
 
 
 
 
-<a name="auth.LoginReq"></a>
+
+
+<a name="user.LoginReq"></a>
 
 ### LoginReq
 
@@ -170,7 +211,7 @@
 
 
 
-<a name="auth.LoginRes"></a>
+<a name="user.LoginRes"></a>
 
 ### LoginRes
 
@@ -178,15 +219,15 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| user | [User](#auth.User) |  |  |
-| token_pair | [TokenPair](#auth.TokenPair) |  |  |
+| user | [User](#user.User) |  |  |
+| token_pair | [TokenPair](#user.TokenPair) |  |  |
 
 
 
 
 
 
-<a name="auth.LogoutReq"></a>
+<a name="user.LogoutReq"></a>
 
 ### LogoutReq
 
@@ -196,7 +237,7 @@
 
 
 
-<a name="auth.RefreshIDTokenReq"></a>
+<a name="user.RefreshIDTokenReq"></a>
 
 ### RefreshIDTokenReq
 
@@ -206,7 +247,7 @@
 
 
 
-<a name="auth.RefreshIDTokenRes"></a>
+<a name="user.RefreshIDTokenRes"></a>
 
 ### RefreshIDTokenRes
 
@@ -214,14 +255,14 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| token_pair | [TokenPair](#auth.TokenPair) |  |  |
+| token_pair | [TokenPair](#user.TokenPair) |  |  |
 
 
 
 
 
 
-<a name="auth.TokenPair"></a>
+<a name="user.TokenPair"></a>
 
 ### TokenPair
 
@@ -237,7 +278,23 @@
 
 
 
-<a name="auth.UpdateUserReq"></a>
+<a name="user.UpdatePasswordReq"></a>
+
+### UpdatePasswordReq
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| old_password | [string](#string) |  | 6文字以上72文字以下の英数字 |
+| new_password | [string](#string) |  | 6文字以上72文字以下の英数字 |
+
+
+
+
+
+
+<a name="user.UpdateUserReq"></a>
 
 ### UpdateUserReq
 
@@ -245,16 +302,32 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
+| info | [UpdateUserReqInfo](#user.UpdateUserReqInfo) |  |  |
+| image_chunk | [bytes](#bytes) |  | ~ 64KiB; |
+
+
+
+
+
+
+<a name="user.UpdateUserReqInfo"></a>
+
+### UpdateUserReqInfo
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
 | email | [string](#string) |  |  |
-| old_password | [string](#string) |  | 6文字以上72文字以下の英数字 |
-| password | [string](#string) |  | 6文字以上72文字以下の英数字 |
+| name | [string](#string) |  |  |
+| introduction | [string](#string) |  |  |
 
 
 
 
 
 
-<a name="auth.User"></a>
+<a name="user.User"></a>
 
 ### User
 
@@ -264,6 +337,9 @@
 | ----- | ---- | ----- | ----------- |
 | id | [int64](#int64) |  |  |
 | email | [string](#string) |  |  |
+| name | [string](#string) |  |  |
+| introduction | [string](#string) |  |  |
+| sex | [Sex](#user.Sex) |  |  |
 | created_at | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
 
@@ -273,25 +349,39 @@
 
  
 
- 
+
+<a name="user.Sex"></a>
+
+### Sex
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| SEX_UNSPECIFIED | 0 |  |
+| MALE | 1 |  |
+| FEMALE | 2 |  |
+
 
  
 
+ 
 
-<a name="auth.AuthService"></a>
 
-### AuthService
+<a name="user.UserService"></a>
+
+### UserService
 
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| GetUser | [GetUserReq](#auth.GetUserReq) | [User](#auth.User) | require id_token |
-| CreateUser | [CreateUserReq](#auth.CreateUserReq) | [CreateUserRes](#auth.CreateUserRes) |  |
-| UpdateUser | [UpdateUserReq](#auth.UpdateUserReq) | [User](#auth.User) | require id_token |
-| DeleteUser | [DeleteUserReq](#auth.DeleteUserReq) | [.google.protobuf.Empty](#google.protobuf.Empty) | require id_token |
-| Login | [LoginReq](#auth.LoginReq) | [LoginRes](#auth.LoginRes) |  |
-| Logout | [LogoutReq](#auth.LogoutReq) | [.google.protobuf.Empty](#google.protobuf.Empty) | require id_token |
-| RefreshIDToken | [RefreshIDTokenReq](#auth.RefreshIDTokenReq) | [RefreshIDTokenRes](#auth.RefreshIDTokenRes) | require refresh_token |
+| CurrentUser | [CurrentUserReq](#user.CurrentUserReq) | [User](#user.User) | require id_token |
+| GetUser | [GetUserReq](#user.GetUserReq) | [User](#user.User) | no email field |
+| CreateUser | [CreateUserReq](#user.CreateUserReq) stream | [CreateUserRes](#user.CreateUserRes) |  |
+| UpdateUser | [UpdateUserReq](#user.UpdateUserReq) stream | [User](#user.User) | require id_token |
+| UpdatePassword | [UpdatePasswordReq](#user.UpdatePasswordReq) | [.google.protobuf.Empty](#google.protobuf.Empty) | require id_token |
+| Login | [LoginReq](#user.LoginReq) | [LoginRes](#user.LoginRes) |  |
+| Logout | [LogoutReq](#user.LogoutReq) | [.google.protobuf.Empty](#google.protobuf.Empty) | require refresh_token |
+| RefreshIDToken | [RefreshIDTokenReq](#user.RefreshIDTokenReq) | [RefreshIDTokenRes](#user.RefreshIDTokenRes) | require refresh_token |
 
  
 
@@ -323,6 +413,22 @@
 <a name="chat.CreateMessageReq"></a>
 
 ### CreateMessageReq
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| info | [CreateMessageReqInfo](#chat.CreateMessageReqInfo) |  |  |
+| image_chunk | [bytes](#bytes) |  | ~ 64KiB; |
+
+
+
+
+
+
+<a name="chat.CreateMessageReqInfo"></a>
+
+### CreateMessageReqInfo
 
 
 
@@ -377,7 +483,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| id | [int64](#int64) |  |  |
+| room_id | [int64](#int64) |  |  |
 | post_id | [int64](#int64) |  |  |
 
 
@@ -393,6 +499,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
+| room_id | [int64](#int64) |  |  |
 | post_id | [int64](#int64) |  |  |
 | user_id | [int64](#int64) |  |  |
 
@@ -529,7 +636,6 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | room_id | [int64](#int64) |  |  |
-| user_id | [int64](#int64) |  |  |
 
 
 
@@ -556,7 +662,7 @@
 | CreateMember | [CreateMemberReq](#chat.CreateMemberReq) | [Member](#chat.Member) |  |
 | DeleteMember | [DeleteMemberReq](#chat.DeleteMemberReq) | [.google.protobuf.Empty](#google.protobuf.Empty) |  |
 | ListMessages | [ListMessagesReq](#chat.ListMessagesReq) | [ListMessagesRes](#chat.ListMessagesRes) |  |
-| CreateMessage | [CreateMessageReq](#chat.CreateMessageReq) | [Message](#chat.Message) |  |
+| CreateMessage | [CreateMessageReq](#chat.CreateMessageReq) stream | [Message](#chat.Message) |  |
 | StreamMessage | [StreamMessageReq](#chat.StreamMessageReq) | [Message](#chat.Message) stream |  |
 
  
@@ -655,6 +761,22 @@
 
 
 
+<a name="event.PostApproved"></a>
+
+### PostApproved
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| saga_id | [string](#string) |  |  |
+| post | [post.Post](#post.Post) |  |  |
+
+
+
+
+
+
 <a name="event.PostDeleted"></a>
 
 ### PostDeleted
@@ -664,6 +786,23 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | post | [post.Post](#post.Post) |  |  |
+
+
+
+
+
+
+<a name="event.PostRejected"></a>
+
+### PostRejected
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| saga_id | [string](#string) |  |  |
+| post | [post.Post](#post.Post) |  |  |
+| error_message | [string](#string) |  |  |
 
 
 
@@ -777,7 +916,7 @@
 | ----- | ---- | ----- | ----------- |
 | info | [CreatePostReqInfo](#post.CreatePostReqInfo) |  |  |
 | next_image_signal | [bool](#bool) |  |  |
-| image_chunk | [bytes](#bytes) |  |  |
+| image_chunk | [bytes](#bytes) |  | ~ 64KiB |
 
 
 
@@ -901,7 +1040,7 @@
 <a name="post.ListApplyPostsReq"></a>
 
 ### ListApplyPostsReq
-
+one of 使える
 
 
 | Field | Type | Label | Description |
@@ -1119,54 +1258,53 @@
 
 
 
-<a name="profile.proto"></a>
+<a name="event.proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## profile.proto
+## event.proto
 
 
 
-<a name="profile.BatchGetProfilesReq"></a>
+<a name="event.ApplyPostCreated"></a>
 
-### BatchGetProfilesReq
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| user_ids | [int64](#int64) | repeated |  |
-
-
-
-
-
-
-<a name="profile.BatchGetProfilesRes"></a>
-
-### BatchGetProfilesRes
+### ApplyPostCreated
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| profiles | [Profile](#profile.Profile) | repeated |  |
+| apply_post | [post.ApplyPost](#post.ApplyPost) |  |  |
 
 
 
 
 
 
-<a name="profile.CreateProfileReq"></a>
+<a name="event.ApplyPostDeleted"></a>
 
-### CreateProfileReq
+### ApplyPostDeleted
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| name | [string](#string) |  |  |
-| introduction | [string](#string) |  |  |
-| sex | [Sex](#profile.Sex) |  |  |
+| apply_post | [post.ApplyPost](#post.ApplyPost) |  |  |
+
+
+
+
+
+
+<a name="event.CreateRoom"></a>
+
+### CreateRoom
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| saga_id | [string](#string) |  |  |
+| post_id | [int64](#int64) |  |  |
 | user_id | [int64](#int64) |  |  |
 
 
@@ -1174,49 +1312,36 @@
 
 
 
-<a name="profile.DeleteProfileReq"></a>
+<a name="event.CreateRoomFailed"></a>
 
-### DeleteProfileReq
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| user_id | [int64](#int64) |  |  |
-
-
-
-
-
-
-<a name="profile.GetProfileReq"></a>
-
-### GetProfileReq
+### CreateRoomFailed
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| user_id | [int64](#int64) |  |  |
+| saga_id | [string](#string) |  |  |
+| message | [string](#string) |  |  |
 
 
 
 
 
 
-<a name="profile.Profile"></a>
+<a name="event.Event"></a>
 
-### Profile
+### Event
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| id | [int64](#int64) |  |  |
-| name | [string](#string) |  |  |
-| introduction | [string](#string) |  |  |
-| sex | [Sex](#profile.Sex) |  |  |
-| user_id | [int64](#int64) |  |  |
+| id | [string](#string) |  |  |
+| event_type | [string](#string) |  |  |
+| aggregate_id | [string](#string) |  |  |
+| aggregate_type | [string](#string) |  |  |
+| event_data | [bytes](#bytes) |  |  |
+| channel | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
 
@@ -1225,17 +1350,225 @@
 
 
 
-<a name="profile.UpdateProfileReq"></a>
+<a name="event.PostApproved"></a>
 
-### UpdateProfileReq
+### PostApproved
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
+| saga_id | [string](#string) |  |  |
+| post | [post.Post](#post.Post) |  |  |
+
+
+
+
+
+
+<a name="event.PostDeleted"></a>
+
+### PostDeleted
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| post | [post.Post](#post.Post) |  |  |
+
+
+
+
+
+
+<a name="event.PostRejected"></a>
+
+### PostRejected
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| saga_id | [string](#string) |  |  |
+| post | [post.Post](#post.Post) |  |  |
+| error_message | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="event.RoomCreated"></a>
+
+### RoomCreated
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| saga_id | [string](#string) |  |  |
+| room | [chat.Room](#chat.Room) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+<a name="image.proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## image.proto
+
+
+
+<a name="image.BatchCreateImagesReq"></a>
+
+### BatchCreateImagesReq
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| info | [ImageInfo](#image.ImageInfo) |  |  |
+| chunk | [bytes](#bytes) |  | ~ 64KiB |
+
+
+
+
+
+
+<a name="image.BatchCreateImagesRes"></a>
+
+### BatchCreateImagesRes
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| images | [Image](#image.Image) | repeated |  |
+
+
+
+
+
+
+<a name="image.BatchDeleteImagesByOwnerIDsReq"></a>
+
+### BatchDeleteImagesByOwnerIDsReq
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| owner_ids | [int64](#int64) | repeated |  |
+| owner_type | [OwnerType](#image.OwnerType) |  |  |
+
+
+
+
+
+
+<a name="image.BatchDeleteImagesReq"></a>
+
+### BatchDeleteImagesReq
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| ids | [int64](#int64) | repeated |  |
+
+
+
+
+
+
+<a name="image.DeleteImagesByOwnerIDReq"></a>
+
+### DeleteImagesByOwnerIDReq
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| owner_id | [int64](#int64) |  |  |
+| owner_type | [OwnerType](#image.OwnerType) |  |  |
+
+
+
+
+
+
+<a name="image.Image"></a>
+
+### Image
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [int64](#int64) |  |  |
 | name | [string](#string) |  |  |
-| introduction | [string](#string) |  |  |
-| user_id | [int64](#int64) |  |  |
+| owner_id | [int64](#int64) |  |  |
+| owner_type | [OwnerType](#image.OwnerType) |  |  |
+| created_at | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
+
+
+
+
+
+
+<a name="image.ImageInfo"></a>
+
+### ImageInfo
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| owner_id | [int64](#int64) |  |  |
+| owner_type | [OwnerType](#image.OwnerType) |  |  |
+
+
+
+
+
+
+<a name="image.ListImagesByOwnerIDReq"></a>
+
+### ListImagesByOwnerIDReq
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| owner_id | [int64](#int64) |  |  |
+| owner_type | [OwnerType](#image.OwnerType) |  |  |
+
+
+
+
+
+
+<a name="image.ListImagesByOwnerIDRes"></a>
+
+### ListImagesByOwnerIDRes
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| images | [Image](#image.Image) | repeated |  |
 
 
 
@@ -1244,16 +1577,17 @@
  
 
 
-<a name="profile.Sex"></a>
+<a name="image.OwnerType"></a>
 
-### Sex
+### OwnerType
 
 
 | Name | Number | Description |
 | ---- | ------ | ----------- |
-| SEX_UNSPECIFIED | 0 |  |
-| MALE | 1 |  |
-| FEMALE | 2 |  |
+| OWNERTYPE_UNSPECIFIED | 0 |  |
+| POST | 1 |  |
+| USER | 2 |  |
+| MESSAGE | 3 |  |
 
 
  
@@ -1261,18 +1595,18 @@
  
 
 
-<a name="profile.ProfileService"></a>
+<a name="image.ImageService"></a>
 
-### ProfileService
+### ImageService
 
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| CreateProfile | [CreateProfileReq](#profile.CreateProfileReq) | [Profile](#profile.Profile) |  |
-| GetProfile | [GetProfileReq](#profile.GetProfileReq) | [Profile](#profile.Profile) |  |
-| BatchGetProfiles | [BatchGetProfilesReq](#profile.BatchGetProfilesReq) | [BatchGetProfilesRes](#profile.BatchGetProfilesRes) | もらったIDの配列の順番でprofileの配列を返す |
-| UpdateProfile | [UpdateProfileReq](#profile.UpdateProfileReq) | [Profile](#profile.Profile) |  |
-| DeleteProfile | [DeleteProfileReq](#profile.DeleteProfileReq) | [.google.protobuf.Empty](#google.protobuf.Empty) |  |
+| ListImagesByOwnerID | [ListImagesByOwnerIDReq](#image.ListImagesByOwnerIDReq) | [ListImagesByOwnerIDRes](#image.ListImagesByOwnerIDRes) |  |
+| BatchCreateImages | [BatchCreateImagesReq](#image.BatchCreateImagesReq) stream | [BatchCreateImagesRes](#image.BatchCreateImagesRes) |  |
+| BatchDeleteImages | [BatchDeleteImagesReq](#image.BatchDeleteImagesReq) | [.google.protobuf.Empty](#google.protobuf.Empty) | 削除するレコードがなくてもエラーなし |
+| BatchDeleteImagesByOwnerIDs | [BatchDeleteImagesByOwnerIDsReq](#image.BatchDeleteImagesByOwnerIDsReq) | [.google.protobuf.Empty](#google.protobuf.Empty) | 削除するレコードがなくてもエラーなし |
+| DeleteImagesByOwnerID | [DeleteImagesByOwnerIDReq](#image.DeleteImagesByOwnerIDReq) | [.google.protobuf.Empty](#google.protobuf.Empty) |  |
 
  
 
