@@ -24,23 +24,25 @@ extend type Room {
 type Member {
   id: ID!
   roomId: ID!
-  profile: Profile!
+  user: User!
   createdAt: Time!
   updatedAt: Time!
 }
 
 type Message {
   id: ID!
-  body: String!
+  body: String
   roomId: ID!
-  profile: Profile!
+  user: User!
+  image: Image
   createdAt: Time!
   updatedAt: Time!
 }
 
 input CreateMessageInput {
-  body: String!
+  body: String
   roomId: ID!
+  image: Upload
 }
 
 type CreateMessagePayload {

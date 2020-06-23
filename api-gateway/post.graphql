@@ -1,6 +1,7 @@
 directive @isPostOwner on FIELD_DEFINITION
 directive @isApplyPostOwner on FIELD_DEFINITION
 scalar Upload
+scalar Time
 
 extend type Query {
   posts(first: Int, after: String, input: PostsInput!): PostConnection! # Relay connection
@@ -15,6 +16,10 @@ extend type Mutation {
   deleteApplyPost(input: DeleteApplyPostInput!): DeleteApplyPostPayload! @isApplyPostOwner @isAuthenticated
 }
 
+extend type Subscription {
+  createPostResult(input: CreatePostResultInput!): CreatePostResultPayload! @isAuthenticated
+}
+
 extend type Post {
   id: ID!
   title: String!
@@ -25,17 +30,16 @@ extend type Post {
   meetingPlaceId: String!
   meetingAt: Time!
   applyPosts: [ApplyPost!]
-  profile: Profile!
   images: [Image!]
+  user: User!
   maxApply: Int!
   createdAt: Time!
   updatedAt: Time!
 }
 
-
 extend type ApplyPost {
   id: ID!
-  profile: Profile!
+  user: User!
   post: Post!
   createdAt: Time!
   updatedAt: Time!
@@ -130,4 +134,13 @@ input DeleteApplyPostInput {
 
 type DeleteApplyPostPayload {
   success: Boolean!
+}
+
+input CreatePostResultInput {
+  sagaId: String!
+}
+
+type CreatePostResultPayload {
+  post: Post
+  error: String
 }
